@@ -31,10 +31,10 @@
             </div>
 
             <div class="mb-3">
-              <input type="text" class="form-control" name="username" placeholder="username">
+              <input type="text" class="form-control" name="username" placeholder="Usuario">
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" name="password" placeholder="password" >
+              <input type="password" class="form-control" name="password" placeholder="Contraseña" >
               
 
             </div>

@@ -27,15 +27,9 @@ if(!isset($_SESSION['rol'])){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
   <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
-
- 
 	</head>
 	<body>
-	
-		
-		
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	    	<a class="navbar-brand" href="V.usuario.php">Negocios <span>Verdes</span></a>
@@ -46,24 +40,22 @@ if(!isset($_SESSION['rol'])){
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
 	        	<li class="nav-item active"><a href="#" class="nav-link">USUARIOS</a></li>
-	        <li class="nav-item"><a href="#" class="nav-link">ORDEN</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">PRODUCTOS</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">MATERIALES</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">CLIENTES</a></li>
+	        <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
+	        	<li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
+	        	<li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
+	          <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
             <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-
     <div class="container"><br><br><br><br>
-      
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
         </form>
-  
+      <br>
 <bt-1><button class="btn btn-success float-right">Nuevo Usuario</button></bt-1>
   
 <br><br><br>
@@ -75,11 +67,9 @@ if(!isset($_SESSION['rol'])){
         <th>Usuario</th>
         <th>Contraseña</th>
         <th></th>
-
       </tr>
     </thead>
     <tbody>
-
     <?php 
     require_once "../../Controller/Controller_Usuario/C_usuarios.php";
 		while($mostrar=mysqli_fetch_array($result)){
@@ -102,7 +92,6 @@ if(!isset($_SESSION['rol'])){
 <div class="container">
 </div> 
 </html>
-
 	<script src="js/jquery.min.js"></script>
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
