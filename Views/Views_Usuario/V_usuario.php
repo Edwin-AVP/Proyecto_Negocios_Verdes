@@ -1,6 +1,4 @@
-
 <?php
-
 session_start();
 
 if(!isset($_SESSION['rol'])){ 
@@ -11,7 +9,6 @@ if(!isset($_SESSION['rol'])){
   }
 }
 
-   
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,21 +16,19 @@ if(!isset($_SESSION['rol'])){
   	<title>Usuarios</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/style-button.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
+	  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/style-button.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	    	<a class="navbar-brand" href="V.usuario.php">Negocios <span>Verdes</span></a>
-
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -56,7 +51,7 @@ if(!isset($_SESSION['rol'])){
           <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
         </form>
       <br>
-<bt-1><button class="btn btn-success float-right">Nuevo Usuario</button></bt-1>
+<a href="../Views_Usuario/V_nuevoUsuario.php" class="btn btn-success float-right" role="button">Nuevo Usuario</a>
   
 <br><br><br>
   <table class="table ">
@@ -79,7 +74,7 @@ if(!isset($_SESSION['rol'])){
         <td><?php echo $mostrar['nombre'] ?></td>
         <td><?php echo $mostrar['username'] ?></td>
         <td><?php echo $mostrar['password'] ?></td>
-        <td><button class="btn btn-success">Editar</button>
+        <td><a href="../Views_Usuario/V_editarUsuario.php" class="btn btn-success" role="button">Editar</a>
         <button class="btn btn-danger">Inhabilitar</button></td>
       </tr>
       <?php 

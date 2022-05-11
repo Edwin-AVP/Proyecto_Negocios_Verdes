@@ -46,51 +46,44 @@ if(!isset($_SESSION['rol'])){
     <!-- END nav -->
 <div class="container"><br><br><br><br><br>
 <form class="needs-validation" novalidate action="../Views_Usuario/V_usuario.php">
-<bt><button class="btn btn-success float-right" type="submit">Crear Orden</button></bt>
+<button class="btn btn-success float-right" type="submit">Guardar Edición</button>
 <br><br><br>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationCustom01">Numero de Orden</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden" value="" required>
+      <label for="validationCustom01">Nombre</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" value="Edwin Valencia" required>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Nombre</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Nombre" value="" required>
+      <label for="validationCustom02">Documento</label>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="Documento" value="1144093816" required>
+      <div class="valid-feedback">
+        Bien!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Teléfono</label>
+      <input type="number" class="form-control" id="validationCustom03" placeholder="Teléfono" value="3217779151" required>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Teléfono</label>
-      <input type="number" class="form-control"  placeholder="Teléfono" value="" required disabled>
-      <div class="valid-feedback">
-        Bien!
-      </div>
-    </div>
     <div class="col-md-6 mb-3">
-      <label for="validationCustom03">Dirección</label>
-      <input type="text" class="form-control"  placeholder="Dirección" required disabled>
+      <label for="validationCustom03">Usuario</label>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="Usuario" value="edwin" required>
       <div class="invalid-feedback">
-        
+        Usuario Invalido
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Numero Documento</label>
-      <input type="text" class="form-control"  placeholder="Numero Documento" required disabled>
+      <label for="validationCustom04">Contraseña</label>
+      <input type="text" class="form-control" id="validationCustom05" placeholder="Contraseña" value="1234" required>
       <div class="invalid-feedback">
-       
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Tipo</label>
-      <input type="text" class="form-control"  placeholder="" required disabled>
-      <div class="invalid-feedback">
-       
+        Contraseña Invalida
       </div>
     </div>
   </div>
@@ -107,9 +100,9 @@ if(!isset($_SESSION['rol'])){
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
+          event.stopPropagation();  
+        }        
+        form.classList.add('was-validated');       
       }, false);
     });
   }, false);

@@ -24,7 +24,7 @@ if(!isset($_SESSION['rol'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
 	</head>
-	<body>
+	<body class="boys">
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	    	<a class="navbar-brand" href="V.usuario.php">Negocios <span>Verdes</span></a>
@@ -33,8 +33,8 @@ if(!isset($_SESSION['rol'])){
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item active"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
-	            <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
+	        	<li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
+	            <li class="nav-item active"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
 	        	<li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
 	        	<li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
 	            <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
@@ -45,34 +45,36 @@ if(!isset($_SESSION['rol'])){
 	</nav>
     <!-- END nav -->
 <div class="container"><br><br><br><br><br>
-<form class="needs-validation" novalidate action="../Views_Usuario/V_usuario.php">
+
+<form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
 <bt><button class="btn btn-success float-right" type="submit">Crear Orden</button></bt>
 <br><br><br>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationCustom01">Numero de Orden</label>
+      <label for="validationCustom01">Número de Orden</label>
       <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden" value="" required>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Nombre</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Nombre" value="" required>
+    
+      <label for="validationCustom01">Cliente</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="Cliente" value="" required>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-3 mb-3">
       <label for="validationCustom02">Teléfono</label>
       <input type="number" class="form-control"  placeholder="Teléfono" value="" required disabled>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-3 mb-3">
       <label for="validationCustom03">Dirección</label>
       <input type="text" class="form-control"  placeholder="Dirección" required disabled>
       <div class="invalid-feedback">
@@ -80,20 +82,21 @@ if(!isset($_SESSION['rol'])){
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Numero Documento</label>
+      <label for="validationCustom04">Número Documento</label>
       <input type="text" class="form-control"  placeholder="Numero Documento" required disabled>
       <div class="invalid-feedback">
        
       </div>
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-1 mb-3">
       <label for="validationCustom04">Tipo</label>
       <input type="text" class="form-control"  placeholder="" required disabled>
       <div class="invalid-feedback">
        
       </div>
     </div>
-  </div>
+  </div> 
+<hr>
 </form>
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields

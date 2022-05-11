@@ -13,4 +13,13 @@
   .float-right{
     margin-left: 10px;
     margin-right: 10px;
+  } 
+  .hr{
+    width: 200px;
+    height: 20px;
+    background: black;
+   
+  }
+  .boys{
+    background-color: black;
   }
