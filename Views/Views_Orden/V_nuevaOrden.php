@@ -10,7 +10,7 @@ if(!isset($_SESSION['rol'])){
 }
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en"></html>
     <head>
   	<title>Usuarios</title>
     <meta charset="utf-8">
@@ -23,11 +23,18 @@ if(!isset($_SESSION['rol'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
-	</head>
-	<body class="boys">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+	<body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="V.usuario.php">Negocios <span>Verdes</span></a>
+	    	<a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -45,6 +52,11 @@ if(!isset($_SESSION['rol'])){
 	</nav>
     <!-- END nav -->
 <div class="container"><br><br><br><br><br>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
 
 <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
 <bt><button class="btn btn-success float-right" type="submit">Crear Orden</button></bt>
@@ -58,13 +70,15 @@ if(!isset($_SESSION['rol'])){
       </div>
     </div>
     <div class="col-md-4 mb-3">
-    
-      <label for="validationCustom01">Cliente</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="Cliente" value="" required>
-      <div class="valid-feedback">
-        Bien!
-      </div>
-    </div>
+    <label for="validationCustom03">Cliente</label><!-- Seleccionar Cliente -->
+    <select class="form-control" required aria-label="select example">
+      <option class="form-control" value="">Seleccione cliente</option>
+      <option class="form-control" value="1">Cliente 1</option>
+      <option class="form-control" value="2">Cliente 2</option>
+      <option class="form-control" value="3">Cliente 3</option>
+    </select>
+    <div class="invalid-feedback">Seleccione un cliente</div>
+  </div>
   </div>
   <div class="form-row">
     <div class="col-md-3 mb-3">
@@ -77,27 +91,80 @@ if(!isset($_SESSION['rol'])){
     <div class="col-md-3 mb-3">
       <label for="validationCustom03">Dirección</label>
       <input type="text" class="form-control"  placeholder="Dirección" required disabled>
-      <div class="invalid-feedback">
-        
-      </div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Número Documento</label>
       <input type="text" class="form-control"  placeholder="Numero Documento" required disabled>
-      <div class="invalid-feedback">
-       
-      </div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-1 mb-3">
       <label for="validationCustom04">Tipo</label>
-      <input type="text" class="form-control"  placeholder="" required disabled>
-      <div class="invalid-feedback">
-       
-      </div>
+      <input type="text" class="form-control"  placeholder="Tipo" required disabled>
+      <div class="invalid-feedback"></div>
     </div>
   </div> 
-<hr>
+  <hr>                   <!-- Separador -->
+  <div class="form-row"> <!-- div de Productos -->
+  <div class="col-md-4 mb-3">
+  <label for="validationCustom03">Producto</label><!-- Seleccionar producto -->
+    <select class="form-control" required aria-label="select example">
+      <option class="form-control" value="">Producto</option>
+      <option class="form-control" value="1">Producto 1</option>
+      <option class="form-control" value="2">Producto 2</option>
+      <option class="form-control" value="3">Producto 3</option>
+    </select>
+    <div class="invalid-feedback">Seleccione un producto</div>
+  </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom03">Cantidad</label>
+      <input type="number" class="form-control"  placeholder="Cantidad" required >
+      <div class="invalid-feedback"></div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom04">Valor Unitario</label>
+      <input type="text" class="form-control"  placeholder="Valor Unitario" required disabled>
+      <div class="invalid-feedback"></div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom04">Total</label>
+      <input type="text" class="form-control"  placeholder="Total" required disabled>
+      <div class="invalid-feedback"></div>
+    </div>
+  </div> 
+
+
+<script>    $(document).ready(function() {
+    $("#add_pro").click(function(){
+        var contador = $("input[type='text']").length;
+        $(this).before('<div><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="Producto'+ contador +'" name="Producto[]"><option  value="">Producto</option><option  value="1">Producto 1</option><option  value="2">Producto 2</option><option  value="3">Producto 3</option><div class="invalid-feedback">Seleccione un producto</div></select></div><div class="col-md-2 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" placeholder="Valor Unitario" required disabled id="Valoru'+ contador +'" name="Valor[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" placeholder="Total" required disabled id="Total'+ contador +'" name="Total[]"/></div> <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div>');
+
+      });
+
+    $(document).on('click', '.btn-danger', function(){
+        $(this).parent().remove();
+    });
+});	</script>
+
 </form>
+
+        <button class="btn btn-success" type="button" id="add_pro">+</button>
+        <div class="form-row">
+<div class="col-md-4 mb-3">
+    </div>
+    <div class="col-md-2 mb-3">
+    </div>
+    <div class="col-md-2 mb-3">
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom04">Total</label>
+      <input type="text" class="form-control"  placeholder="Total" required disabled>
+      <div class="invalid-feedback"></div>
+    </div>
+</div> 
+
+
+    
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -127,6 +194,7 @@ if(!isset($_SESSION['rol'])){
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/add.js"></script>
 	</body>
 </html>
 

@@ -28,7 +28,7 @@ if(!isset($_SESSION['rol'])){
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="V.usuario.php">Negocios <span>Verdes</span></a>
+	    	<a class="navbar-brand" href="V_usuario.php">Negocios <span>Verdes</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>

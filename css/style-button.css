@@ -1,11 +1,9 @@
 
 .btn {
     border: none;
-    color: white;
     padding: 10px 20px;
     font-size: 12px;
     cursor: pointer;
-
     display: flex;
     justify-content: space-between;
 
@@ -13,13 +11,19 @@
   .float-right{
     margin-left: 10px;
     margin-right: 10px;
+
   } 
+  .bt-eliminar{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+    height: 40px;
+  } 
+
   .hr{
     width: 200px;
-    height: 20px;
-    background: black;
+    height: 40px;
+    
    
   }
-  .boys{
-    background-color: black;
-  }
+
