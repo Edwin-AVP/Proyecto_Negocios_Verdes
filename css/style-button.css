@@ -23,7 +23,12 @@
   .hr{
     width: 200px;
     height: 40px;
-    
-   
   }
 
+  .Tex-label{
+    text-align: right;
+  }
+  
+  .mt3{
+    text-align: center;
+  }

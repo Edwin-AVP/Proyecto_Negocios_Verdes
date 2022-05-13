@@ -35,7 +35,7 @@ if(!isset($_SESSION['rol'])){
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	         <ul class="navbar-nav m-auto">
 	        	<li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
-	          <li class="nav-item active"><a href="#" class="nav-link">ORDEN</a></li>
+	          <li class="nav-item active"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
 	        	<li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
 	        	<li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
 	          <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
@@ -51,7 +51,7 @@ if(!isset($_SESSION['rol'])){
           <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
         </form><br>
 <a href="../Views_Orden/V_nuevaOrden.php" class="btn btn-success float-right" role="button">Nuevo Orden</a>
-<bt><button class="btn btn-success float-right">Historial</button></bt>
+<a href="../Views_Orden/V_historialOrden.php" class="btn btn-success float-right" role="button">Historial</a>
  <br><br><br>
   <table class="table ">
     <thead class="thead-light">
@@ -101,7 +101,8 @@ if(!isset($_SESSION['rol'])){
 </div>
 <br><br><br>
 <div class="container">
-<bt><button class="btn btn-success float-right">Orden del día</button></bt>
+
+<a href="../Views_Orden/V_ordenDia.php" class="btn btn-success float-right" role="button">Orden del día</a>
 <bt><button class="btn btn-success float-right">Historial Orden del día</button></bt>
 <bt><button class="btn btn-success float-right">Generar Orden del día</button></bt>
 </div> 

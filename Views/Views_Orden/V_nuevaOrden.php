@@ -23,12 +23,9 @@ if(!isset($_SESSION['rol'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
-
-
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
 	<body>
@@ -52,11 +49,6 @@ if(!isset($_SESSION['rol'])){
 	</nav>
     <!-- END nav -->
 <div class="container"><br><br><br><br><br>
-<script>
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Hello World";
-}
-</script>
 
 <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
 <bt><button class="btn btn-success float-right" type="submit">Crear Orden</button></bt>
@@ -133,7 +125,6 @@ function myFunction() {
     </div>
   </div> 
 
-
 <script>    $(document).ready(function() {
     $("#add_pro").click(function(){
         var contador = $("input[type='text']").length;
@@ -163,8 +154,6 @@ function myFunction() {
     </div>
 </div> 
 
-
-    
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

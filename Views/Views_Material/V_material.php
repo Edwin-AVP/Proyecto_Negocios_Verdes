@@ -37,7 +37,7 @@ if(!isset($_SESSION['rol'])){
 	        	<li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
 	          <li class="nav-item"><a href="../views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
 	        	<li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
-	        	<li class="nav-item active"><a href="#" class="nav-link">MATERIALES</a></li>
+	        	<li class="nav-item active"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
 	          <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
             <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
 	        </ul>
