@@ -49,15 +49,16 @@ if(!isset($_SESSION['rol'])){
 	</nav>
     <!-- END nav -->
 <div class="container"><br><br>
+<a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Atras</a>
+<br><br>
 <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
 <b style="font-size:200%;">MRP Orden Del Día</b><br><br>
 
 <b style="font-size:100%;">N.28.03.22</b>
 <hr>  
-<div class="form-row">
-
-  <label style="text-align:center; font-size:200%;">Producto 1</label>
-</div><br>
+	
+<p style="text-align:center; font-size:200%;">Producto 1</p>
+<br>
   <div class="form-row">
     <div class="col-md-1 mb-3">
       <label for="validationCustom01">Código</label>
@@ -82,18 +83,208 @@ if(!isset($_SESSION['rol'])){
     </div>
     <div class="col-md-2 mb-3">
       <label for="validationCustom03">Valor Unidad</label>
-      <input type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <input style="text-align:right" type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-2 mb-3">
       <label for="validationCustom03">Total</label>
-      <input type="text" class="form-control" value="275.400" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <input style="text-align:right" type="text" class="form-control" value="275.400" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
 
   </div> 
+<p style="text-align:center; font-size:200%;">Materiales</p>
+<table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th style="text-align:center">Código</th>
+        <th style="text-align:center">Nombre</th>
+        <th style="text-align:center">Inventario<br>Inicial</th>
+        <th style="text-align:center">Inventario<br>Final</th>
+        <th style="text-align:center">Cantidad<br>Pedido</th>
+        <th style="text-align:center">Unidad</th>
+        <th style="text-align:center">Valor<br>Unitario</th>
+        <th style="text-align:center">Total</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td colspan="7"></td>
+        <td style="text-align:right">204.000</td>
+      </tr>
+    </tbody>
+  </table>
+
   <hr>                   <!-- Separador -->
+<p style="text-align:center; font-size:200%;">Producto 2</p>
+<br>
+  <div class="form-row">
+    <div class="col-md-1 mb-3">
+      <label for="validationCustom01">Código</label>
+      <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="valid-feedback">
+        Bien!
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02">Nombre</label>
+      <input type="text" class="form-control" value="Shampoo limón 250ml" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="valid-feedback">
+        Bien!
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom02">Cantidad</label>
+      <input type="text" class="form-control" value="10" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="valid-feedback">
+        Bien!
+      </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom03">Valor Unidad</label>
+      <input style="text-align:right" type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="invalid-feedback"></div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom03">Total</label>
+      <input style="text-align:right" type="text" class="form-control" value="137.700" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="invalid-feedback"></div>
+    </div>
+
+  </div> 
+
+<p style="text-align:center; font-size:200%;">Materiales</p>
+
   
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th style="text-align:center">Código</th>
+        <th style="text-align:center">Nombre</th>
+        <th style="text-align:center">Inventario<br>Inicial</th>
+        <th style="text-align:center">Inventario<br>Final</th>
+        <th style="text-align:center">Cantidad<br>Pedido</th>
+        <th style="text-align:center">Unidad</th>
+        <th style="text-align:center">Valor<br>Unitario</th>
+        <th style="text-align:center">Total</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+      <tr>
+        <td style="text-align:right">MT010</td>
+        <td style="text-align:right">D</td>
+        <td style="text-align:right">400</td>
+        <td style="text-align:right">360</td>
+        <td style="text-align:right">40</td>
+        <td style="text-align:right">Kg</td>
+        <td style="text-align:right">100</td>
+        <td style="text-align:right">4000</td>
+      </tr>
+        <td colspan="7"></td>
+        <td style="text-align:right">102.000</td>
+    </tbody>
+  </table>
+  <div class="form-row">
+ <div class="col-md-8 mb-3"></div>
+
+  <div class="col-md-2 mb-3">
+      <label style="text-align:center" for="validationCustom03">Costos Totales</label>
+      <input style="text-align:right" type="text" class="form-control" value="413.100" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="invalid-feedback"></div>
+  </div>
+</div>
 
 </form>
 

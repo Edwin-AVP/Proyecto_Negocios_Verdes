@@ -68,10 +68,10 @@ if(!isset($_SESSION['rol'])){
         <td>John jose bartolomedo</td>
         <td>listo</td>
         <td>
-            <button class="btn btn-primary">MRP</button>
-            <button class="btn btn-info">Ver</button>
-            <button class="btn btn-success">Editar</button>
-            <button class="btn btn-danger">Cancelar</button>
+            <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
+            <a href="../Views_Orden/V_verOrden.php" class="btn btn-info" role="button">Ver</a>
+            <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
+            <a href="#" class="btn btn-danger" role="button">Cancelar</a>
         </td>
       </tr>
       <tr>
@@ -79,10 +79,10 @@ if(!isset($_SESSION['rol'])){
         <td>John jose bartolomedo</td>
         <td>listo</td>
         <td>
-            <button class="btn btn-primary">MRP</button>
-            <button class="btn btn-info">Ver</button>
-            <button class="btn btn-success">Editar</button>
-            <button class="btn btn-danger">Cancelar</button>
+        <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
+        <a href="../Views_Orden/V_verOrden.php" class="btn btn-info" role="button">Ver</a>
+            <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
+            <a href="#" class="btn btn-danger" role="button">Cancelar</a>
         </td>
       </tr>
       <tr>
@@ -90,10 +90,10 @@ if(!isset($_SESSION['rol'])){
         <td>John jose bartolomedo</td>
         <td>listo</td>
         <td>
-            <button class="btn btn-primary">MRP</button>
-            <button class="btn btn-info">Ver</button>
-            <button class="btn btn-success">Editar</button>
-            <button class="btn btn-danger">Cancelar</button>
+        <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
+        <a href="../Views_Orden/V_verOrden.php" class="btn btn-info" role="button">Ver</a>
+            <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
+            <a href="#" class="btn btn-danger" role="button">Cancelar</a>
         </td>
       </tr>
     </tbody>
@@ -103,8 +103,8 @@ if(!isset($_SESSION['rol'])){
 <div class="container">
 
 <a href="../Views_Orden/V_ordenDia.php" class="btn btn-success float-right" role="button">Orden del día</a>
-<bt><button class="btn btn-success float-right">Historial Orden del día</button></bt>
-<bt><button class="btn btn-success float-right">Generar Orden del día</button></bt>
+<a href="../Views_Orden/V_historialOrdenDia.php" class="btn btn-success float-right" role="button">Historial Orden del día</a>
+<a href="../Views_Orden/V_generarOrden.php" class="btn btn-success float-right" role="button">Generar Orden del día</a>
 </div> 
 </html>
 

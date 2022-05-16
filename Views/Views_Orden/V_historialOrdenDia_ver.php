@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -49,11 +48,11 @@ if(!isset($_SESSION['rol'])){
 	    </div>
 	</nav>
     <!-- END nav -->
-   
 <div class="container"><br><br>
- <a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Crear Orden del Día</a>
+<a href="../Views_Orden/V_historialOrdenDia.php" class="btn btn-success float-right" role="button">Atras</a>
+<br><br>
 <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
-<b style="font-size:150%;">Crear</b><br>
+<b style="font-size:150%;">Historial</b><br>
 <b style="font-size:200%;">MRP Orden Del Día</b><br><br>
 
 <b style="font-size:100%;">N.28.03.22</b>

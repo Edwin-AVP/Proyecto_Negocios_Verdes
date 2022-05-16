@@ -56,7 +56,7 @@ if(!isset($_SESSION['rol'])){
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">Número de Orden</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden" value="" required>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
       <div class="valid-feedback">
         Bien!
       </div>
@@ -75,24 +75,24 @@ if(!isset($_SESSION['rol'])){
   <div class="form-row">
     <div class="col-md-3 mb-3">
       <label for="validationCustom02">Teléfono</label>
-      <input type="number" class="form-control"  placeholder="Teléfono" value="" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Teléfono" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom03">Dirección</label>
-      <input type="text" class="form-control"  placeholder="Dirección" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Dirección" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Número Documento</label>
-      <input type="text" class="form-control"  placeholder="Numero Documento" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Número Documento" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-1 mb-3">
       <label for="validationCustom04">Tipo</label>
-      <input type="text" class="form-control"  placeholder="Tipo" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Tipo" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
   </div> 
@@ -115,20 +115,21 @@ if(!isset($_SESSION['rol'])){
     </div>
     <div class="col-md-2 mb-3">
       <label for="validationCustom04">Valor Unitario</label>
-      <input type="text" class="form-control"  placeholder="Valor Unitario" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-2 mb-3">
       <label for="validationCustom04">Total</label>
-      <input type="text" class="form-control"  placeholder="Total" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
   </div> 
+  
 
 <script>    $(document).ready(function() {
     $("#add_pro").click(function(){
         var contador = $("input[type='text']").length;
-        $(this).before('<div><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="Producto'+ contador +'" name="Producto[]"><option  value="">Producto</option><option  value="1">Producto 1</option><option  value="2">Producto 2</option><option  value="3">Producto 3</option><div class="invalid-feedback">Seleccione un producto</div></select></div><div class="col-md-2 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" placeholder="Valor Unitario" required disabled id="Valoru'+ contador +'" name="Valor[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" placeholder="Total" required disabled id="Total'+ contador +'" name="Total[]"/></div> <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div>');
+        $(this).before('<div><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="Producto'+ contador +'" name="Producto[]"><option  value="">Producto</option><option  value="1">Producto 1</option><option  value="2">Producto 2</option><option  value="3">Producto 3</option><div class="invalid-feedback">Seleccione un producto</div></select></div><div class="col-md-2 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" value="" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly id="Valoru'+ contador +'" name="Valor[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" value="" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly id="Total'+ contador +'" name="Total[]"/></div> <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div>');
 
       });
 
@@ -140,16 +141,11 @@ if(!isset($_SESSION['rol'])){
 </form>
 
         <button class="btn btn-success" type="button" id="add_pro">+</button>
-        <div class="form-row">
-<div class="col-md-4 mb-3">
-    </div>
-    <div class="col-md-2 mb-3">
-    </div>
-    <div class="col-md-2 mb-3">
-    </div>
+<div class="form-row">
+<div class="col-md-8 mb-3"> </div>
     <div class="col-md-2 mb-3">
       <label for="validationCustom04">Total</label>
-      <input type="text" class="form-control"  placeholder="Total" required disabled>
+      <input type="text" class="form-control" value="" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
 </div> 

@@ -68,7 +68,7 @@ if(!isset($_SESSION['rol'])){
       <tr>
         <td>TP025</td>
         <td>John jose bartolomedo</td>
-        <td>listo</td>
+        <td>Terminada</td>
         <td>
             <button class="btn btn-primary">MRP</button>
             <button class="btn btn-info">Ver</button>
@@ -77,16 +77,16 @@ if(!isset($_SESSION['rol'])){
       <tr>
         <td>TP025</td>
         <td>John jose bartolomedo</td>
-        <td>listo</td>
+        <td>Cancelada</td>
         <td>
-            <button class="btn btn-primary">MRP</button>
+
             <button class="btn btn-info">Ver</button>
         </td>
       </tr>
       <tr>
         <td>TP025</td>
         <td>John jose bartolomedo</td>
-        <td>listo</td>
+        <td>Terminada</td>
         <td>
             <button class="btn btn-primary">MRP</button>
             <button class="btn btn-info">Ver</button>
