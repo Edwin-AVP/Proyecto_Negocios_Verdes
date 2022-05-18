@@ -1,19 +1,14 @@
-
 <?php
 session_start();
 
 if(!isset($_SESSION['rol'])){ 
   header('location: ../login.php');
-}else{
-  if($_SESSION['rol'] != 1){ 
-      header('location: ../login.php');
-  }
 }
 ?>
 <!doctype html>
 <html lang="en"></html>
     <head>
-  	<title>Usuarios</title>
+  	<title>Historial_Orden_MRP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -49,16 +44,32 @@ if(!isset($_SESSION['rol'])){
 	    </div>
 	</nav>
     <!-- END nav -->
-   
 <div class="container"><br><br>
- <a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Crear Orden del Día</a>
+<a href="../Views_Orden/V_historialOrden.php" class="btn btn-success float-right" role="button">Atras</a>
+<br><br>
 <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
-<b style="font-size:150%;">Crear</b><br>
-<b style="font-size:200%;">MRP Orden Del Día</b><br><br>
+<b style="font-size:200%;">Historial MRP</b><br><br>
 
-<b style="font-size:100%;">N.28.03.22</b>
+<div class="form-row">
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom01">Número de Orden</label>
+      <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="valid-feedback">
+        Bien!
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02">Nombre Cliente</label>
+      <input type="text" class="form-control" value="Fernando de la Cruz" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="valid-feedback">
+        Bien!
+      </div>
+    </div>
+
+
+  </div>
+
 <hr>  
-	
 <p style="text-align:center; font-size:200%;">Producto 1</p>
 <br>
   <div class="form-row">

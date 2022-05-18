@@ -3,17 +3,13 @@ session_start();
 
 if(!isset($_SESSION['rol'])){ 
   header('location: ../login.php');
-}else{
-  if($_SESSION['rol'] != 1){ 
-      header('location: ../login.php');
-  }
 }
 
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Usuarios</title>
+  	<title>Historial_Orden</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -70,8 +66,8 @@ if(!isset($_SESSION['rol'])){
         <td>John jose bartolomedo</td>
         <td>Terminada</td>
         <td>
-            <button class="btn btn-primary">MRP</button>
-            <button class="btn btn-info">Ver</button>
+            <a href="../Views_Orden/V_historialOrden_MRP.php" class="btn btn-primary" role="button">MRP</a>
+            <a href="../Views_Orden/V_historialOrden_ver.php" class="btn btn-info" role="button">Ver</a>
         </td>
       </tr>
       <tr>
@@ -79,8 +75,7 @@ if(!isset($_SESSION['rol'])){
         <td>John jose bartolomedo</td>
         <td>Cancelada</td>
         <td>
-
-            <button class="btn btn-info">Ver</button>
+            <a href="../Views_Orden/V_historialOrden_ver.php" class="btn btn-info" role="button">Ver</a>
         </td>
       </tr>
       <tr>
@@ -88,8 +83,8 @@ if(!isset($_SESSION['rol'])){
         <td>John jose bartolomedo</td>
         <td>Terminada</td>
         <td>
-            <button class="btn btn-primary">MRP</button>
-            <button class="btn btn-info">Ver</button>
+            <a href="../Views_Orden/V_historialOrden_MRP.php" class="btn btn-primary" role="button">MRP</a>
+            <a href="../Views_Orden/V_historialOrden_ver.php" class="btn btn-info" role="button">Ver</a>
         </td>
       </tr>
     </tbody>

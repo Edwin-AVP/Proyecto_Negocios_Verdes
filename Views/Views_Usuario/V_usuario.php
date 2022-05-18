@@ -75,38 +75,18 @@ if(!isset($_SESSION['rol'])){
         <td><?php echo $mostrar['cedula'] ?></td>
         <td><?php echo $mostrar['nombre'] ?></td>
         <td><?php echo $mostrar['username'] ?></td>
-        
-        <td><input class='form-control' value="<?php echo $mostrar['password'] ?>" type='password' name='password' id='password'></td>
-
   <td>
     
-  <button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar Contraseña</button>
+  <a href="../Views_Usuario/V_verUsuario.php" class="btn btn-info" role="button">Ver</a>
       <a href="../Views_Usuario/V_editarUsuario.php" class="btn btn-success" role="button">Editar</a>
       <button class="btn btn-danger">Inhabilitar</button>
-
   </td>
       </tr>
-
       <?php 
 	}
 	    ?>
     </tbody>
   </table>
-
-
-  <script>
-      function mostrarContrasena(){
-          var tipo = document.getElementById("password");
-          if(tipo.type == "password"){
-            tipo.type = "text";
-
-            
-          }else{
-              tipo.type = "password";
-          }
-      }
-    </script>
-
 
 </div>
 <br><br><br>

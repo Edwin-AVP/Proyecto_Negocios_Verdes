@@ -12,7 +12,7 @@ if(!isset($_SESSION['rol'])){
 <!doctype html>
 <html lang="en"></html>
     <head>
-  	<title>Usuarios</title>
+  	<title>Ver_Orden</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -56,20 +56,14 @@ if(!isset($_SESSION['rol'])){
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">Número de Orden</label>
-      <input type="text" value="TP025" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
+            <input type="text" value="TP025" class="form-control" id="validationCustom01" placeholder="Numero de Orden" aria-label="Disabled input example" required  readonly>
       <div class="valid-feedback">
         Bien!
       </div>
     </div>
     <div class="col-md-4 mb-3">
     <label for="validationCustom03">Cliente</label><!-- Seleccionar Cliente -->
-    <select class="form-control" required aria-label="select example">
-      <option class="form-control" value="1">Cliente 1</option>
-      <option class="form-control" value="2">Cliente 2</option>
-      <option class="form-control" value="3">Cliente 3</option>
-      <option class="form-control" value="4">Cliente 4</option>
-    </select>
-    <div class="invalid-feedback">Seleccione un cliente</div>
+<input type="text" class="form-control" value="Cliente 2" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
   </div>
   </div>
   <div class="form-row">
@@ -114,18 +108,12 @@ if(!isset($_SESSION['rol'])){
 
   <div class="form-row"> <!-- div de Productos -->
   <div class="col-md-4 mb-3">
-<!-- Seleccionar producto -->
-    <select class="form-control" required aria-label="select example">
-      <option class="form-control" value="1">Producto 1</option>
-      <option class="form-control" value="1">Producto 1</option>
-      <option class="form-control" value="2">Producto 2</option>
-      <option class="form-control" value="3">Producto 3</option>
-    </select>
-    <div class="invalid-feedback">Seleccione un producto</div>
+<input type="text" class="form-control" value="Producto 1" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
   </div>
     <div class="col-md-2 mb-3">
 
-      <input type="number" value="20" class="form-control"  placeholder="Cantidad" required >
+      <input type="number" value="20" class="form-control"  placeholder="Cantidad" id="validationCustom01" aria-label="Disabled input example" required readonly >
+
       <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-2 mb-3">
@@ -145,18 +133,11 @@ if(!isset($_SESSION['rol'])){
 
   <div class="form-row"> <!-- div de Productos -->
   <div class="col-md-4 mb-3">
- 
-    <select class="form-control" required aria-label="select example">
-      <option class="form-control" value="1">Producto 2</option>
-      <option class="form-control" value="1">Producto 1</option>
-      <option class="form-control" value="2">Producto 2</option>
-      <option class="form-control" value="3">Producto 3</option>
-    </select>
-    <div class="invalid-feedback">Seleccione un producto</div>
+<input type="text" class="form-control" value="Producto 3" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
   </div>
     <div class="col-md-2 mb-3">
 
-      <input type="number" value="10" class="form-control"  placeholder="Cantidad" required >
+      <input type="number" value="10" class="form-control"  placeholder="Cantidad" aria-label="Disabled input example" required readonly  >
       <div class="invalid-feedback"></div>
     </div>
     <div class="col-md-2 mb-3">

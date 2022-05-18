@@ -13,7 +13,7 @@ if(!isset($_SESSION['rol'])){
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Usuarios</title>
+  	<title>Cliente</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -50,7 +50,7 @@ if(!isset($_SESSION['rol'])){
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
         </form><br>
-   <bt><button class="btn btn-success float-right">Nuevo Cliente</button></bt>
+   <a href="../Views_Cliente/V_nuevoCliente.php" class="btn btn-success float-right" role="button">Nuevo Cliente</a>
   <br><br><br>
   <table class="table ">
     <thead class="thead-light">

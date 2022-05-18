@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -12,7 +13,7 @@ if(!isset($_SESSION['rol'])){
 <!doctype html>
 <html lang="en"></html>
     <head>
-  	<title>Orden_Día</title>
+  	<title>Crear_Orden</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -48,10 +49,11 @@ if(!isset($_SESSION['rol'])){
 	    </div>
 	</nav>
     <!-- END nav -->
+   
 <div class="container"><br><br>
-<a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Atras</a>
-<br><br>
+ <a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Crear Orden del Día</a>
 <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
+<b style="font-size:150%;">Crear</b><br>
 <b style="font-size:200%;">MRP Orden Del Día</b><br><br>
 
 <b style="font-size:100%;">N.28.03.22</b>

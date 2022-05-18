@@ -13,7 +13,7 @@ if(!isset($_SESSION['rol'])){
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Usuarios</title>
+  	<title>Orden</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -104,7 +104,7 @@ if(!isset($_SESSION['rol'])){
 
 <a href="../Views_Orden/V_ordenDia.php" class="btn btn-success float-right" role="button">Orden del día</a>
 <a href="../Views_Orden/V_historialOrdenDia.php" class="btn btn-success float-right" role="button">Historial Orden del día</a>
-<a href="../Views_Orden/V_generarOrden.php" class="btn btn-success float-right" role="button">Generar Orden del día</a>
+<a href="../Views_Orden/V_crearOrden.php" class="btn btn-success float-right" role="button">Crear Orden del día</a>
 </div> 
 </html>
 
