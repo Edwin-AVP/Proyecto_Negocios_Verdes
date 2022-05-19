@@ -46,12 +46,7 @@ if(!isset($_SESSION['rol'])){
   </div>
 </nav>
 <!-- END nav -->
-<div class="container"><br><br><br><br>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-  </form>
-  <br>
+<div class="container"><br><br><br><br><br><br><br>
   <a href="../Views_Usuario/V_usuario.php" class="btn btn-success float-right" role="button">Atras</a>
   
   <br><br><br>

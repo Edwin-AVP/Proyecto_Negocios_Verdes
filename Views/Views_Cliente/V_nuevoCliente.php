@@ -45,53 +45,41 @@ if(!isset($_SESSION['rol'])){
 	</nav>
     <!-- END nav -->
 <div class="container"><br><br><br><br><br>
-<form class="needs-validation" novalidate action="../Views_Usuario/V_usuario.php">
-<bt><button class="btn btn-success float-right" type="submit">Crear Orden</button></bt>
+<form class="needs-validation" novalidate action="../Views_Cliente/V_cliente.php">
+<bt><button class="btn btn-success float-right" type="submit">Nuevo Cliente</button></bt>
 <br><br><br>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationCustom01">Numero de Orden</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden" value="" required>
-      <div class="valid-feedback">
-        Bien!
-      </div>
+      <label for="validationCustom01">Nombre</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" value="" required>
+      <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un nombre</div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Nombre</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Nombre" value="" required>
-      <div class="valid-feedback">
-        Bien!
-      </div>
+      <label for="validationCustom02">Identificación</label>
+      <input type="number" class="form-control" id="validationCustom02" placeholder="Identificación" value="" required>
+      <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Identificación</div>
     </div>
+    <div class="col-md-3 mb-3">
+    <label for="validationCustom03">Tipo</label><!-- Seleccionar Cliente -->
+    <select class="form-control" required aria-label="select example">
+      <option class="form-control" value="">Seleccione Tipo</option>
+      <option class="form-control" value="1">NIT</option>
+      <option class="form-control" value="2">C.C</option>
+      <option class="form-control" value="3">Nuip</option>
+    </select>
+    <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
+  </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom02">Teléfono</label>
-      <input type="number" class="form-control"  placeholder="Teléfono" value="" required disabled>
-      <div class="valid-feedback">
-        Bien!
-      </div>
+      <input type="number" class="form-control"  placeholder="Teléfono" value="" required>
+      <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Teléfono</div>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationCustom03">Dirección</label>
-      <input type="text" class="form-control"  placeholder="Dirección" required disabled>
-      <div class="invalid-feedback">
-        
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Numero Documento</label>
-      <input type="text" class="form-control"  placeholder="Numero Documento" required disabled>
-      <div class="invalid-feedback">
-       
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Tipo</label>
-      <input type="text" class="form-control"  placeholder="" required disabled>
-      <div class="invalid-feedback">
-       
-      </div>
+      <input type="text" class="form-control"  placeholder="Dirección" required>
+      <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Dirección</div>
     </div>
   </div>
 </form>

@@ -66,30 +66,30 @@ if(!isset($_SESSION['rol'])){
       <tr>
         <td>John jose bartolomedo</td>
         <td>9001856721</td>
-        <td>RUT</td>
+        <td> NIT</td>
         <td>7584269</td>
-        <td><button class="btn btn-info">Ver</button>
-            <button class="btn btn-success">Editar</button>
+        <td><a href="../Views_Cliente/V_verCliente.php" class="btn btn-info" role="button">Ver</a>
+            <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
             <button class="btn btn-danger">Inhabilitar</button>
         </td>
       </tr>
       <tr>
         <td>John jose bartolomedo</td>
         <td>9001856721</td>
-        <td>RUT</td>
+        <td>NIT</td>
         <td>7584269</td>
-        <td><button class="btn btn-info">Ver</button>
-            <button class="btn btn-success">Editar</button>
+        <td><a href="../Views_Cliente/V_verCliente.php" class="btn btn-info" role="button">Ver</a>
+        <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
             <button class="btn btn-danger">Inhabilitar</button>
         </td>
       </tr>
       <tr>
         <td>John jose bartolomedo</td>
         <td>9001856721</td>
-        <td>RUT</td>
+        <td>NIT</td>
         <td>7584269</td>
-        <td><button class="btn btn-info">Ver</button>
-            <button class="btn btn-success">Editar</button>
+        <td><a href="../Views_Cliente/V_verCliente.php" class="btn btn-info" role="button">Ver</a>
+        <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
             <button class="btn btn-danger">Inhabilitar</button>
         </td>
       </tr>

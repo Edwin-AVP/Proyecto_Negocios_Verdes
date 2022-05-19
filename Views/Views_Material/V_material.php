@@ -14,6 +14,7 @@ if(!isset($_SESSION['rol'])){
 <html lang="en">
   <head>
   	<title>Material</title>
+    <link rel="shortcut icon" href="../../images/logo PV.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -51,7 +52,7 @@ if(!isset($_SESSION['rol'])){
           <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
         </form><br>
 <a href="../Views_material/V_agregarMaterial.php" class="btn btn-success float-right" role="button">Agregar Material</a>
-<bt-2><button class="btn btn-success float-right">Historial</button></bt-2> 
+<a href="../Views_material/V_historialMaterial.php" class="btn btn-success float-right" role="button">Historial</a>
  <br><br><br>
   <table class="table ">
     <thead class="thead-light">
@@ -74,7 +75,9 @@ if(!isset($_SESSION['rol'])){
         <td>Kg</td>
         <td>1000</td>
         <td>Materia Prima</td>
-        <td><button class="btn btn-success">Editar</button>
+        <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
         <button class="btn btn-danger">Eliminar</button></td>
       </tr>
       <tr>
@@ -84,7 +87,9 @@ if(!isset($_SESSION['rol'])){
         <td>Kg</td>
         <td>1000</td>
         <td>Materia Prima</td>
-        <td><button class="btn btn-success">Editar</button>
+        <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
         <button class="btn btn-danger">Eliminar</button></td>
       </tr>
       <tr>
@@ -94,15 +99,114 @@ if(!isset($_SESSION['rol'])){
         <td>Kg</td>
         <td>1000</td>
         <td>Insumo</td>
-        <td><button class="btn btn-success">Editar</button>
+        <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
         <button class="btn btn-danger">Eliminar</button></td>
       </tr>
     </tbody>
   </table>
 </div>
 <br><br><br>
+<!------------------------------------------------------------------- Modal entrada------------------------------------------------------------------------->
+<div class="modal fade" id="modalentrada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Entrada de Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 <div class="container">
-</div> 
+<form class="needs-validation" novalidate action="../Views_Material/V_material.php">
+    <div  class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Cantidad de material</label>
+        <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Cantidad de material"  required>
+        <div class="valid-feedback">Bien!</div>
+      </div>
+    </div>
+      <div  class="form-row C-centro">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Valor del Material</label>
+        <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Valor del Material"  required>
+        <div class="valid-feedback">Bien!</div>
+      </div>
+    </div>
+    <bt><button class="btn btn-primary" type="submit">Guardar</button></bt>
+    </form>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------------------------------------------------------------- Modal  salida--------------------------------------------------------------------->
+<div class="modal fade" id="modalsalida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Salida de Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+<form class="needs-validation" novalidate action="../Views_Material/V_material.php">
+    <div  class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Cantidad de material</label>
+        <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Cantidad de material"  required>
+        <div class="valid-feedback">Bien!</div>
+      </div></div>
+      <div  class="form-row C-centro">
+      <div class="col-md-4 mb-3">
+        <label for="validationCustom03">Motivo de salida</label>
+        <select class="form-control" required aria-label="select example">
+          <option class="form-control" value="1">Error en producción</option>
+          <option class="form-control" value="2">Por descomposición</option>
+          <option class="form-control" value="3">Otros</option>
+        </select>
+        <div class="invalid-feedback">Seleccione una unidad</div>
+      </div>
+    </div>
+
+    <bt><button class="btn btn-primary" type="submit">Guardar</button></bt>
+    </form>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 </html>
 
 

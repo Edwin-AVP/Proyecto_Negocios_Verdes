@@ -9,7 +9,7 @@ if(!isset($_SESSION['rol'])){
   <html lang="en"></html>
   <head>
     <title>Agregar_Material</title>
-    <link rel="shortcut icon" href="../../images/logo PV.png">
+    <link rel="shortcut icon" href="../../images/logoPV.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -56,13 +56,13 @@ if(!isset($_SESSION['rol'])){
         <input type="text" class="form-control" id="validationCustom01" placeholder="Código"  required>
         <div class="valid-feedback">
           Bien!
-        </div>
+        </div><div class="invalid-feedback">Ingrese codigor</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Nombre Material</label>
         <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre Material"  required>
         <div class="valid-feedback">
-        Bien!</div>
+        Bien!</div><div class="invalid-feedback">Ingrese Nombre</div>
 
       </div>
 
@@ -76,14 +76,12 @@ if(!isset($_SESSION['rol'])){
           <option class="form-control" value="2">ml</option>
           <option class="form-control" value="3">Lt</option>
         </select>
-        <div class="invalid-feedback">Seleccione una unidad</div>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione una unidad</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Valor por Unidad</label>
         <input type="number" class="form-control" value="" placeholder="Valor por unidad" id="validationCustom01"  required>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un valor</div>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Tipo</label><!-- Seleccionar Cliente -->
@@ -92,16 +90,9 @@ if(!isset($_SESSION['rol'])){
           <option class="form-control" value="1">Insumo</option>
           <option class="form-control" value="2">Materia Prima</option>
         </select>
-        <div class="invalid-feedback">Seleccione un Tipo</div>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
       </div>
-      
-
     </div> 
-
-
-    
-
-
   </form>
 
   <script>
