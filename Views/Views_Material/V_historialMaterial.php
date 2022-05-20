@@ -29,8 +29,7 @@ if(!isset($_SESSION['rol'])){
    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
      <div class="container">
       <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="fa fa-bars"></span> Menu
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu
      </button>
      <div class="collapse navbar-collapse" id="ftco-nav">
        <ul class="navbar-nav m-auto">
@@ -44,25 +43,25 @@ if(!isset($_SESSION['rol'])){
     </div>
   </div>
 </nav>
-<!-- END nav -->
+<!------------------------------------------------------------------------- END nav ---------------------------------------------------------->
 <div style="text-align:center"; class="container"><br><br><br><br><br>
-    <div>
-        <p style="font-size: 200%";>Historial de Material</p>
-    </div>
-
-    <br><br><br>
-    <div>
-      <a href="../Views_Material/V_historialMaterial_entrada.php" class="btn btn-primary" role="button">Entradas</a>
-      <a href="../Views_Material/V_historialMaterial_salida.php" class="btn btn-secondary" role="button">Salidas</a>
-    </div>
+  <div>
+    <p style="font-size: 200%";>Historial de Material</p>
+  </div>
+  <br><br><br>
+  <div>
+    <a href="../Views_Material/V_historialMaterial_entrada.php" class="btn btn-primary" role="button">Entradas</a>
+    <a href="../Views_Material/V_historialMaterial_salida.php" class="btn btn-secondary" role="button">Salidas</a>
+  </div>
 </div>
 <br><br><br>
 </html>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/add.js"></script>
-</body>
+
 </html>
 

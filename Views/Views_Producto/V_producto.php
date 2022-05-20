@@ -9,6 +9,7 @@ if(!isset($_SESSION['rol'])){
   <html lang="en">
   <head>
   	<title>Producto</title>
+    <link rel="shortcut icon" href="../../images/logoPV.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -39,7 +40,7 @@ if(!isset($_SESSION['rol'])){
     </div>
   </div>
 </nav>
-<!-- END nav -->
+<!-------------------------------------------------------------------- END nav ------------------------------------------------------------------->
 <div class="container"><br><br><br><br>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -86,9 +87,6 @@ if(!isset($_SESSION['rol'])){
 </tbody>
 </table>
 </div>
-<br><br><br>
-<div class="container">
-</div> 
 </html>
 
 <script src="js/jquery.min.js"></script>

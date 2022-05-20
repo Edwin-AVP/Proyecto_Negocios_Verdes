@@ -13,11 +13,11 @@
     if(isset($_SESSION['rol'])){
         switch($_SESSION['rol']){
             case 1:
-                header('location: Views_usuario/V_usuario.php');
+                header('location: Views_Usuario/V_usuario.php');
             break;
 
             case 2:
-           // header('location: Views_Usuario/V.Usuario.php');
+            header('location: Views_Orden/V_orden.php');
             break;
 
             default:
@@ -41,12 +41,12 @@
             switch($rol){
                 case 1:
                   echo '<script language="javascript">alert("Nombre de usuario o contraseña incorrecto");</script>';
-                    header('location: Views_usuario/V_usuario.php');
+                    header('location: Views_Usuario/V_usuario.php');
                     
                 break;
 
                 case 2:
-                header('location: Views_usuario/V_usuario.php');
+                header('location: Views_Usuario/V_usuario.php');
                 break;
 
                 default:

@@ -3,57 +3,52 @@ session_start();
 
 if(!isset($_SESSION['rol'])){ 
   header('location: ../login.php');
-}else{
-  if($_SESSION['rol'] != 1){ 
-      header('location: ../login.php');
-  }
 }
 
 ?>
 <!doctype html>
-<html lang="en">
+  <html lang="en">
   <head>
   	<title>Material</title>
     <link rel="shortcut icon" href="../../images/logo PV.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	  <link rel="stylesheet" href="../../css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style-button.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
-	          <li class="nav-item"><a href="../views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
-	        	<li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
-	        	<li class="nav-item active"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
-	          <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
-            <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    <div class="container"><br><br><br><br>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-        </form><br>
-<a href="../Views_material/V_agregarMaterial.php" class="btn btn-success float-right" role="button">Agregar Material</a>
-<a href="../Views_material/V_historialMaterial.php" class="btn btn-success float-right" role="button">Historial</a>
- <br><br><br>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+     <div class="container">
+      <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+       <ul class="navbar-nav m-auto">
+        <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
+        <li class="nav-item"><a href="../views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
+        <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
+        <li class="nav-item active"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
+        <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
+        <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!----------------------------------------------------------------------- END nav ----------------------------------------->
+<div class="container"><br><br><br><br>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+  </form><br>
+  <a href="../Views_Material/V_agregarMaterial.php" class="btn btn-success float-right" role="button">Agregar Material</a>
+  <a href="../Views_Material/V_historialMaterial.php" class="btn btn-success float-right" role="button">Historial</a>
+  <br><br><br>
   <table class="table ">
     <thead class="thead-light">
       <tr>
@@ -64,7 +59,6 @@ if(!isset($_SESSION['rol'])){
         <th>Valor por Unidad</th>
         <th>Tipo</th>
         <th></th>
-
       </tr>
     </thead>
     <tbody>
@@ -75,10 +69,11 @@ if(!isset($_SESSION['rol'])){
         <td>Kg</td>
         <td>1000</td>
         <td>Materia Prima</td>
-        <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
-        <button class="btn btn-danger">Eliminar</button></td>
+        <td><a href="../Views_Material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
       <tr>
         <td>MT010</td>
@@ -88,9 +83,10 @@ if(!isset($_SESSION['rol'])){
         <td>1000</td>
         <td>Materia Prima</td>
         <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
-        <button class="btn btn-danger">Eliminar</button></td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
       <tr>
         <td>MT010</td>
@@ -100,9 +96,10 @@ if(!isset($_SESSION['rol'])){
         <td>1000</td>
         <td>Insumo</td>
         <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
-        <button class="btn btn-danger">Eliminar</button></td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -119,25 +116,25 @@ if(!isset($_SESSION['rol'])){
         </button>
       </div>
       <div class="modal-body">
-<div class="container">
-<form class="needs-validation" novalidate action="../Views_Material/V_material.php">
-    <div  class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Cantidad de material</label>
-        <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Cantidad de material"  required>
-        <div class="valid-feedback">Bien!</div>
-      </div>
-    </div>
-      <div  class="form-row C-centro">
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Valor del Material</label>
-        <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Valor del Material"  required>
-        <div class="valid-feedback">Bien!</div>
-      </div>
-    </div>
-    <bt><button class="btn btn-primary" type="submit">Guardar</button></bt>
-    </form>
-</div>
+        <div class="container">
+          <form class="needs-validation" novalidate action="../Views_Material/V_material.php">
+            <div  class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Cantidad de material</label>
+                <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Cantidad de material"  required>
+                <div class="valid-feedback">Bien!</div>
+              </div>
+            </div>
+            <div  class="form-row C-centro">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Valor del Material</label>
+                <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Valor del Material"  required>
+                <div class="valid-feedback">Bien!</div>
+              </div>
+            </div>
+            <bt><button class="btn btn-primary" type="submit">Guardar</button></bt>
+          </form>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -158,44 +155,44 @@ if(!isset($_SESSION['rol'])){
       </div>
       <div class="modal-body">
         <div class="container">
-<form class="needs-validation" novalidate action="../Views_Material/V_material.php">
-    <div  class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Cantidad de material</label>
-        <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Cantidad de material"  required>
-        <div class="valid-feedback">Bien!</div>
-      </div></div>
-      <div  class="form-row C-centro">
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Motivo de salida</label>
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">Error en producción</option>
-          <option class="form-control" value="2">Por descomposición</option>
-          <option class="form-control" value="3">Otros</option>
-        </select>
-        <div class="invalid-feedback">Seleccione una unidad</div>
-      </div>
-    </div>
+          <form class="needs-validation" novalidate action="../Views_Material/V_material.php">
+            <div  class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Cantidad de material</label>
+                <input type="number" class="form-control" value="" id="validationCustom01" placeholder="Cantidad de material"  required>
+                <div class="valid-feedback">Bien!</div>
+              </div></div>
+              <div  class="form-row C-centro">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom03">Motivo de salida</label>
+                  <select class="form-control" required aria-label="select example">
+                    <option class="form-control" value="1">Error en producción</option>
+                    <option class="form-control" value="2">Por descomposición</option>
+                    <option class="form-control" value="3">Otros</option>
+                  </select>
+                  <div class="invalid-feedback">Seleccione una unidad</div>
+                </div>
+              </div>
 
-    <bt><button class="btn btn-primary" type="submit">Guardar</button></bt>
-    </form>
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <bt><button class="btn btn-primary" type="submit">Guardar</button></bt>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
+  // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+      var forms = document.getElementsByClassName('needs-validation');
+     // Bucle sobre ellas y evitar la presentación
+     var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
@@ -204,17 +201,16 @@ if(!isset($_SESSION['rol'])){
         form.classList.add('was-validated');
       }, false);
     });
-  }, false);
-})();
+   }, false);
+  })();
 </script>
 </html>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-
-	</body>
+</body>
 </html>
 

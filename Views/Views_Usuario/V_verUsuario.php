@@ -14,6 +14,7 @@ if(!isset($_SESSION['rol'])){
   <html lang="en">
   <head>
   	<title>Ver_Usuario</title>
+    <link rel="shortcut icon" href="../../images/logoPV.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -45,7 +46,7 @@ if(!isset($_SESSION['rol'])){
     </div>
   </div>
 </nav>
-<!-- END nav -->
+<!------------------------------------------------------------------------------- END nav ----------------------------------------------------------------------->
 <div class="container"><br><br><br><br><br><br><br>
   <a href="../Views_Usuario/V_usuario.php" class="btn btn-success float-right" role="button">Atras</a>
   
@@ -57,7 +58,6 @@ if(!isset($_SESSION['rol'])){
         <th>Nombre</th>
         <th>Usuario</th>
         <th>Contraseña</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -71,24 +71,15 @@ if(!isset($_SESSION['rol'])){
           <td><?php echo $mostrar['nombre'] ?></td>
           <td><?php echo $mostrar['username'] ?></td>
           <td><?php echo $mostrar['password'] ?></td>
-
-        <td>
-
-          </td>
         </tr>
         <?php 
       } 
       ?>
     </tbody>
   </table>
-
-
-
 </div>
-<br><br><br>
-<div class="container">
-</div> 
 </html>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>

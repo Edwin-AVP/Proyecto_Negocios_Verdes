@@ -9,6 +9,7 @@
     <html lang="en"></html>
     <head>
     	<title>Nuevo_Producto</title>
+      <link rel="shortcut icon" href="../../images/logoPV.png">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -28,10 +29,9 @@
      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
        <div class="container">
         <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="fa fa-bars"></span> Menu
-       </button>
-       <div class="collapse navbar-collapse" id="ftco-nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
          <ul class="navbar-nav m-auto">
           <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
           <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
@@ -43,7 +43,7 @@
       </div>
     </div>
   </nav>
-  <!-- END nav -->
+  <!------------------------------------------------------------------------- END nav ------------------------------------------------------------------>
   <div class="container"><br><br><br><br><br>
 
     <form class="needs-validation" novalidate action="../Views_Producto/V_producto.php">
@@ -52,93 +52,88 @@
       <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="validationCustom01">Código Producto</label>
-          <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
-          <div class="valid-feedback">
-            Bien!
-          </div>
+          <input type="text" class="form-control" id="validationCustom01" placeholder="Código Producto"  required>
+          <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Código Producto</div>
         </div>
         <div class="col-md-4 mb-3">
          <label for="validationCustom01">Nombre</label>
-         <input type="text" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
-         <div class="valid-feedback">
-          Bien!
-        </div>
-      </div>
-      <div class="col-md-1 mb-3"></div>
+         <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre"  required>
+         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Nombre</div>
+       </div>
+       <div class="col-md-1 mb-3"></div>
+       <div class="col-md-4 mb-3">
+         <label for="validationCustom01">Nota</label>
+         <label>Recuerde que debe ingresar los materiales necesarios para la creación de un solo ítem.</label>
+       </div> 
+
+     </div>
+     <hr>                   
+     <div class="form-row"> <!--------------------------------------- div de Productos -------------------------------------------------->
       <div class="col-md-4 mb-3">
-       <label for="validationCustom01">Nota</label>
-       <label>Recuerde que debe ingresar los materiales necesarios para la creación de un solo ítem.</label>
-     </div> 
+        <label for="validationCustom03">Material</label><!-- Seleccionar producto -->
+        <select class="form-control" required aria-label="select example">
+          <option class="form-control" value="">Seleccione Material</option>
+          <option class="form-control" value="1">Material 1</option>
+          <option class="form-control" value="2">Material 2</option>
+          <option class="form-control" value="3">Material 3</option>
+        </select>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Material</div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom03">Cantidad</label>
+        <input type="number" class="form-control"  placeholder="Cantidad" required >
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom03">Unidad</label>
+        <input type="text" value="" class="form-control" placeholder="Unidad" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+      </div>
+    </div> 
 
-   </div>
-   <hr>                   <!-- Separador -->
-   <div class="form-row"> <!-- div de Productos -->
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom03">Material</label><!-- Seleccionar producto -->
-      <select class="form-control" required aria-label="select example">
-        <option class="form-control" value="">Material</option>
-        <option class="form-control" value="1">Material 1</option>
-        <option class="form-control" value="2">Material 2</option>
-        <option class="form-control" value="3">Material 3</option>
-      </select>
-      <div class="invalid-feedback">Seleccione un Material</div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom03">Cantidad</label>
-      <input type="number" class="form-control"  placeholder="Cantidad" required >
-      <div class="invalid-feedback">Digite una cantidad</div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom03">Unidad</label><!-- Seleccionar producto -->
-      <input type="text" value="" class="form-control" placeholder="Unidad" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-    </div>
-  </div> 
-  
 
-  <script>    $(document).ready(function() {
-    $("#add_pro").click(function(){
-      var contador = $("input[type='text']").length;
-      $(this).before('<div required><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="material'+ contador +'" name="Material[]"><option  value="">Material</option><option  value="1">Material 1</option><option  value="2">Material 2</option><option  value="3">Material 3</option></select><div class="invalid-feedback">Seleccione un Material</div></div><div class="col-md-3 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="invalid-feedback">Seleccione un Material</div><div class="col-md-3 mb-3"><input type="text" value="" class="form-control" placeholder="Unidad" id="unidad'+ contador +'" aria-label="Disabled input example" required  readonly></div><button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div><div class="invalid-feedback">Seleccione una unidad</div>');
+    <script>    $(document).ready(function() {
+      $("#add_pro").click(function(){
+        var contador = $("input[type='text']").length;
+        $(this).before('<div required><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="material'+ contador +'" name="Material[]"><option  value="">Material</option><option  value="1">Material 1</option><option  value="2">Material 2</option><option  value="3">Material 3</option></select><div class="invalid-feedback">Seleccione un Material</div></div><div class="col-md-3 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="invalid-feedback">Seleccione un Material</div><div class="col-md-3 mb-3"><input type="text" value="" class="form-control" placeholder="Unidad" id="unidad'+ contador +'" aria-label="Disabled input example" required  readonly></div><button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div><div class="invalid-feedback">Seleccione una unidad</div>');
 
-    });
+      });
 
-    $(document).on('click', '.btn-danger', function(){
-      $(this).parent().remove();
-    });
-  });	</script> 
+      $(document).on('click', '.btn-danger', function(){
+        $(this).parent().remove();
+      });
+    });	</script> 
 
-</form>
-<button class="btn btn-success" type="button" id="add_pro">+</button>
-<script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  </form>
+  <button class="btn btn-success" type="button" id="add_pro">+</button>
+  <script>
+  // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
   (function() {
     'use strict';
     window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
       var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
+     // Bucle sobre ellas y evitar la presentación
+     var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+   }, false);
   })();
 </script>
-</div>
-<br><br><br>
-<div class="container">
 </div> 
 </html>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/add.js"></script>
+
 </body>
 </html>
 

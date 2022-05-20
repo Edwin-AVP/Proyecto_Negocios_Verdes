@@ -29,8 +29,7 @@ if(!isset($_SESSION['rol'])){
    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
      <div class="container">
       <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="fa fa-bars"></span> Menu
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu
      </button>
      <div class="collapse navbar-collapse" id="ftco-nav">
        <ul class="navbar-nav m-auto">
@@ -44,28 +43,22 @@ if(!isset($_SESSION['rol'])){
     </div>
   </div>
 </nav>
-<!-- END nav -->
+<!---------------------------------------------------------------------------------------- END nav ------------------------------------------------------------->
 <div class="container"><br><br><br><br><br>
 
   <form class="needs-validation" novalidate action="../Views_Material/V_material.php">
-    <bt><button class="btn btn-success float-right" type="submit">Editar Material</button></bt>
-    <br><br><br>
+    <bt><button class="btn btn-success float-right" type="submit">Editar Material</button></bt><br><br><br>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Código</label>
         <input type="text" class="form-control" value="MT020" id="validationCustom01" placeholder="Código"  required>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <div class="valid-feedback">Bien!</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Nombre Material</label>
         <input type="text" class="form-control" value="D" id="validationCustom01" placeholder="Nombre Material"  required>
-        <div class="valid-feedback">
-        Bien!</div>
-
+        <div class="valid-feedback">Bien!</div>
       </div>
-
     </div>
     <div class="form-row">
       <div class="col-md-3 mb-3">
@@ -80,9 +73,7 @@ if(!isset($_SESSION['rol'])){
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Valor por Unidad</label>
         <input type="number" class="form-control" value="200" placeholder="Valor por unidad" id="validationCustom01"  required>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <div class="valid-feedback">Bien!</div>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Tipo</label><!-- Seleccionar Cliente -->
@@ -96,14 +87,14 @@ if(!isset($_SESSION['rol'])){
   </form>
 
   <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
+  // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+      var forms = document.getElementsByClassName('needs-validation');
+     // Bucle sobre ellas y evitar la presentación
+     var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
@@ -112,19 +103,18 @@ if(!isset($_SESSION['rol'])){
         form.classList.add('was-validated');
       }, false);
     });
-  }, false);
-})();
+   }, false);
+  })();
 </script>
-</div>
-<br><br><br>
-<div class="container">
 </div> 
 </html>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/add.js"></script>
+
 </body>
 </html>
 
