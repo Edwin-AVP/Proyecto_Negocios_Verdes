@@ -63,7 +63,7 @@ if(!isset($_SESSION['rol'])){
     <tbody>
       <?php 
 
-      require_once "../../Controller/Controller_Usuario/C_usuarios.php";
+      require_once "../../Controller/Controller_Usuario/C_verUsuario.php";
       while($mostrar=mysqli_fetch_array($result)){
         ?>
         <tr>
