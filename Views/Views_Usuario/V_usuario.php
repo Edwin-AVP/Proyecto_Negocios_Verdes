@@ -72,7 +72,7 @@ if(!isset($_SESSION['rol'])){
         <td><?php echo $mostrar['nombre'] ?></td>
         <td><?php echo $mostrar['username'] ?></td>
         <td>
-         <a href="../Views_Usuario/V_verUsuario.php" class="btn btn-info" role="button">Ver</a>
+         <a <?php echo "href='../Views_Usuario/V_verUsuario.php?id=".$mostrar['ID_USUARIO']."'" ?>class="btn btn-info" role="button">Ver</a>
          <a href="../Views_Usuario/V_editarUsuario.php" class="btn btn-success" role="button">Editar</a>
          <button class="btn btn-danger">Inhabilitar</button>
         </td>
