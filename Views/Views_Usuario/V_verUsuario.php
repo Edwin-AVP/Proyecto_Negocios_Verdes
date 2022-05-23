@@ -29,13 +29,13 @@ if(!isset($_SESSION['rol'])){
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-     <div class="container">
+  <div class="container">
       <a class="navbar-brand" href="V_usuario.php">Negocios <span>Verdes</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="fa fa-bars"></span> Menu
-     </button>
-     <div class="collapse navbar-collapse" id="ftco-nav">
-       <ul class="navbar-nav m-auto">
+      <span class="fa fa-bars"></span> Menu
+      </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
         <li class="nav-item active"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
         <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
         <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
@@ -64,7 +64,7 @@ if(!isset($_SESSION['rol'])){
       <?php 
 
       require_once "../../Controller/Controller_Usuario/C_verUsuario.php";
-      while($mostrar=mysqli_fetch_array($result)){
+     $mostrar=mysqli_fetch_array($result)
         ?>
         <tr>
           <td><?php echo $mostrar['cedula'] ?></td>
@@ -72,9 +72,7 @@ if(!isset($_SESSION['rol'])){
           <td><?php echo $mostrar['username'] ?></td>
           <td><?php echo $mostrar['password'] ?></td>
         </tr>
-        <?php 
-      } 
-      ?>
+ 
     </tbody>
   </table>
 </div>

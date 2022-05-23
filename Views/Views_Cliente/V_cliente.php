@@ -58,39 +58,25 @@ if(!isset($_SESSION['rol'])){
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John jose bartolomedo</td>
-          <td>9001856721</td>
-          <td> NIT</td>
-          <td>7584269</td>
-          <td>
-            <a href="../Views_Cliente/V_verCliente.php" class="btn btn-info" role="button">Ver</a>
-            <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
-            <button class="btn btn-danger">Inhabilitar</button>
-          </td>
-        </tr>
-        <tr>
-          <td>John jose bartolomedo</td>
-          <td>9001856721</td>
-          <td>NIT</td>
-          <td>7584269</td>
-          <td>
-            <a href="../Views_Cliente/V_verCliente.php" class="btn btn-info" role="button">Ver</a>
-            <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
-            <button class="btn btn-danger">Inhabilitar</button>
-          </td>
-        </tr>
-        <tr>
-          <td>John jose bartolomedo</td>
-          <td>9001856721</td>
-          <td>NIT</td>
-          <td>7584269</td>
-          <td>
-            <a href="../Views_Cliente/V_verCliente.php" class="btn btn-info" role="button">Ver</a>
-            <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
-            <button class="btn btn-danger">Inhabilitar</button>
-          </td>
-        </tr>
+      <?php 
+
+require_once "../../Controller/Controller_Cliente/C_cliente.php";
+while($mostrar=mysqli_fetch_array($result)){
+ ?>
+  <tr>
+    <td><?php echo $mostrar['nombreCliente'] ?></td>
+    <td><?php echo $mostrar['identificacionCliente'] ?></td>
+    <td><?php echo $mostrar['tipoIdentificacion'] ?></td>
+    <td><?php echo $mostrar['telefono'] ?></td>
+    <td>
+     <a <?php echo "href='../Views_Cliente/V_verCliente.php?id=".$mostrar['ID_CLIENTE']."'" ?>class="btn btn-info" role="button">Ver</a>
+     <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
+     <button class="btn btn-danger">Inhabilitar</button>
+    </td>
+  </tr>
+  <?php 
+}
+  ?>
       </tbody>
     </table>
   </div>

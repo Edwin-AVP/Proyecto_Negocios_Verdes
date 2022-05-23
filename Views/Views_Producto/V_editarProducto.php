@@ -50,12 +50,12 @@
       <bt><button class="btn btn-success float-right" type="submit">Editar Producto</button></bt>
       <br><br><br>
       <div class="form-row">
-        <div class="col-md-3 mb-3">
+        <div class="col-md-2 mb-3">
           <label for="validationCustom01">Código Producto</label>
           <input type="text" value="PR020" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Escriba el codigo de producto</div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
          <label for="validationCustom01">Nombre</label>
          <input type="text" value="Shampoo Limón 250ml" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
          <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Escriba el nombre</div>

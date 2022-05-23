@@ -53,12 +53,33 @@ if(!isset($_SESSION['rol'])){
       <tr>
         <th>No°</th>
         <th>Nombre Cliente</th>
-        <th>Estado</th>
+        <th>Fecha</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+    <?php 
+require_once "../../Controller/Controller_Orden/C_orden.php";
+while($mostrar=mysqli_fetch_array($result)){
+    ?>
+
+  <tr>
+    <td><?php echo $mostrar['numeroOrden'] ?></td>
+    <td><?php echo $mostrar['nombreCliente'] ?></td>
+    <td><?php echo $mostrar['fecha'] ?></td>
+
+    <td>
+        <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
+        <a <?php echo "href='../Views_Orden/V_verOrden.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-info" role="button">Ver</a>
+        <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
+        <a href="#" class="btn btn-danger" role="button">Cancelar</a>
+    </td>
+  </tr>
+  <?php 
+}
+  ?>
+      
+      <!--<tr>
         <td>TP025</td>
         <td>John jose bartolomedo</td>
         <td>listo</td>
@@ -91,7 +112,7 @@ if(!isset($_SESSION['rol'])){
           <a href="#" class="btn btn-danger" role="button">Cancelar</a>
         </td>
       </tr>
-    </tbody>
+    </tbody>-->
   </table>
 </div>
 <br><br><br>

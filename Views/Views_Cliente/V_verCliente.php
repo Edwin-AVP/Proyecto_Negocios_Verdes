@@ -51,31 +51,23 @@ if(!isset($_SESSION['rol'])){
           <th>Tipo</th>
           <th>Teléfono</th>
           <th>Dirección</th>
+          <th>Correo</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John jose bartolomedo</td>
-          <td>9001856721</td>
-          <td> NIT</td>
-          <td>7584269</td>
-          <td>Calle 34 # 4-70</td>
+      <?php 
 
-        </tr>
-        <tr>
-          <td>John jose bartolomedo</td>
-          <td>9001856721</td>
-          <td>NIT</td>
-          <td>7584269</td>
-          <td>Calle 34 # 4-70</td>
-        </tr>
-        <tr>
-          <td>John jose bartolomedo</td>
-          <td>9001856721</td>
-          <td>NIT</td>
-          <td>7584269</td>
-          <td>Calle 34 # 4-70</td>
-        </tr>
+require_once "../../Controller/Controller_Cliente/C_verCliente.php";
+$mostrar=mysqli_fetch_array($result)
+  ?>
+  <tr>
+    <td><?php echo $mostrar['nombreCliente'] ?></td>
+    <td><?php echo $mostrar['IdentificacionCliente'] ?></td>
+    <td><?php echo $mostrar['tipoIdentificacion'] ?></td>
+    <td><?php echo $mostrar['telefono'] ?></td>
+    <td><?php echo $mostrar['direccion'] ?></td>
+    <td><?php echo $mostrar['correo'] ?></td>
+  </tr>
       </tbody>
     </table>
   </div>

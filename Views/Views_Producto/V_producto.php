@@ -53,37 +53,31 @@ if(!isset($_SESSION['rol'])){
       <tr>
         <th>Código</th>
         <th>Nombre</th>
+        <th>Valor Unidad</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>PR020</td>
-        <td>Shampoo Limón 250ml</td>
-        <td>
-         <a href="../Views_Producto/V_verProducto.php" class="btn btn-info" role="button">Ver</a>
+
+<?php 
+require_once "../../Controller/Controller_Producto/C_producto.php";
+while($mostrar=mysqli_fetch_array($result)){
+ ?>
+
+  <tr>
+    <td><?php echo $mostrar['codigoProducto'] ?></td>
+    <td><?php echo $mostrar['nombreProducto'] ?></td>
+    <td><?php echo $mostrar['valorUnidad'] ?></td>
+
+    <td>
+    <a <?php echo "href='../Views_Producto/V_verProducto.php?id=".$mostrar['ID_PRODUCTO']."'" ?>class="btn btn-info" role="button">Ver</a>
          <a href="../Views_Producto/V_editarProducto.php" class="btn btn-success" role="button">Editar</a>
          <button class="btn btn-danger">Eliminar</button>
-       </td>
-     </tr>
-     <tr>
-      <td>PR020</td>
-      <td>Shampoo Limón 250ml</td>
-      <td>
-       <a href="../Views_Producto/V_verProducto.php" class="btn btn-info" role="button">Ver</a>
-       <a href="../Views_Producto/V_editarProducto.php" class="btn btn-success" role="button">Editar</a>
-       <button class="btn btn-danger">Eliminar</button>
-     </td>
-   </tr>
-   <tr>
-    <td>PR020</td>
-    <td>Shampoo Limón 250ml</td>
-    <td>
-     <a href="../Views_Producto/V_verProducto.php" class="btn btn-info" role="button">Ver</a>
-     <a href="../Views_Producto/V_editarProducto.php" class="btn btn-success" role="button">Editar</a>
-     <button class="btn btn-danger">Eliminar</button>
-   </td>
- </tr>
+    </td>
+  </tr>
+  <?php 
+}
+  ?>
 </tbody>
 </table>
 </div>

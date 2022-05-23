@@ -45,58 +45,60 @@ if(!isset($_SESSION['rol'])){
   </div>
 </nav>
 <!-------------------------------------------------------------------------------- END nav ----------------------------------------------------->
+<?php 
+require_once "../../Controller/Controller_Producto/C_verProducto.php";
+$produc=mysqli_fetch_array($result1)
+  ?>
 <div class="container"><br><br><br><br><br>
-  <form class="needs-validation" novalidate action="../Views_Producto/V_producto.php">
-    <bt><button class="btn btn-success float-right" type="submit">Atras</button></bt>
+
+    <a href="../Views_Producto/V_producto.php" class="btn btn-success float-right" role="button">Atras</a>
     <br><br><br>
     <div class="form-row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-2 mb-3">
         <label for="validationCustom01">Código Producto</label>
-        <input type="text" value="PR020" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+        <input type="text" value="<?php echo $produc['codigoProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-3 mb-3">
        <label for="validationCustom01">Nombre</label>
-       <input type="text" value="shampoo Limon 500ml" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+       <input type="text" value="<?php echo $produc['nombreProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+     </div> 
+     <div class="col-md-2 mb-3">
+       <label for="validationCustom01">Valor Unidad</label>
+       <input type="text" value="<?php echo $produc['valorUnidad'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
      </div> 
    </div><!----------------------------------------------------------------------------------------------------------------------->
-   <hr>                 
+   <hr>  
    <div class="form-row">
-    <div class="col-md-4 mb-3">
+  <div class="col-md-4 mb-3">
       <label for="validationCustom03">Material</label>
-      <input type="text" value="D" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom03">Cantidad</label>
-      <input type="text" value="2" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom03">Unidad</label>
-      <input type="text" value="Kg" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
-  </div> <!----------------------------------------------------------------------------------------------------------------------->
-  <div class="form-row"> 
-   <div class="col-md-4 mb-3">
-     <input type="text" value="E" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-   </div>
-   <div class="col-md-3 mb-3">
-     <input type="text" value="8" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-   </div>
-   <div class="col-md-3 mb-3">
-     <input type="text" value="Kg" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-   </div>
- </div> <!----------------------------------------------------------------------------------------------------------------------->
- <div class="form-row">
+  </div>
+     <?php 
+   while($mostrar=mysqli_fetch_array($result4)){
+		 ?>
+        <div class="form-row">
   <div class="col-md-4 mb-3">
-   <input type="text" value="F" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
- </div>
- <div class="col-md-3 mb-3">
-   <input type="text" value="6" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
- </div>
- <div class="col-md-3 mb-3">
-   <input type="text" value="Kg" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
- </div>
-</div> 
-</form>
+     
+      <input type="text" value="<?php echo $mostrar['nombreMaterial'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+    </div>
+    <div class="col-md-3 mb-3">
+     
+      <input type="text" value="<?php echo $mostrar['cantidadMaterialProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+    </div>
+    <div class="col-md-3 mb-3">
+     
+      <input type="text" value="<?php echo $mostrar['unidadMedidaMaterial'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+    </div>
+  </div>
+      <?php 
+	  }
+	    ?>
 
 </div>
 </html>

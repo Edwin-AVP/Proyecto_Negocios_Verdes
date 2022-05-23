@@ -1,5 +1,5 @@
 <?php 
 require_once "../../Model/database.php";
-		$sql="SELECT username, password, nombre, cedula, ID_USUARIO from usuario";
+		$sql="SELECT * from material";
 		$result=mysqli_query($conection,$sql);
 ?>

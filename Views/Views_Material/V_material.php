@@ -62,45 +62,29 @@ if(!isset($_SESSION['rol'])){
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>MT010</td>
-        <td>D</td>
-        <td>1500</td>
-        <td>Kg</td>
-        <td>1000</td>
-        <td>Materia Prima</td>
-        <td><a href="../Views_Material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
+    <?php 
+
+require_once "../../Controller/Controller_Material/C_material.php";
+while($mostrar=mysqli_fetch_array($result)){
+ ?>
+  <tr>
+  <td><?php echo $mostrar['codigoMaterial'] ?></td>
+    <td><?php echo $mostrar['nombreMaterial'] ?></td>
+    <td><?php echo $mostrar['cantidadMaterialInventario'] ?></td>
+    <td><?php echo $mostrar['unidadMedidaMaterial'] ?></td>
+    <td><?php echo $mostrar['valorMaterial'] ?></td>
+    <td><?php echo $mostrar['tipoMaterial'] ?></td>
+
+    <td>
+          <a href="../Views_Material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
           <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
           <button class="btn btn-danger">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>MT010</td>
-        <td>D</td>
-        <td>1500</td>
-        <td>Kg</td>
-        <td>1000</td>
-        <td>Materia Prima</td>
-        <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
-          <button class="btn btn-danger">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>MT010</td>
-        <td>D</td>
-        <td>1500</td>
-        <td>Kg</td>
-        <td>1000</td>
-        <td>Insumo</td>
-        <td><a href="../Views_material/V_editarMaterial.php" class="btn btn-success" role="button">Editar</a>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalentrada">Entrada</button>
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalsalida">Salida</button>
-          <button class="btn btn-danger">Eliminar</button>
-        </td>
-      </tr>
+    </td>
+  </tr>
+  <?php 
+}
+  ?>
     </tbody>
   </table>
 </div>
