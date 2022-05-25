@@ -41,12 +41,12 @@
             switch($rol){
                 case 1:
                   echo '<script language="javascript">alert("Nombre de usuario o contraseña incorrecto");</script>';
-                    header('location: Views_Usuario/V_usuario.php');
+                    header('location: ../Views/Views_Usuario/V_usuario.php');
                     
                 break;
 
                 case 2:
-                header('location: Views_Usuario/V_usuario.php');
+                header('location: ../Views/Views_Usuario/V_usuario.php');
                 break;
 
                 default:
