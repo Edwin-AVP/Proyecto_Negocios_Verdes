@@ -6,7 +6,7 @@ if(!isset($_SESSION['rol'])){
 }
 ?>
 <!doctype html>
-  <html lang="en"></html>
+  <html lang="en">
   <head>
   	<title>V_historialMaterial_entrada</title>
     <link rel="shortcut icon" href="../../images/logo PV.png">

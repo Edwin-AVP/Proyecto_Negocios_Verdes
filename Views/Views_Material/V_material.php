@@ -10,7 +10,7 @@ if(!isset($_SESSION['rol'])){
   <html lang="en">
   <head>
   	<title>Material</title>
-    <link rel="shortcut icon" href="../../images/logo PV.png">
+    <link rel="shortcut icon" href="../../images/logoPV.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>

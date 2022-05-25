@@ -6,7 +6,7 @@
   }
   ?>
   <!doctype html>
-    <html lang="en"></html>
+    <html lang="en">
     <head>
     	<title>Editar_Producto</title>
       <link rel="shortcut icon" href="../../images/logoPV.png">
