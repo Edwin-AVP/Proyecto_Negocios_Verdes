@@ -1,5 +1,24 @@
 <?php 
-require_once "../../Model/database.php";
-		$sql="SELECT username, password, nombre, cedula, ID_USUARIO from usuario";
-		$result=mysqli_query($conection,$sql);
+
+if(isset($_POST['search']))
+{
+	$valueToSearh = $_POST['valueToSearh']; 
+	$query = "SELECT * FROM usuario WHERE nombre LIKE '%".$valueToSearh."%' OR cedula LIKE '%".$valueToSearh."%'";
+	$result = filterRecord($query);
+} 
+else
+{
+	
+		$query = "SELECT *FROM usuario";
+		$result = filterRecord($query);
+}
+function filterRecord($query)
+{
+	
+
+	include("../../Model/database.php");
+	$filter_result = mysqli_query($conection, $query);
+	return $filter_result;
+}
+
 ?>

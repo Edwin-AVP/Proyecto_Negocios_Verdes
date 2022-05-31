@@ -56,8 +56,11 @@ if(!isset($_SESSION['rol'])){
       <tr>
         <th>C.C.</th>
         <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Rol</th>
         <th>Usuario</th>
         <th>Contraseña</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -69,8 +72,19 @@ if(!isset($_SESSION['rol'])){
         <tr>
           <td><?php echo $mostrar['cedula'] ?></td>
           <td><?php echo $mostrar['nombre'] ?></td>
+          <td><?php echo $mostrar['telefono'] ?></td>
+          <td><?php if($mostrar['FK_ID_ROL'] == 2 ){
+          echo "Empleado" ;
+          }else{if($mostrar['FK_ID_ROL'] == 1 ){
+            echo "Administrador" ;
+          }else{
+            echo "Inhabilitado" ;
+          }
+          }
+          ?></td>
           <td><?php echo $mostrar['username'] ?></td>
           <td><?php echo $mostrar['password'] ?></td>
+          
         </tr>
  
     </tbody>

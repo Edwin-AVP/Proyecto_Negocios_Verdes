@@ -28,7 +28,11 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu</button>
       <div class="collapse navbar-collapse" id="ftco-nav">
          <ul class="navbar-nav m-auto">
-          <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
+           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+           <?php if($_SESSION['rol'] == 1 ){?>
+      <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
+            }else{if($_SESSION['rol'] != 1 ){}}
+          ?>
           <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
           <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
           <li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>

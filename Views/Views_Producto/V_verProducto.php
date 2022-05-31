@@ -34,7 +34,11 @@ if(!isset($_SESSION['rol'])){
      </button>
      <div class="collapse navbar-collapse" id="ftco-nav">
        <ul class="navbar-nav m-auto">
-        <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li>
+           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+           <?php if($_SESSION['rol'] == 1 ){?>
+        <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
+            }else{if($_SESSION['rol'] != 1 ){}}
+          ?>
         <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
         <li class="nav-item active"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
         <li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
@@ -84,15 +88,12 @@ $produc=mysqli_fetch_array($result1)
 		 ?>
         <div class="form-row">
   <div class="col-md-4 mb-3">
-     
       <input type="text" value="<?php echo $mostrar['nombreMaterial'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
     <div class="col-md-3 mb-3">
-     
       <input type="text" value="<?php echo $mostrar['cantidadMaterialProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
     <div class="col-md-3 mb-3">
-     
       <input type="text" value="<?php echo $mostrar['unidadMedidaMaterial'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
   </div>
