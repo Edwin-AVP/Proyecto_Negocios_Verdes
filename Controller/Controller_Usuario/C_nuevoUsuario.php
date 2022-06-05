@@ -7,9 +7,10 @@
     $documento = $_POST['documento'];
     $telefono = $_POST['telefono'];
 
-    $sql="SELECT cedula FROM usuario WHERE cedula = '$documento' or password = '$contraseña'";
+    $sql="SELECT cedula FROM usuario WHERE EXISTS(SELECT cedula FROM usuario WHERE cedula = '$documento' or password = '$contraseña')";
     $result=mysqli_query($conection,$sql);
-    if($mostrar=mysqli_fetch_array($result)){
+    $arr=mysqli_fetch_array($result);
+    if($arr == true){
         echo '<script language="javascript">';
         echo 'alert("Documento o Contraseña duplicada!");';
         echo 'window.location="../../Views/Views_Usuario/V_nuevoUsuario.php";';
@@ -19,6 +20,4 @@
 		$resul=mysqli_query($conection,$sql);
         header('location: ../../Views/Views_Usuario/V_usuario.php');
     }
-
-
 ?>

@@ -11,7 +11,6 @@
     $sql="SELECT codigoMaterial FROM material WHERE codigoMaterial = '$codigo'  AND ID_MATERIAL != '$id'";
     $result=mysqli_query($conection,$sql);
     $arr = mysqli_fetch_array($result);
- 
 
     if(!$arr[0] == $codigo){
         $sql="UPDATE material SET nombreMaterial = '$nombre', codigoMaterial = '$codigo', unidadMedidaMaterial = '$unidad', valorMaterial = '$valor',

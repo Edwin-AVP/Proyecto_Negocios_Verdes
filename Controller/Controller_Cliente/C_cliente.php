@@ -14,7 +14,6 @@ else
 function filterRecord($query)
 {
 	
-
 	include("../../Model/database.php");
 	$filter_result = mysqli_query($conection, $query);
 	return $filter_result;

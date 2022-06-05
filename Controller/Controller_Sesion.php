@@ -8,16 +8,17 @@
 
         // destroy the session 
         session_destroy(); 
+        header('location: ../Views/login.php');
     }
     
     if(isset($_SESSION['rol'])){
         switch($_SESSION['rol']){
             case 1:
-            header('location: Views_Usuario/V_usuario.php');
+                header('location: ../Views/Views_Usuario/V_usuario.php');
             break;
 
             case 2:
-            header('location: Views_Orden/V_orden.php');
+            header('location: ../Views/Views_Orden/V_orden.php');
             break;
 
             default:
@@ -40,8 +41,8 @@
             $_SESSION['rol'] = $rol;
             switch($rol){
                 case 1:
-                  echo '<script language="javascript">alert("Nombre de usuario o contraseña incorrecto");</script>';
-                    header('location: ../Views/Views_Usuario/V_usuario.php');
+                echo '<script language="javascript">alert("Nombre de usuario o contraseña incorrecto");</script>';
+                header('location: ../Views/Views_Usuario/V_usuario.php');
                     
                 break;
 

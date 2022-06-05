@@ -26,26 +26,26 @@ if(!isset($_SESSION['rol'])){
       <div class="container">
         <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="fa fa-bars"></span> Menu
-       </button>
-       <div class="collapse navbar-collapse" id="ftco-nav">
-         <ul class="navbar-nav m-auto">
-           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
-         <?php if($_SESSION['rol'] == 1 ){?>
+        <span class="fa fa-bars"></span> Menu
+        </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+        <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+        <?php if($_SESSION['rol'] == 1 ){?>
       <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
             }else{if($_SESSION['rol'] != 1 ){}}
           ?>
-           <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
-           <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
-           <li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
-           <li class="nav-item active"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
-           <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
-         </ul>
-       </div>
-     </div>
-   </nav>
-   <!------------------------------------------------------------------ END nav ---------------------------------------------------------------------->
-   <div class="container"><br><br><br><br>     
+          <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
+          <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
+          <li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
+          <li class="nav-item active"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
+          <li class="nav-item"><a href="../../Controller/Controller_Sesion.php?cerrar_sesion='1'" class="nav-link">SALIR</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!------------------------------------------------------------------ END nav ---------------------------------------------------------------------->
+  <div class="container"><br><br><br><br>     
     <form action="" method="POST"  class="form-inline">
     <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
           <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
@@ -66,7 +66,7 @@ if(!isset($_SESSION['rol'])){
 
 require_once "../../Controller/Controller_Cliente/C_cliente.php";
 while($mostrar=mysqli_fetch_array($result)){
- ?>
+?>
   <tr>
     <td><?php echo $mostrar['nombreCliente'] ?></td>
     <td><?php echo $mostrar['IdentificacionCliente'] ?></td>

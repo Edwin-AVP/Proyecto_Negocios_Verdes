@@ -39,7 +39,7 @@ if(!isset($_SESSION['rol'])){
         <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
         <li class="nav-item active"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
         <li class="nav-item"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
-        <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
+        <li class="nav-item"><a href="../../Controller/Controller_Sesion.php?cerrar_sesion='1'" class="nav-link">SALIR</a></li>
       </ul>
     </div>
   </div>
@@ -75,7 +75,7 @@ while($mostrar=mysqli_fetch_array($result)){
   <tr>
     <td><?php echo $mostrar['codigoMaterial'] ?></td>
     <td><?php echo $mostrar['nombreMaterial'] ?></td>
-    <td><?php echo $mostrar['cantidadMaterialInventario'] ?></td>
+    <td step="any"><?php echo $mostrar['cantidadMaterialInventario'] ?></td>
     <td><?php echo $mostrar['unidadMedidaMaterial'] ?></td>
     <td><?php echo $mostrar['valorMaterial'] ?></td>
     <td><?php echo $mostrar['tipoMaterial'] ?></td>
@@ -158,7 +158,7 @@ while($mostrar=mysqli_fetch_array($result)){
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Valor por Unidad</label>
-        <input type="number" class="form-control" name="valor" id="valor" value="<?php echo $mostrar['valorMaterial'] ?>" placeholder="Valor por unidad" required>
+        <input type="number" step="any" class="form-control" name="valor" id="valor" value="<?php echo $mostrar['valorMaterial'] ?>" placeholder="Valor por unidad" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un Valor</div>
       </div>
       <div class="col-md-3 mb-3">
@@ -219,7 +219,7 @@ while($mostrar=mysqli_fetch_array($result)){
             <div  class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Cantidad de material</label>
-                <input type="number" class="form-control" value="" name="cantidad" placeholder="Cantidad de material"  required>
+                <input type="number" step="any" class="form-control" value="" name="cantidad" placeholder="Cantidad de material"  required>
                 <div class="valid-feedback">Bien!</div>
               </div>
             </div>
@@ -266,7 +266,7 @@ while($mostrar=mysqli_fetch_array($result)){
             <div  class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Cantidad de material</label>
-                <input type="number" class="form-control" value="" name="cant" id="cant" placeholder="Cantidad de material"  required>
+                <input type="number" step="any" class="form-control" value="" name="cant" id="cant" placeholder="Cantidad de material"  required>
                 <div class="valid-feedback">Bien!</div>
               </div></div>
               <div  class="form-row C-centro">
@@ -314,6 +314,7 @@ while($mostrar=mysqli_fetch_array($result)){
               <label for="validationCustom01">Nombre Material</label>
               <input type="text" class="form-control" value="" name="nombreE" id="nombreE" placeholder="Nombre"  aria-label="Disabled input example" readonly>
               <input type="hidden" type="text" class="form-control" value="" name="idE" id="idE" placeholder="id"  required>
+              <input type="hidden" type="text" class="form-control" value="" name="can" id="can" placeholder="can"  required>
               </div>
             </div>
             <div  class="form-row C-centro">

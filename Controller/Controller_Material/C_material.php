@@ -34,6 +34,7 @@ require_once "../../Model/database.php";
                     idE = $(this).attr("href");
                     nombreE = $(this).parent().parent().children("td:eq(1)").text();
                     codigoE = $(this).parent().parent().children("td:eq(0)").text();
+                    can = $(this).parent().parent().children("td:eq(2)").text();
                     //Cargamos en el formulario los valores del registro
                     //-------------------------------entrada
                     $("#nombreM").val(nombreM);
@@ -52,6 +53,7 @@ require_once "../../Model/database.php";
                     $("#idE").val(idE);
 				    $("#nombreE").val(nombreE);
 				    $("#codigoE").val(codigoE);
+                    $("#can").val(can);
                 });
 </script>
 

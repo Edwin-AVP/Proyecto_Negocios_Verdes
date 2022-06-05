@@ -39,7 +39,7 @@ if(!isset($_SESSION['rol'])){
            <li class="nav-item"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
            <li class="nav-item"><a href="../Views_Material/V_material.php" class="nav-link">MATERIALES</a></li>
            <li class="nav-item active"><a href="../Views_Cliente/V_cliente.php" class="nav-link">CLIENTES</a></li>
-           <li class="nav-item"><a href="../../Controller/cerrarSesion.php" class="nav-link">SALIR</a></li>
+           <li class="nav-item"><a href="../../Controller/Controller_Sesion.php?cerrar_sesion='1'" class="nav-link">SALIR</a></li>
          </ul>
        </div>
      </div>
