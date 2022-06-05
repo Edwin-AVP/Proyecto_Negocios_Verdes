@@ -46,9 +46,9 @@ if(!isset($_SESSION['rol'])){
    </nav>
    <!------------------------------------------------------------------ END nav ---------------------------------------------------------------------->
    <div class="container"><br><br><br><br>     
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+    <form action="" method="POST"  class="form-inline">
+    <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
     </form><br>
     <a href="../Views_Cliente/V_nuevoCliente.php" class="btn btn-success float-right" role="button">Nuevo Cliente</a><br><br><br>
     <table class="table ">
@@ -69,13 +69,12 @@ while($mostrar=mysqli_fetch_array($result)){
  ?>
   <tr>
     <td><?php echo $mostrar['nombreCliente'] ?></td>
-    <td><?php echo $mostrar['identificacionCliente'] ?></td>
+    <td><?php echo $mostrar['IdentificacionCliente'] ?></td>
     <td><?php echo $mostrar['tipoIdentificacion'] ?></td>
     <td><?php echo $mostrar['telefono'] ?></td>
     <td>
      <a <?php echo "href='../Views_Cliente/V_verCliente.php?id=".$mostrar['ID_CLIENTE']."'" ?>class="btn btn-info" role="button">Ver</a>
-     <a href="../Views_Cliente/V_editarCliente.php" class="btn btn-success" role="button">Editar</a>
-     <button class="btn btn-danger">Inhabilitar</button>
+     <a <?php echo "href='../Views_Cliente/V_editarCliente.php?id=".$mostrar['ID_CLIENTE']."'" ?>class="btn btn-success" role="button">Editar</a>
     </td>
   </tr>
   <?php 

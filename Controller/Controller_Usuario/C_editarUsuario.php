@@ -1,8 +1,6 @@
 <?php
     include_once '../../Model/database.php';
 
-
-
     $username = $_POST['username'];
     $nombre = $_POST['nombre'];
     $contraseña = $_POST['contrasena'];
@@ -25,8 +23,6 @@
         echo 'window.location="../../Views/Views_Usuario/V_usuario.php";';
         echo '</script>';
     }
-
-    
 
 
 ?>

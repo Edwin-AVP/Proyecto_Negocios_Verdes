@@ -46,40 +46,44 @@
   </nav>
   <!------------------------------------------------------------------------------------------------------ END nav----------------------------------------------->
   <div class="container"><br><br><br><br><br>
-    <form class="needs-validation" novalidate action="../Views_Cliente/V_cliente.php">
+    <form method="POST" class="needs-validation" novalidate action="../../Controller/Controller_Cliente/C_nuevoCliente.php">
       <bt><button class="btn btn-success float-right" type="submit">Nuevo Cliente</button></bt>
       <br><br><br>
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="validationCustom01">Nombre</label>
-          <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" value="" required>
+          <input type="text" class="form-control" name="nombre" placeholder="Nombre"  required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un nombre</div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationCustom02">Identificación</label>
-          <input type="number" class="form-control" id="validationCustom02" placeholder="Identificación" value="" required>
+          <input type="number" class="form-control" name="identificacion" placeholder="Identificación" required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Identificación</div>
         </div>
         <div class="col-md-3 mb-3">
           <label for="validationCustom03">Tipo</label><!-- Seleccionar Cliente -->
-          <select class="form-control" required aria-label="select example">
+          <select class="form-control" name="tipo" required aria-label="select example">
             <option class="form-control" value="">Seleccione Tipo</option>
-            <option class="form-control" value="1">NIT</option>
-            <option class="form-control" value="2">C.C</option>
-            <option class="form-control" value="3">Nuip</option>
+            <option class="form-control" value="NIT">NIT</option>
+            <option class="form-control" value="C.C">C.C</option>
           </select>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="validationCustom02">Teléfono</label>
-          <input type="number" class="form-control"  placeholder="Teléfono" value="" required>
+          <input type="number" class="form-control" name="telefono"  placeholder="Teléfono"  required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Teléfono</div>
         </div>
         <div class="col-md-4 mb-3">
+          <label for="validationCustom03">Correo</label>
+          <input type="text" class="form-control" name="correo"  placeholder="Correo"  required>
+          <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Correo</div>
+        </div>
+        <div class="col-md-4 mb-3">
           <label for="validationCustom03">Dirección</label>
-          <input type="text" class="form-control"  placeholder="Dirección" required>
+          <input type="text" class="form-control" name="direccion"  placeholder="Dirección"  required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Dirección</div>
         </div>
       </div>
@@ -92,7 +96,7 @@
       // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
       var forms = document.getElementsByClassName('needs-validation');
      // Bucle sobre ellas y evitar la presentación
-     var validation = Array.prototype.filter.call(forms, function(form) {
+      var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();

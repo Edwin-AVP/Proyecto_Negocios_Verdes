@@ -50,42 +50,42 @@ if(!isset($_SESSION['rol'])){
 <!----------------------------------------------------------------------------- END nav --------------------------------------------------------------------------->
 <div class="container"><br><br><br><br><br>
 
-  <form class="needs-validation" novalidate action="../Views_Material/V_material.php">
+  <form method="POST" class="needs-validation" novalidate action="../../Controller/Controller_Material/C_agregarMaterial.php">
     <bt><button class="btn btn-success float-right" type="submit">Agregar Material</button></bt><br><br><br>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Código</label>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="Código"  required>
+        <input type="text" class="form-control" name="codigo" placeholder="Código"  required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese codigor</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Nombre Material</label>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre Material"  required>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre Material"  required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Nombre</div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Unidad</label><!-- Seleccionar Cliente -->
-        <select class="form-control" required aria-label="select example">
+        <select class="form-control" name="unidad" required aria-label="select example">
           <option class="form-control" value="">Seleccione unidad</option>
-          <option class="form-control" value="1">Kg</option>
-          <option class="form-control" value="2">ml</option>
-          <option class="form-control" value="3">Lt</option>
+          <option class="form-control" value="Kg">Kg</option>
+          <option class="form-control" value="ml">ml</option>
+          <option class="form-control" value="Lt">Lt</option>
         </select>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione una unidad</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Valor por Unidad</label>
-        <input type="number" class="form-control" value="" placeholder="Valor por unidad" id="validationCustom01"  required>
+        <input type="number" class="form-control" name="valor" value="" placeholder="Valor por unidad" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un valor</div>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Tipo</label><!-- Seleccionar Cliente -->
-        <select class="form-control" required aria-label="select example">
+        <select name="tipo" class="form-control" required aria-label="select example">
           <option class="form-control" value="">Seleccione Tipo</option>
-          <option class="form-control" value="1">Insumo</option>
-          <option class="form-control" value="2">Materia Prima</option>
+          <option class="form-control" value="Insumo">Insumo</option>
+          <option class="form-control" value="Materia Prima">Materia Prima</option>
         </select>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
       </div>

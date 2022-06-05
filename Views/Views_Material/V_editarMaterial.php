@@ -49,43 +49,80 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!---------------------------------------------------------------------------------------- END nav ------------------------------------------------------------->
 <div class="container"><br><br><br><br><br>
-
-  <form class="needs-validation" novalidate action="../Views_Material/V_material.php">
+<?php 
+require_once "../../Controller/Controller_Material/C_verMaterial.php";
+$mostrar=mysqli_fetch_array($result)
+  ?>
+  <form method="POST" class="needs-validation" novalidate action="../../Controller/Controller_Material/C_editarMaterial.php">
     <bt><button class="btn btn-success float-right" type="submit">Editar Material</button></bt><br><br><br>
+    <input type="hidden" class="form-control" placeholder="id" name="id" value="<?php echo $mostrar['ID_MATERIAL'] ?>" required>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Código</label>
-        <input type="text" class="form-control" value="MT020" id="validationCustom01" placeholder="Código"  required>
-        <div class="valid-feedback">Bien!</div>
+        <input type="text" class="form-control" value="<?php echo $mostrar['codigoMaterial'] ?>" name="codigo" placeholder="Código"  required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un Codigo</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Nombre Material</label>
-        <input type="text" class="form-control" value="D" id="validationCustom01" placeholder="Nombre Material"  required>
-        <div class="valid-feedback">Bien!</div>
+        <input type="text" class="form-control" value="<?php echo $mostrar['nombreMaterial'] ?>" name="nombre" placeholder="Nombre Material"  required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un Nombre</div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Unidad</label><!-- Seleccionar Cliente -->
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">Kg</option>
-          <option class="form-control" value="2">ml</option>
-          <option class="form-control" value="3">Lt</option>
+        <select name="unidad" class="form-control" required aria-label="select example">
+        <?php
+            if($mostrar['unidadMedidaMaterial'] == 'Kg'){
+              ?> 
+              <option class="form-control" value="Kg">Kg</option>
+              <option class="form-control" value="Ml">Ml</option>
+              <option class="form-control" value="Lt">Lt</option>
+              <?php
+            }else{
+              if($mostrar['unidadMedidaMaterial'] == 'Ml'){
+                ?> 
+                <option class="form-control" value="Ml">Ml</option>
+                <option class="form-control" value="Kg">Kg</option>
+                <option class="form-control" value="Lt">Lt</option>
+                    <?php
+              }else{
+                  ?>           
+                  <option class="form-control" value="Lt">Lt</option>
+                  <option class="form-control" value="Kg">Kg</option>
+                  <option class="form-control" value="Ml">Ml</option>
+                    <?php
+              }
+            }
+            ?>
         </select>
-        <div class="invalid-feedback">Seleccione una unidad</div>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione una unidad</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Valor por Unidad</label>
-        <input type="number" class="form-control" value="200" placeholder="Valor por unidad" id="validationCustom01"  required>
-        <div class="valid-feedback">Bien!</div>
+        <input type="number" class="form-control" name="valor" value="<?php echo $mostrar['valorMaterial'] ?>" placeholder="Valor por unidad" required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un Valor</div>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Tipo</label><!-- Seleccionar Cliente -->
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">Insumo</option>
-          <option class="form-control" value="2">Materia Prima</option>
+        <select name="tipo" class="form-control" required aria-label="select example">
+
+        <?php
+            if($mostrar['tipoMaterial'] != 'Insumo'){
+              ?> 
+          <option class="form-control" value="Materia Prima">Materia Prima</option>
+          <option class="form-control" value="Insumo">Insumo</option>
+              <?php
+            }else{
+              ?>           
+          <option class="form-control" value="Insumo">Insumo</option>
+          <option class="form-control" value="Materia Prima">Materia Prima</option>
+              <?php
+            }
+            ?>
+
         </select>
-        <div class="invalid-feedback">Seleccione un Tipo</div>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
       </div>
     </div> 
   </form>

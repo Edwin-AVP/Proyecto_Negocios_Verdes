@@ -52,30 +52,30 @@ if(!isset($_SESSION['rol'])){
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Nombre</label>
-        <input type="text" class="form-control" id="validationCustom01" name="nombre" placeholder="Nombre" value="" required>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
         <div class="valid-feedback"> Bien!</div><div class="invalid-feedback">Ingrese Nombre</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Documento</label>
-        <input type="number" class="form-control" id="validationCustom02" name="documento" placeholder="Documento" value="" required>
+        <input type="number" class="form-control" name="documento" placeholder="Documento" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Documento</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Teléfono</label>
-        <input type="number" class="form-control" id="validationCustom03" name="telefono" placeholder="Teléfono" value="" required>
+        <input type="number" class="form-control"  name="telefono" placeholder="Teléfono" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese teléfono</div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Usuario</label>
-        <input type="text" class="form-control" id="validationCustom04" name="usuario" placeholder="Usuario" required>
-        <div class="invalid-feedback">Usuario Invalido</div>
+        <input type="text" class="form-control" name="usuario" placeholder="Usuario" required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Usuario Invalido</div>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom04">Contraseña</label>
-        <input type="text" class="form-control" id="validationCustom05" name="contraseña" placeholder="Contraseña" required>
-        <div class="invalid-feedback">Contraseña Invalida</div>
+        <input type="text" class="form-control" name="contraseña" placeholder="Contraseña" required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Contraseña Invalida</div>
       </div>
     </div>
   </form>

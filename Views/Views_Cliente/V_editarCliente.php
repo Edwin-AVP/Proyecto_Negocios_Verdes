@@ -8,7 +8,7 @@
   <!doctype html>
     <html lang="en">
     <head>
-    	<title>nuevo_Cliente</title>
+    <title>nuevo_Cliente</title>
       <link rel="shortcut icon" href="../../images/logoPV.png">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,9 +27,9 @@
         <a class="navbar-brand" href="V.usuario.php">Negocios <span>Verdes</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu</button>
       <div class="collapse navbar-collapse" id="ftco-nav">
-         <ul class="navbar-nav m-auto">
-           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
-           <?php if($_SESSION['rol'] == 1 ){?>
+          <ul class="navbar-nav m-auto">
+          <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+          <?php if($_SESSION['rol'] == 1 ){?>
       <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
             }else{if($_SESSION['rol'] != 1 ){}}
           ?>
@@ -44,39 +44,59 @@
   </nav>
   <!-------------------------------------------------------------------------- END nav -------------------------------------------------------------------->
   <div class="container"><br><br><br><br><br>
-    <form class="needs-validation" novalidate action="../Views_Cliente/V_cliente.php">
+  <?php 
+require_once "../../Controller/Controller_Cliente/C_verCliente.php";
+$mostrar=mysqli_fetch_array($result)
+  ?>
+    <form method="POST" class="needs-validation" novalidate action="../../Controller/Controller_Cliente/C_editarCliente.php">
       <bt><button class="btn btn-success float-right" type="submit">Editar Cliente</button></bt>
+      <input type="hidden" class="form-control" placeholder="id" name="id" value="<?php echo $mostrar['ID_CLIENTE'] ?>" required>
       <br><br><br>
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="validationCustom01">Nombre</label>
-          <input type="text" class="form-control" value="John jose bartolomedo" id="validationCustom01" placeholder="Nombre" value="" required>
+          <input type="text" class="form-control" name="nombre"  placeholder="Nombre" value="<?php echo $mostrar['nombreCliente'] ?>" required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese un nombre</div>
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationCustom02">Identificación</label>
-          <input type="number" class="form-control" value="9001856721" id="validationCustom02" placeholder="Identificación" value="" required>
+          <input type="number" class="form-control" name="identificación" placeholder="Identificación" value="<?php echo $mostrar['IdentificacionCliente'] ?>" required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Identificación</div>
         </div>
         <div class="col-md-3 mb-3">
           <label for="validationCustom03">Tipo</label>
-          <select class="form-control" required aria-label="select example">
-           <option class="form-control" value="1">NIT</option>
-           <option class="form-control" value="2">C.C</option>
-           <option class="form-control" value="3">Nuip</option>
-         </select>
-         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
-       </div>
-     </div>
-     <div class="form-row">
-      <div class="col-md-4 mb-3">
+          <select name="tipo" class="form-control" required aria-label="select example">
+            <?php
+            if($mostrar['tipoIdentificacion'] != 'NIT'){
+              ?> 
+              <option class="form-control" value="C.C">C.C</option>
+              <option class="form-control" value="NIT">NIT</option>
+              <?php
+            }else{
+              ?> 
+              <option class="form-control" value="NIT">NIT</option>
+              <option class="form-control" value="C.C">C.C</option>
+              <?php
+            }
+            ?>
+        </select>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Tipo</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-3 mb-3">
         <label for="validationCustom02">Teléfono</label>
-        <input type="number" class="form-control" value="7584269" placeholder="Teléfono" value="" required>
+        <input type="number" class="form-control" name="telefono" placeholder="Teléfono" value="<?php echo $mostrar['telefono'] ?>" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Teléfono</div>
       </div>
       <div class="col-md-4 mb-3">
+        <label for="validationCustom03">Correo</label>
+        <input type="text" class="form-control" name="correo" value="<?php echo $mostrar['correo'] ?>"  placeholder="Correo" required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Correo</div>
+      </div>
+      <div class="col-md-4 mb-3">
         <label for="validationCustom03">Dirección</label>
-        <input type="text" class="form-control" value="Calle 34 # 4-70"  placeholder="Dirección" required>
+        <input type="text" class="form-control" name="direccion" value="<?php echo $mostrar['direccion'] ?>"  placeholder="Direccion" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Dirección</div>
       </div>
     </div>
@@ -89,7 +109,7 @@
       // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
       var forms = document.getElementsByClassName('needs-validation');
      // Bucle sobre ellas y evitar la presentación
-     var validation = Array.prototype.filter.call(forms, function(form) {
+      var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
@@ -98,7 +118,7 @@
         form.classList.add('was-validated');
       }, false);
     });
-   }, false);
+    }, false);
   })();
   </script>
   </div>
@@ -111,4 +131,3 @@
 
   </body>
   </html>
-

@@ -13,7 +13,7 @@
     if(isset($_SESSION['rol'])){
         switch($_SESSION['rol']){
             case 1:
-                header('location: Views_Usuario/V_usuario.php');
+            header('location: Views_Usuario/V_usuario.php');
             break;
 
             case 2:

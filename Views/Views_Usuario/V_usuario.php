@@ -8,10 +8,6 @@ if(!isset($_SESSION['rol'])){
       header('location: ../login.php');
   }
 }
-
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -70,11 +66,11 @@ if(!isset($_SESSION['rol'])){
 
 
 
-     <?php 
+    <?php 
 
 require_once "../../Controller/Controller_Usuario/C_usuarios.php";
 		while($mostrar=mysqli_fetch_array($result)){
-		 ?>
+		?>
       <tr>
         <td><?php echo $mostrar['cedula'] ?></td>
         <td><?php echo $mostrar['nombre'] ?></td>
@@ -84,7 +80,7 @@ require_once "../../Controller/Controller_Usuario/C_usuarios.php";
         <a <?php echo "href='../Views_Usuario/V_editarUsuario.php?id=".$mostrar['ID_USUARIO']."'" ?>class="btn btn-success" role="button">Editar</a>
         <!--Este if seleciona el boton depemdiendo el rol que tenga el usuario -->
         <?php if($mostrar['FK_ID_ROL'] == 2 ){
-         ?><a <?php echo "href='../../Controller/Controller_Usuario/C_inhabilitarUsuario.php?id=".$mostrar['ID_USUARIO']."'" ?> class="btn btn-danger" role="button">Inhabilitar</a>
+        ?><a <?php echo "href='../../Controller/Controller_Usuario/C_inhabilitarUsuario.php?id=".$mostrar['ID_USUARIO']."'" ?> class="btn btn-danger" role="button">Inhabilitar</a>
           <?php
             }else{if($mostrar['FK_ID_ROL'] == 3 ){
               ?><a <?php echo "href='../../Controller/Controller_Usuario/C_habilitarUsuario.php?id=".$mostrar['ID_USUARIO']."'" ?>class="btn btn-primary" role="button">habilitar</a>  <?php
@@ -94,8 +90,8 @@ require_once "../../Controller/Controller_Usuario/C_usuarios.php";
         </td>
       </tr>
       <?php 
-	  }
-	    ?>
+	}
+	?>
     </tbody>
   </table>
 

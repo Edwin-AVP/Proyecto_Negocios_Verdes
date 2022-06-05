@@ -55,29 +55,29 @@ $mostrar=mysqli_fetch_array($result)
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Nombre</label>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" name="nombre" value="<?php echo $mostrar['nombre'] ?>" required>
+        <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="<?php echo $mostrar['nombre'] ?>" required>
         <div class="valid-feedback"> Bien!</div><div class="invalid-feedback">Ingrese Nombre</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Documento</label>
-        <input type="text" class="form-control" id="validationCustom02" placeholder="Documento" name="documento" value="<?php echo $mostrar['cedula'] ?>" required>
+        <input type="text" class="form-control" placeholder="Documento" name="documento" value="<?php echo $mostrar['cedula'] ?>" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Documento</div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Teléfono</label>
-        <input type="number" class="form-control" id="validationCustom03" placeholder="Teléfono" name="telefono" value="<?php echo $mostrar['telefono'] ?>" required>
+        <input type="number" class="form-control" placeholder="Teléfono" name="telefono" value="<?php echo $mostrar['telefono'] ?>" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese teléfono</div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Usuario</label>
-        <input type="text" class="form-control" id="validationCustom04" placeholder="Usuario" name="username" value="<?php echo $mostrar['username'] ?>" required>
+        <input type="text" class="form-control" placeholder="Usuario" name="username" value="<?php echo $mostrar['username'] ?>" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Usuario Invalido</div>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom04">Contraseña</label>
-        <input type="text" class="form-control" id="validationCustom05" placeholder="Contraseña" name="contrasena" value="<?php echo $mostrar['password'] ?>" required>
+        <input type="text" class="form-control" placeholder="Contraseña" name="contrasena" value="<?php echo $mostrar['password'] ?>" required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Contraseña Invalida</div>
       </div>
     </div>
