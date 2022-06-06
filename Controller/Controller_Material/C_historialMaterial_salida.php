@@ -9,7 +9,7 @@ if(isset($_POST['search']))
 else
 {
 	
-		$query = "SELECT *FROM historial_salida";
+		$query = "SELECT * FROM historial_salida ORDER BY ID_HISTORIAL_SALIDA DESC";
 		$result = filterRecord($query);
 }
 function filterRecord($query)

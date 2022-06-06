@@ -73,34 +73,21 @@ if(!isset($_SESSION['rol'])){
     <?php 
 
 require_once "../../Controller/Controller_Material/C_historialMaterial_entrada.php";
-$t = 0;
-while($row = mysqli_fetch_array($result)) {
-  $array[$t][0] = $row['codigo'];
-  $array[$t][1] = $row['nombre'];
-  $array[$t][2] = $row['fecha'];
-  $array[$t][3] = $row['cantidad'];
-  $array[$t][4] = $row['unidad'];
-  $array[$t][5] = $row['valorUnitario'];
-  $array[$t][6] = $row['tipo'];
-  $t++;
-}
-//invertimos el orden de los items
-$mostrar = array_reverse($array);
-$i = 0;
-while($i < count($mostrar)){
+
+while($mostrar = mysqli_fetch_array($result)){
   ?>
   <tr>
-    <td><?php echo $mostrar[$i][0] ?></td>
-    <td><?php echo $mostrar[$i][1] ?></td>
-    <td><?php echo $mostrar[$i][2] ?></td>
-    <td><?php echo $mostrar[$i][3] ?></td>
-    <td><?php echo $mostrar[$i][4] ?></td>
-    <td><?php echo $mostrar[$i][5] ?></td>
-    <td><?php echo $mostrar[$i][6] ?></td>
+    <td><?php echo $mostrar['codigo'] ?></td>
+    <td><?php echo $mostrar['nombre'] ?></td>
+    <td><?php echo $mostrar['fecha'] ?></td>
+    <td><?php echo $mostrar['cantidad'] ?></td>
+    <td><?php echo $mostrar['unidad'] ?></td>
+    <td><?php echo $mostrar['valorUnitario'] ?></td>
+    <td><?php echo $mostrar['tipo'] ?></td>
 
   </tr>
   <?php 
-$i++;
+
 } 
   ?>
     </tbody>
