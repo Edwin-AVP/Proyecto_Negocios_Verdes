@@ -1,10 +1,28 @@
 <?php 
-require_once "../../Model/database.php";
-		$sql="SELECT * from material";
-		$result=mysqli_query($conection,$sql);
 
-		
+if(isset($_POST['search']))
+{
+	$valueToSearh = $_POST['valueToSearh']; 
+	$query = "SELECT * FROM material WHERE nombreMaterial LIKE '%".$valueToSearh."%' OR codigoMaterial LIKE '%".$valueToSearh."%'";
+	$result = filterRecord($query);
+} 
+else
+{
+	
+		$query = "SELECT *FROM material";
+		$result = filterRecord($query);
+}
+function filterRecord($query)
+{
+	
+
+	include("../../Model/database.php");
+	$filter_result = mysqli_query($conection, $query);
+	return $filter_result;
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

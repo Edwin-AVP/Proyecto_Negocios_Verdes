@@ -15,6 +15,19 @@
         $sql="UPDATE material SET valorMaterial = '$valor', cantidadMaterialInventario = '$suma[0]' WHERE ID_MATERIAL = '$id'";
         $resul=mysqli_query($conection,$sql);
         $suma = 0;
+
+        $sql="SELECT * FROM material WHERE ID_MATERIAL = '$id'";
+        $result=mysqli_query($conection,$sql);
+        $datos=mysqli_fetch_array($result);
+
+        $codigo = $datos['codigoMaterial'];
+        $nombre = $datos['nombreMaterial'];
+        $unidad = $datos['unidadMedidaMaterial'];
+        $tipo = $datos['tipoMaterial'];
+
+        $sql="INSERT INTO historial_entrada(codigo, nombre, fecha, cantidad, unidad, valorUnitario, tipo)VALUES
+        ('$codigo', '$nombre', CURDATE(), '$cantidad', '$unidad','$valor', '$tipo')";
+        $resu=mysqli_query($conection,$sql);
         header('location: ../../Views/Views_Material/V_Material.php');
 
     }else{
@@ -24,4 +37,4 @@
         echo '</script>';
     }
 ?>
-
+	

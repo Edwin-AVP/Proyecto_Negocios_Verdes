@@ -52,9 +52,9 @@ if(!isset($_SESSION['rol'])){
   <a href="../Views_Material/V_historialMaterial.php" class="btn btn-success float-right" role="button">Atras</a><br><br>
   <p style="text-align:center; font-size:200%;">Historial de Salidas</p>
   <br><br>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+  <form action="" method="POST" class="form-inline">
+    <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
+    <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
   </form>
   <br><br>
   <table class="table table">
@@ -70,51 +70,39 @@ if(!isset($_SESSION['rol'])){
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td >MT010</td>
-        <td >D</td>
-        <td >Error en producción</td>
-        <td >11/05/2022</td>
-        <td >360</td>
-        <td >Kg</td>
-        <td >Insumo</td>
-      </tr>
-      <tr>
-        <td >MT010</td>
-        <td >D</td>
-        <td >Error en producción</td>
-        <td >11/05/2022</td>
-        <td >360</td>
-        <td >Kg</td>
-        <td >Insumo</td>
-      </tr>
-      <tr>
-        <td >MT010</td>
-        <td >D</td>
-        <td >Error en producción</td>
-        <td >11/05/2022</td>
-        <td >360</td>
-        <td >Kg</td>
-        <td >Insumo</td>
-      </tr>
-      <tr>
-        <td >MT010</td>
-        <td >D</td>
-        <td >Error en producción</td>
-        <td >11/05/2022</td>
-        <td >360</td>
-        <td >Kg</td>
-        <td >Insumo</td>
-      </tr>
-      <tr>
-        <td >MT010</td>
-        <td >D</td>
-        <td >Error en producción</td>
-        <td >11/05/2022</td>
-        <td >360</td>
-        <td >Kg</td>
-        <td >Insumo</td>
-      </tr>
+    <?php 
+
+require_once "../../Controller/Controller_Material/C_historialMaterial_salida.php";
+$t = 0;
+while($row = mysqli_fetch_array($result)) {
+  $array[$t][0] = $row['codigo'];
+  $array[$t][1] = $row['nombre'];
+  $array[$t][2] = $row['motivo'];
+  $array[$t][3] = $row['fecha'];
+  $array[$t][4] = $row['cantidad'];
+  $array[$t][5] = $row['unidad'];
+  $array[$t][6] = $row['tipo'];
+  $t++;
+}
+//invertimos el orden de los items
+$mostrar = array_reverse($array);
+$i = 0;
+while($i < count($mostrar)){
+  ?>
+  <tr>
+    <td><?php echo $mostrar[$i][0] ?></td>
+    <td><?php echo $mostrar[$i][1] ?></td>
+    <td><?php echo $mostrar[$i][2] ?></td>
+    <td><?php echo $mostrar[$i][3] ?></td>
+    <td><?php echo $mostrar[$i][4] ?></td>
+    <td><?php echo $mostrar[$i][5] ?></td>
+    <td><?php echo $mostrar[$i][6] ?></td>
+
+  </tr>
+  <?php 
+  $i++;
+} 
+  ?>
     </tbody>
   </table>
 </div>

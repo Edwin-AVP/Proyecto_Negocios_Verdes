@@ -46,10 +46,10 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!----------------------------------------------------------------------- END nav ----------------------------------------->
 <div class="container"><br><br><br><br>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-  </form><br>
+        <form action="" method="POST" class="form-inline">
+          <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+        </form><br>
   <a href="../Views_Material/V_agregarMaterial.php" class="btn btn-success float-right" role="button">Agregar Material</a>
   <a href="../Views_Material/V_historialMaterial.php" class="btn btn-success float-right" role="button">Historial</a>
   <br><br><br>
@@ -75,7 +75,7 @@ while($mostrar=mysqli_fetch_array($result)){
   <tr>
     <td><?php echo $mostrar['codigoMaterial'] ?></td>
     <td><?php echo $mostrar['nombreMaterial'] ?></td>
-    <td step="any"><?php echo $mostrar['cantidadMaterialInventario'] ?></td>
+    <td><?php echo $mostrar['cantidadMaterialInventario'] ?></td>
     <td><?php echo $mostrar['unidadMedidaMaterial'] ?></td>
     <td><?php echo $mostrar['valorMaterial'] ?></td>
     <td><?php echo $mostrar['tipoMaterial'] ?></td>
