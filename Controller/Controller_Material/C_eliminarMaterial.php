@@ -1,8 +1,6 @@
 <?php
     include_once '../../Model/database.php';
 
-
-
     $id = $_POST['idE'];
     $cantidad = $_POST['can'];
     

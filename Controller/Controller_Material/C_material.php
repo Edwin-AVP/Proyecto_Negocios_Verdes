@@ -9,7 +9,7 @@ if(isset($_POST['search']))
 else
 {
 	
-		$query = "SELECT *FROM material";
+		$query = "SELECT * FROM material";
 		$result = filterRecord($query);
 }
 function filterRecord($query)
@@ -74,7 +74,5 @@ function filterRecord($query)
                     $("#can").val(can);
                 });
 </script>
-
-
 </body>
 </html>

@@ -33,7 +33,7 @@ if(!isset($_SESSION['rol'])){
            <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
            <?php if($_SESSION['rol'] == 1 ){?>
         <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
-            }else{if($_SESSION['rol'] != 1 ){}}
+            }
           ?>
         <li class="nav-item"><a href="../Views_Orden/V_orden.php" class="nav-link">ORDEN</a></li>
         <li class="nav-item active"><a href="../Views_Producto/V_producto.php" class="nav-link">PRODUCTOS</a></li>
@@ -46,10 +46,11 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!-------------------------------------------------------------------- END nav ------------------------------------------------------------------->
 <div class="container"><br><br><br><br>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-  </form><br>
+  <form method="POST" class="form-inline">
+  <form action="" method="POST" class="form-inline">
+          <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+        </form><br>
   <a href="../Views_Producto/V_nuevoProducto.php" class="btn btn-success float-right" role="button">Nuevo producto</a>
   <br><br><br>
   <table class="table">
@@ -74,9 +75,11 @@ while($mostrar=mysqli_fetch_array($result)){
     <td><?php echo $mostrar['valorUnidad'] ?></td>
 
     <td>
-    <a <?php echo "href='../Views_Producto/V_verProducto.php?id=".$mostrar['ID_PRODUCTO']."'" ?>class="btn btn-info" role="button">Ver</a>
-         <a href="../Views_Producto/V_editarProducto.php" class="btn btn-success" role="button">Editar</a>
-         <button class="btn btn-danger">Eliminar</button>
+        <a <?php echo "href='../Views_Producto/V_verProducto.php?id=".$mostrar['ID_PRODUCTO']."'" ?>class="btn btn-info" role="button">Ver</a>
+        <a href="../Views_Producto/V_editarProducto.php" class="btn btn-success" role="button">Editar</a>
+        <a <?php echo "href='javascript:preguntar(".$mostrar['ID_PRODUCTO'].")'" ?>class="btn btn-danger" role="button">Eliminar</a>
+
+         
     </td>
   </tr>
   <?php 
@@ -84,6 +87,13 @@ while($mostrar=mysqli_fetch_array($result)){
   ?>
 </tbody>
 </table>
+<script language="JavaScript">
+function preguntar(contacto){//comfirmacion para eliminar producto
+    if (confirm('¿Estas seguro que desea eliminar este producto?')){
+      window.location.href="../../Controller/Controller_Producto/C_eliminatProducto.php?id="+contacto;
+    }
+}
+</script>
 </div>
 </html>
 
