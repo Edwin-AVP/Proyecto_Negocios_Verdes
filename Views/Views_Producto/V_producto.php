@@ -76,10 +76,8 @@ while($mostrar=mysqli_fetch_array($result)){
 
     <td>
         <a <?php echo "href='../Views_Producto/V_verProducto.php?id=".$mostrar['ID_PRODUCTO']."'" ?>class="btn btn-info" role="button">Ver</a>
-        <a href="../Views_Producto/V_editarProducto.php" class="btn btn-success" role="button">Editar</a>
+        <a <?php echo "href='../Views_Producto/V_editarProducto.php?id=".$mostrar['ID_PRODUCTO']."'" ?>class="btn btn-success" role="button">Editar</a>
         <a <?php echo "href='javascript:preguntar(".$mostrar['ID_PRODUCTO'].")'" ?>class="btn btn-danger" role="button">Eliminar</a>
-
-         
     </td>
   </tr>
   <?php 

@@ -53,140 +53,95 @@ if(!isset($_SESSION['rol'])){
   <br>
   <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
     <a href="../Views_Orden/V_historialOrden.php" class="btn btn-success float-right" role="button">Atras</a>
-    <br><br><br>
+    <br><br><br> 
+    <?php 
+require_once "../../Controller/Controller_Orden/C_historialOrden_ver.php";
+$mostrar=mysqli_fetch_array($result1)
+  ?>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Número de Orden</label>
-        <input type="text" value="TP025" class="form-control" id="validationCustom01" placeholder="Numero de Orden" aria-label="Disabled input example" required  readonly>
-        <div class="valid-feedback">
-          Bien!
+        <input type="text" value="<?php echo $mostrar['numeroOrden'] ?>" class="form-control" id="validationCustom01" placeholder="Numero de Orden" aria-label="Disabled input example" required  readonl></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03">Cliente</label>
+          <input type="text" class="form-control" value="<?php echo $mostrar['nombreCliente'] ?>" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
         </div>
       </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Cliente</label><!-- Seleccionar Cliente -->
-        <input type="text" class="form-control" value="Cliente 2" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <div class="form-row">
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom02">Teléfono</label>
+          <input type="text" class="form-control" value="<?php echo $mostrar['telefono'] ?>" placeholder="Teléfono" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom03">Dirección</label>
+          <input type="text" class="form-control" value="<?php echo $mostrar['direccion'] ?>" placeholder="Dirección" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="validationCustom04">Número Documento</label>
+          <input type="text" class="form-control" value="<?php echo $mostrar['IdentificacionCliente'] ?>" placeholder="Número Documento" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
+        <div class="col-md-1 mb-3">
+          <label for="validationCustom04">Tipo</label>
+          <input type="text" class="form-control" value="<?php echo $mostrar['tipoIdentificacion'] ?>" placeholder="Tipo" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
+      </div> 
+      <hr> <!-------------------------------------------------------------------------- Separador ---------------------------------------------------------------->
+      <div class="form-row"> 
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom03">Producto</label>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationCustom03">Cantidad</label>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationCustom04">Valor Unitario</label>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationCustom04">Total</label>
+        </div>
+      </div> 
+
+      <?php 
+      $sumatotal = 0;
+   while($mostrar=mysqli_fetch_array($result2)){
+		 ?>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <input type="text" class="form-control" value="<?php echo $mostrar['nombreProducto'] ?>" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
+        <div class="col-md-2 mb-3">
+          <input type="number" value="<?php echo $mostrar['cantidadProductoSolicitado'] ?>" class="form-control"  placeholder="Cantidad" id="validationCustom01" aria-label="Disabled input example" required readonly >
+        </div>
+        <div class="col-md-2 mb-3">
+          <input type="text" class="form-control" value="<?php echo $mostrar['valorUnidad'] ?>" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
+        <div class="col-md-2 mb-3">
+        <?php 
+        $total =0;  
+        $total = ($mostrar['cantidadProductoSolicitado'] * $mostrar['valorUnidad']);
+        
+        $sumatotal = $total + $sumatotal; 
+        ?>
+          <input type="text" class="form-control" value="<?php echo $total?>" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        </div>
       </div>
-    </div>
+      <?php 
+	  }
+	    ?>
     <div class="form-row">
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom02">Teléfono</label>
-        <input type="text" class="form-control" value="7516364" placeholder="Teléfono" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="valid-feedback">
-          Bien!
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom03">Dirección</label>
-        <input type="text" class="form-control" value="Calle 95 # 5-25" placeholder="Dirección" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom04">Número Documento</label>
-        <input type="text" class="form-control" value="9007824596" placeholder="Número Documento" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-1 mb-3">
-        <label for="validationCustom04">Tipo</label>
-        <input type="text" class="form-control" value="NIT" placeholder="Tipo" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-    </div> 
-    <hr><!------------------------------------------------------------------- Separador ----------------------------------------------------------------->
-    <div class="form-row"> <!-- Titulos campos -->
-      <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Producto</label><!-- Seleccionar producto -->
-      </div>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Cantidad</label>
-      </div>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom04">Valor Unitario</label>
-      </div>
+      <div class="col-md-8 mb-3"> </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom04">Total</label>
+        <input type="text" class="form-control" value="<?php echo $sumatotal?>" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
       </div>
     </div> 
+  </div>
+  </html>
 
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <input type="text" class="form-control" value="Producto 1" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-      <div class="col-md-2 mb-3">
-
-        <input type="number" value="20" class="form-control"  placeholder="Cantidad" id="validationCustom01" aria-label="Disabled input example" required readonly >
-
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-
-        <input type="text" class="form-control" value="13.770" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-
-        <input type="text" class="form-control" value="275.400" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <input type="text" class="form-control" value="Producto 3" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-      <div class="col-md-2 mb-3">
-
-        <input type="number" value="10" class="form-control"  placeholder="Cantidad" aria-label="Disabled input example" required readonly  >
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-
-        <input type="text" class="form-control" value="13.770" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-
-        <input type="text" class="form-control" value="137.700" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-    </div> 
-  </form>
-  <div class="form-row">
-    <div class="col-md-8 mb-3"> </div>
-    <div class="col-md-2 mb-3">
-      <label for="validationCustom04">Total</label>
-      <input type="text" class="form-control" value="413.100" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      <div class="invalid-feedback"></div>
-    </div>
-  </div> 
-
-<script>
-  // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-      var forms = document.getElementsByClassName('needs-validation');
-     // Bucle sobre ellas y evitar la presentación
-     var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-   }, false);
-  })();
-</script>
-</div>
-<br><br><br>
-<div class="container">
-</div> 
-</html>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>

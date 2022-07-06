@@ -8,34 +8,34 @@ if(!isset($_SESSION['rol'])){
 <!doctype html>
   <html lang="en">
   <head>
-  	<title>MRP</title>
-   <link rel="shortcut icon" href="../../images/logoPV.png">
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="../../css/style.css">
-   <link rel="stylesheet" href="../../css/style-button.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- </head>
- <body>
-   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-     <div class="container">
+  <title>MRP</title>
+    <link rel="shortcut icon" href="../../images/logoPV.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/style-button.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style-button.css" media="screen" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
       <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="fa fa-bars"></span> Menu
-     </button>
-     <div class="collapse navbar-collapse" id="ftco-nav">
-       <ul class="navbar-nav m-auto">
-           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
-           <?php if($_SESSION['rol'] == 1 ){?>
+      <span class="fa fa-bars"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav m-auto">
+          <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+          <?php if($_SESSION['rol'] == 1 ){?>
       <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
             }else{if($_SESSION['rol'] != 1 ){}}
           ?>
@@ -50,43 +50,53 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!----------------------------------------------------------------------------------- END nav ------------------------------------------------->
 <div class="container"><br><br>
+<?php 
+require_once "../../Controller/Controller_Orden/C_MRP.php";
+$mostrar_cliente_orden=mysqli_fetch_array($res_orden);
+    ?>
   <a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Atras</a>
   <br><br>
-  <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
     <b style="font-size:200%;">MRP</b><br><br>
     <div class="form-row">
       <div class="col-md-2 mb-3">
-        <label for="validationCustom01">Número de Orden</label>
-        <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <label>Número de Orden</label>
+        <input type="text" class="form-control" value="<?php echo $mostrar_cliente_orden['numeroOrden'] ?>" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Nombre Cliente</label>
-        <input type="text" class="form-control" value="Fernando de la Cruz" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $mostrar_cliente_orden['nombreCliente'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
     </div>
     <hr>  
-    <p style="text-align:center; font-size:200%;">Producto 1</p>
+    <?php
+    $y = 1; 
+    $costo_total =0;
+    while($mostrar_producto=mysqli_fetch_array($res_producto)){
+    ?>
+    <p style="text-align:center; font-size:200%;">Producto <?php echo $y ?> </p>
+    <?php  $y = $y+1; ?>
     <br>
     <div class="form-row">
       <div class="col-md-1 mb-3">
-        <label for="validationCustom01">Código</label>
-        <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <label>Código</label>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['codigoProducto'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Nombre</label>
-        <input type="text" class="form-control" value="Shampoo limón 500ml" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['nombreProducto'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom02">Cantidad</label>
-        <input type="text" class="form-control" value="20" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['cantidadProductoSolicitado'] ?>" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Valor Unidad</label>
-        <input style="text-align:right" type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <label>Valor Unidad</label>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $mostrar_producto['valorUnidad'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Total</label>
-        <input style="text-align:right" type="text" class="form-control" value="275.400" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <label>Total</label>
+        <?php $total = ($mostrar_producto['valorUnidad'] * $mostrar_producto['cantidadProductoSolicitado']) ?>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $total ?>"  aria-label="Disabled input example" required readonly>
       </div>
     </div> 
     <p style="text-align:center; font-size:200%;">Materiales</p>
@@ -104,167 +114,51 @@ if(!isset($_SESSION['rol'])){
         </tr>
       </thead>
       <tbody>
+      <?php 
+    $id_producto=mysqli_fetch_array($res_id_producto);
+    $res_material = mysqli_query($conection,"SELECT * From material e JOIN productomaterial a ON e.ID_MATERIAL = a.FK_ID_MATERIAL AND a.FK_ID_PRODUCTO = '$id_producto[0]'");
+    ?>
         <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
+        <?php 
+        $total_MT = 0;
+    while($res_mostrar=mysqli_fetch_array($res_material)){?>
+          <td style="text-align:right"><?php echo $res_mostrar['codigoMaterial'] ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['nombreMaterial'] ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['cantidadMaterialInventario'] ?></td>
+          <?php  $cantidad_pedido = ($res_mostrar['cantidadMaterialProducto'] * $mostrar_producto['cantidadProductoSolicitado']);  ?>
+          <td style="text-align:right"><?php echo ($res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido ) ?></td>
+          <td style="text-align:right"><?php echo $cantidad_pedido ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['unidadMedidaMaterial'] ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['valorMaterial'] ?></td>
+          <?php $total_M = ($res_mostrar['valorMaterial'] * $cantidad_pedido);?>
+          <td style="text-align:right"><?php echo $total_M?></td>
+          <?php  $total_MT = $total_MT + $total_M ?>
         </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
+        <?php
+    } 
+    ?>
+
         <tr>
           <td colspan="7"></td>
-          <td style="text-align:right">204.000</td>
+          <td style="text-align:right"><?php echo $total_MT ?></td>
         </tr>
       </tbody>
+
     </table>
+    <?php
+    $costo_total = $costo_total + $total;
+    } 
+    ?>
     <hr> <!--------------------------------------------------------------------------------- Separador ------------------------------------------------------->
-    <p style="text-align:center; font-size:200%;">Producto 2</p>
-    <br>
-    <div class="form-row">
-      <div class="col-md-1 mb-3">
-        <label for="validationCustom01">Código</label>
-        <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom02">Nombre</label>
-        <input type="text" class="form-control" value="Shampoo limón 250ml" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom02">Cantidad</label>
-        <input type="text" class="form-control" value="10" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Valor Unidad</label>
-        <input style="text-align:right" type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>    </div>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Total</label>
-        <input style="text-align:right" type="text" class="form-control" value="137.700" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-    </div> 
-
-      <p style="text-align:center; font-size:200%;">Materiales</p>
-
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th style="text-align:center">Código</th>
-            <th style="text-align:center">Nombre</th>
-            <th style="text-align:center">Inventario<br>Inicial</th>
-            <th style="text-align:center">Inventario<br>Final</th>
-            <th style="text-align:center">Cantidad<br>Pedido</th>
-            <th style="text-align:center">Unidad</th>
-            <th style="text-align:center">Valor<br>Unitario</th>
-            <th style="text-align:center">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align:right">MT010</td>
-            <td style="text-align:right">D</td>
-            <td style="text-align:right">400</td>
-            <td style="text-align:right">360</td>
-            <td style="text-align:right">40</td>
-            <td style="text-align:right">Kg</td>
-            <td style="text-align:right">100</td>
-            <td style="text-align:right">4000</td>
-          </tr>
-          <tr>
-            <td style="text-align:right">MT010</td>
-            <td style="text-align:right">D</td>
-            <td style="text-align:right">400</td>
-            <td style="text-align:right">360</td>
-            <td style="text-align:right">40</td>
-            <td style="text-align:right">Kg</td>
-            <td style="text-align:right">100</td>
-            <td style="text-align:right">4000</td>
-          </tr>
-          <tr>
-            <td style="text-align:right">MT010</td>
-            <td style="text-align:right">D</td>
-            <td style="text-align:right">400</td>
-            <td style="text-align:right">360</td>
-            <td style="text-align:right">40</td>
-            <td style="text-align:right">Kg</td>
-            <td style="text-align:right">100</td>
-            <td style="text-align:right">4000</td>
-          </tr>
-          <tr>
-            <td style="text-align:right">MT010</td>
-            <td style="text-align:right">D</td>
-            <td style="text-align:right">400</td>
-            <td style="text-align:right">360</td>
-            <td style="text-align:right">40</td>
-            <td style="text-align:right">Kg</td>
-            <td style="text-align:right">100</td>
-            <td style="text-align:right">4000</td>
-          </tr>
-          <tr>
-            <td style="text-align:right">MT010</td>
-            <td style="text-align:right">D</td>
-            <td style="text-align:right">400</td>
-            <td style="text-align:right">360</td>
-            <td style="text-align:right">40</td>
-            <td style="text-align:right">Kg</td>
-            <td style="text-align:right">100</td>
-            <td style="text-align:right">4000</td>
-          </tr>
-          <td colspan="7"></td>
-          <td style="text-align:right">102.000</td>
-        </tbody>
-      </table>
+    
       <div class="form-row">
-       <div class="col-md-8 mb-3"></div>
-
-       <div class="col-md-2 mb-3">
+      <div class="col-md-8 mb-3"></div>
+      <div class="col-md-2 mb-3">
         <label style="text-align:center" for="validationCustom03">Costos Totales</label>
-        <input style="text-align:right" type="text" class="form-control" value="413.100" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $costo_total ?>" id="validationCustom01" aria-label="Disabled input example" required readonly>
       </div>
-    </div>
+    </div> <hr> <hr> <hr> <hr>
 
-  </form>
 </div> 
 </html>
 

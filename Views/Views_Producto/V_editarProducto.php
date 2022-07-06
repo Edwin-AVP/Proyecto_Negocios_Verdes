@@ -49,30 +49,38 @@
   </nav>
   <!------------------------------------------------------------------- END nav ------------------------------------------------------------------>
   <div class="container"><br><br><br><br><br>
-
-    <form class="needs-validation" novalidate action="../Views_Producto/V_producto.php">
+  <?php 
+  require_once "../../Controller/Controller_Producto/C_verProducto.php";
+  $produc=mysqli_fetch_array($result1)
+  ?>
+    <form method="POST" class="needs-validation" novalidate action="../../Controller/Controller_Producto/C_editarProducto.php">
       <bt><button class="btn btn-success float-right" type="submit">Editar Producto</button></bt>
       <br><br><br>
       <div class="form-row">
         <div class="col-md-2 mb-3">
           <label for="validationCustom01">Código Producto</label>
-          <input type="text" value="PR020" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
+          <input type="text" value="<?php echo $produc['codigoProducto'] ?>" name="codigo" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
+          <input type="hidden" type="text" value="<?php echo $produc['ID_PRODUCTO'] ?>" name="ID_PRODUCTO" class="form-control" id="validationCustom01" placeholder="id"  required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Escriba el codigo de producto</div>
         </div>
         <div class="col-md-3 mb-3">
-         <label for="validationCustom01">Nombre</label>
-         <input type="text" value="Shampoo Limón 250ml" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
-         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Escriba el nombre</div>
-       </div>
-       <div class="col-md-1 mb-3"></div>
-       <div class="col-md-4 mb-3">
-         <label for="validationCustom01">Nota</label>
-         <label>Recuerde que debe ingresar los materiales necesarios para la creación de un solo ítem.</label>
-       </div> 
-     </div>
-     <hr>                   
-     <div class="form-row"><!---------------------------------------------Titulos-------------------------------------------------------------------------->
-      <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Nombre</label>
+        <input type="text" value="<?php echo $produc['nombreProducto'] ?>" name="nombre" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Escriba el nombre</div>
+        </div>
+        <div class="col-md-2 mb-3">
+      <label for="validationCustom01">Valor Unidad</label>
+      <input type="text" value="<?php echo $produc['valorUnidad'] ?>" name="valor" class="form-control" id="validationCustom01" aria-label="Disabled input example" required>
+      </div> 
+        <div class="col-md-0"></div>
+        <div class="col-md-4 mb-3">
+        <label for="validationCustom01">Nota</label>
+        <label>Recuerde que debe ingresar los materiales necesarios para la creación de un solo ítem.</label>
+        </div> 
+      </div>
+      <hr>                   
+      <div class="form-row"><!---------------------------------------------Titulos-------------------------------------------------------------------------->
+      <div class="col-md-3 mb-3">
         <label for="validationCustom03">Material</label>
       </div>
       <div class="col-md-3 mb-3">
@@ -82,79 +90,43 @@
         <label for="validationCustom03">Unidad</label>
       </div>
     </div> 
+    <!-----------------------------------------------------------------------Agregar materiales existentes------------------------------------------------------->
+  <?php 
+    while($mostrar=mysqli_fetch_array($result2)){ 
+		?>
+    <div class="form-row" id="inputFormRow">
+<div class="col-md-3 mb-3" >
+<select class="form-control selectpicker" name="id_material[]"  id="id_material" onchange="ShowSelected()"  required aria-label="select example">
+<option class="form-control" value="<?php echo $mostrar['ID_MATERIAL']?>"><?php echo $mostrar['nombreMaterial'] ?></option>
+</select>
+<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Material</div>
+</div>
 
-    <div class="form-row"><!----------------------------------------------------------------------------------------------------------------------->
-      <div class="col-md-4 mb-3">
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">D</option>
-          <option class="form-control" value="1">E</option>
-          <option class="form-control" value="2">F</option>
-          <option class="form-control" value="3">G</option>
-        </select>
-        <div class="invalid-feedback">Seleccione un Material</div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <input type="number" value="2" class="form-control"  placeholder="Cantidad" required >
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <input type="text" value="Kg" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-      </div><button type="button" class="btn btn-danger bt-eliminar">Eliminar</button>
-    </div> 
+<div class="col-md-3 mb-3">
+<input type="number" name="cantida[]" id="cantida[]" class="form-control" value="<?php echo $mostrar['cantidadMaterialProducto'] ?>" placeholder="Cantidad" required >
+<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>
+</div>
 
-    <div class="form-row"><!----------------------------------------------------------------------------------------------------------------------->
-      <div class="col-md-4 mb-3">
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">D</option>
-          <option class="form-control" value="1">E</option>
-          <option class="form-control" value="2">F</option>
-          <option class="form-control" value="3">G</option>
-        </select>
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Material</div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <input type="number" value="6" class="form-control"  placeholder="Cantidad" required >
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <input type="text" value="Kg" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-      </div><button type="button" class="btn btn-danger bt-eliminar">Eliminar</button>
-    </div> 
-    <div class="form-row"><!----------------------------------------------------------------------------------------------------------------------->
-      <div class="col-md-4 mb-3">
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">f</option>
-          <option class="form-control" value="1">E</option>
-          <option class="form-control" value="2">D</option>
-          <option class="form-control" value="3">G</option>
-        </select>
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Material</div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <input type="number" value="8" class="form-control"  placeholder="Cantidad" required >
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <input type="text" value="Kg" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-      </div><button type="button" class="btn btn-danger bt-eliminar">Eliminar</button>
-    </div> 
-
+<div class="col-md-3 mb-3">
+<input type="text" name="id[]" id="idd" class="form-control" value="<?php echo $mostrar['unidadMedidaMaterial'] ?>"  placeholder="Unidad" aria-label="Disabled input example" readonly >
+</div>
     
+        <div class="col-md-3 mb-3">
+        <button id="removeRow" type="button" class="btn btn-danger">Borrar</button>
+        </div>
+        
+  </div>
+      <?php 
+	  }
+	    ?>
 
-    <script>    $(document).ready(function() {
-      $("#add_pro").click(function(){
-        var contador = $("input[type='text']").length;
-        $(this).before('<div required><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="material'+ contador +'" name="Material[]"><option  value="">Material</option><option  value="1">Material 1</option><option  value="2">Material 2</option><option  value="3">Material 3</option></select><div class="invalid-feedback">Seleccione un Material</div></div><div class="col-md-3 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="invalid-feedback">Seleccione un Material</div><div class="col-md-3 mb-3"><input type="text" value="" class="form-control" placeholder="Unidad" id="unidad'+ contador +'" aria-label="Disabled input example" required  readonly></div><button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div><div class="invalid-feedback">Seleccione una unidad</div>');
-
-      });
-
-      $(document).on('click', '.btn-danger', function(){
-        $(this).parent().remove();
-      });
-    });	</script> 
-
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <div id="newRow"></div>                
+      <button id="addRow" type="button" class="btn btn-info">+</button>
   </form>
-  <button class="btn btn-success" type="button" id="add_pro">+</button>
+  <?php 
+require_once "../../Controller/Controller_Producto/C_nuevoProducto.php";
+?>
   <script>
   // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
   (function() {
@@ -163,7 +135,7 @@
       // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
       var forms = document.getElementsByClassName('needs-validation');
      // Bucle sobre ellas y evitar la presentación
-     var validation = Array.prototype.filter.call(forms, function(form) {
+      var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
@@ -172,7 +144,7 @@
         form.classList.add('was-validated');
       }, false);
     });
-   }, false);
+    }, false);
   })();
 </script>
 </div>

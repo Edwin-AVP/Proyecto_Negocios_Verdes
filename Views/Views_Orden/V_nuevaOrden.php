@@ -49,23 +49,29 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!--------------------------------------------------------------------- END nav ---------------------------------------------------------->
 <div class="container"><br><br><br><br><br>
-
-  <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
+<?php 
+require_once "../../Controller/Controller_Orden/C_nuevaOrden.php";
+?>
+  <form method="POST"  class="needs-validation" novalidate action="../../Controller/Controller_Orden/C_guardarNuevaOrden.php">
     <bt><button class="btn btn-success float-right" type="submit">Crear Orden</button></bt>
     <br><br><br>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Número de Orden</label>
-        <input type="text" class="form-control" id="validationCustom01" placeholder="Número de Orden"  required>
+        <input type="text" class="form-control" name="numeroOrden" id="numeroOrden" placeholder="Número de Orden"  required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Número de orden</div>
       </div>
       <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Cliente</label><!-- Seleccionar Cliente -->
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="">Seleccione cliente</option>
-          <option class="form-control" value="1">Cliente 1</option>
-          <option class="form-control" value="2">Cliente 2</option>
-          <option class="form-control" value="3">Cliente 3</option>
+        <label>Cliente</label><!-- Seleccionar Cliente -->
+        <select class="form-control" name="selec_Cliente" id="selec_Cliente" onchange="ShowSelected()" required aria-label="select example">
+        <option class="form-control" value="">Seleccione cliente</option>
+    <?php 
+    while($mostrar=mysqli_fetch_array($result)){ 
+		?>
+    <option class="form-control" value="<?php echo $mostrar['ID_CLIENTE']?>/<?php echo $mostrar['telefono']?>/<?php echo $mostrar['direccion']?>/<?php echo $mostrar['IdentificacionCliente']?>/<?php echo $mostrar['tipoIdentificacion']?>"><?php echo $mostrar['nombreCliente']?></option>
+    <?php 
+	  }
+	  ?>
         </select>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un cliente</div>
       </div>
@@ -73,64 +79,88 @@ if(!isset($_SESSION['rol'])){
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Teléfono</label>
-        <input type="text" class="form-control" value="" placeholder="Teléfono" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="" placeholder="Teléfono" name="telefono" id="telefono" aria-label="Disabled input example" required readonly>
+        <input type="hidden" class="form-control" value="" placeholder="id_cliente" name="id_cliente" id="id_cliente" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Dirección</label>
-        <input type="text" class="form-control" value="" placeholder="Dirección" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="" placeholder="Dirección" name="direccion" id="direccion" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom04">Número Documento</label>
-        <input type="text" class="form-control" value="" placeholder="Número Documento" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="" placeholder="Número Documento" name="documento" id="documento" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-1 mb-3">
         <label for="validationCustom04">Tipo</label>
-        <input type="text" class="form-control" value="" placeholder="Tipo" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="" placeholder="Tipo" name="tipo" id="tipo" aria-label="Disabled input example" required readonly>
       </div>
     </div> 
     <hr> <!------------------------------------------------------------------------ Separador -------------------------------------------------------------------->
     <div class="form-row"> 
       <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Producto</label>
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="">Producto</option>
-          <option class="form-control" value="1">Producto 1</option>
-          <option class="form-control" value="2">Producto 2</option>
-          <option class="form-control" value="3">Producto 3</option>
-        </select>
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un producto</div>
+        <label>Producto</label>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom03">Cantidad</label>
-        <input type="number" class="form-control"  placeholder="Cantidad" required >
-        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese una cantidad</div>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom04">Valor Unitario</label>
-        <input type="text" class="form-control" value="" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom04">Total</label>
-        <input type="text" class="form-control" value="" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
       </div>
     </div> 
-
-
-    <script>    $(document).ready(function() {
-      $("#add_pro").click(function(){
-        var contador = $("input[type='text']").length;
-        $(this).before('<div><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="Producto'+ contador +'" name="Producto[]"><option  value="">Producto</option><option  value="1">Producto 1</option><option  value="2">Producto 2</option><option  value="3">Producto 3</option><div class="invalid-feedback">Seleccione un producto</div></select></div><div class="col-md-2 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" value="" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly id="Valoru'+ contador +'" name="Valor[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" value="" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly id="Total'+ contador +'" name="Total[]"/></div> <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div>');
-
-      });
-
-      $(document).on('click', '.btn-danger', function(){
-        $(this).parent().remove();
-      });
-    });	</script>
-
+<!----------------------------Agregar campo dinamico---------------------------------------------------------------------------------------------------------------->
+<div id="newRow"></div>                
+<button id="addRow" type="button" class="btn btn-info">+</button>
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
   </form>
+  <script type="text/javascript">
+// agregar registro
 
-  <button class="btn btn-success" type="button" id="add_pro">+</button>
+$("#addRow").click(function () {
+var html = '';
+html += '<div class="form-row" id="inputFormRow">';
+
+html += '<div class="col-md-4 mb-3" >';
+html += '<select class="form-control selectpicker" name="id_producto[]"  id="id_producto" onchange="ShowSelecte()"  required aria-label="select example">';
+html += '<option class="form-control" value="">Seleccione Producto</option>';
+html += '<?php while($mostra=mysqli_fetch_array($filter_result)){ ?>';
+html += '<option class="form-control" value="<?php echo $mostra['ID_PRODUCTO']?>" data="<?php echo $mostra['valorUnidad']?>"><?php echo $mostra['nombreProducto'] ?></option>';
+html += '<?php } ?>';
+html += '</select>';
+html += '<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un producto</div>';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<input type="number" name="cantida[]" id="cantida" class="form-control"  placeholder="Cantidad" required >';
+html += '<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<input type="text" name="valorunitario[]" id="valorunitario" class="form-control"  placeholder="Valor Unitario" aria-label="Disabled input example" readonly >';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<input type="text" name="total[]" id="total[]" class="form-control"  placeholder="Total" aria-label="Disabled input example" readonly >';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<button id="removeRow" type="button" class="btn btn-danger">Borrar</button>';
+html += '</div>';
+
+html += '</div> ';
+
+$('#newRow').append(html);
+});
+// borrar registro
+$(document).on('click', '#removeRow', function () {
+$(this).closest('#inputFormRow').remove();
+});
+
+</script>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+
   <div class="form-row">
     <div class="col-md-8 mb-3"> </div>
     <div class="col-md-2 mb-3">
@@ -139,6 +169,23 @@ if(!isset($_SESSION['rol'])){
       <div class="invalid-feedback"></div>
     </div>
   </div> 
+
+  <script type="text/javascript">
+        // funcion que se ejecuta cada vez que se selecciona una opción
+        function ShowSelected() {
+            
+        var selec = document.getElementById("selec_Cliente").value;
+        let arr = selec.split('/');
+          //var idd = cod.dataset.id;
+        document.getElementById("id_cliente").value = arr[0];
+        document.getElementById("telefono").value = arr[1];
+        document.getElementById("direccion").value = arr[2];
+        document.getElementById("documento").value = arr[3];
+        document.getElementById("tipo").value = arr[4];
+          //elQty.value = cod;
+          //alert(cod);
+        }
+    </script>
 
   <script>
   // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos

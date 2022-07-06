@@ -49,66 +49,54 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!------------------------------------------------------------------------------------- END nav --------------------------------------------------------->
 <div class="container"><br><br>
+<?php 
+require_once "../../Controller/Controller_Orden/C_historialOrden_MRP.php";
+$mostrar_cliente_orden=mysqli_fetch_array($res_orden);
+    ?>
   <a href="../Views_Orden/V_historialOrden.php" class="btn btn-success float-right" role="button">Atras</a>
   <br><br>
-  <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
     <b style="font-size:200%;">Historial MRP</b><br><br>
-
     <div class="form-row">
       <div class="col-md-2 mb-3">
-        <label for="validationCustom01">Número de Orden</label>
-        <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <label>Número de Orden</label>
+        <input type="text" class="form-control" value="<?php echo $mostrar_cliente_orden['numeroOrden'] ?>" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Nombre Cliente</label>
-        <input type="text" class="form-control" value="Fernando de la Cruz" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <input type="text" class="form-control" value="<?php echo $mostrar_cliente_orden['nombreCliente'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
-
-
     </div>
-
     <hr>  
-    <p style="text-align:center; font-size:200%;">Producto 1</p>
+    <?php
+    $y = 1; 
+    $costo_total =0;
+    while($mostrar_producto=mysqli_fetch_array($res_producto)){
+    ?>
+    <p style="text-align:center; font-size:200%;">Producto <?php echo $y ?> </p>
+    <?php  $y = $y+1; ?>
     <br>
     <div class="form-row">
       <div class="col-md-1 mb-3">
-        <label for="validationCustom01">Código</label>
-        <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <label>Código</label>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['codigoProducto'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Nombre</label>
-        <input type="text" class="form-control" value="Shampoo limón 500ml" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['nombreProducto'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom02">Cantidad</label>
-        <input type="text" class="form-control" value="20" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['cantidadProductoSolicitado'] ?>" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Valor Unidad</label>
-        <input style="text-align:right" type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
+        <label>Valor Unidad</label>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $mostrar_producto['valorUnidad'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Total</label>
-        <input style="text-align:right" type="text" class="form-control" value="275.400" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
+        <label>Total</label>
+        <?php $total = ($mostrar_producto['valorUnidad'] * $mostrar_producto['cantidadProductoSolicitado']) ?>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $total ?>"  aria-label="Disabled input example" required readonly>
       </div>
-
     </div> 
     <p style="text-align:center; font-size:200%;">Materiales</p>
     <table class="table table-bordered">
@@ -122,170 +110,54 @@ if(!isset($_SESSION['rol'])){
           <th style="text-align:center">Unidad</th>
           <th style="text-align:center">Valor<br>Unitario</th>
           <th style="text-align:center">Total</th>
-
         </tr>
       </thead>
       <tbody>
+      <?php 
+    $id_producto=mysqli_fetch_array($res_id_producto);
+    $res_material = mysqli_query($conection,"SELECT * From h_material where ID_PRODUCTO = '$id_producto[0]' and HM_ID_ORDEN = $mostrar_producto[FK_ID_ORDEN] ");
+    ?>
         <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
+        <?php 
+        $total_MT = 0;
+    while($res_mostrar=mysqli_fetch_array($res_material)){?>
+          <td style="text-align:right"><?php echo $res_mostrar['codigoMaterial'] ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['nombreMaterial'] ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['cantidadMaterialInventario'] ?></td>
+          <?php  $cantidad_pedido = ($res_mostrar['cantidad'] * $mostrar_producto['cantidadProductoSolicitado']);  ?>
+          <td style="text-align:right"><?php echo ($res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido ) ?></td>
+          <td style="text-align:right"><?php echo $cantidad_pedido ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['unidadMedidaMaterial'] ?></td>
+          <td style="text-align:right"><?php echo $res_mostrar['valorMaterial'] ?></td>
+          <?php $total_M = ($res_mostrar['valorMaterial'] * $cantidad_pedido);?>
+          <td style="text-align:right"><?php echo $total_M?></td>
+          <?php  $total_MT = $total_MT + $total_M ?>
         </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
+        <?php
+    } 
+    ?>
+
         <tr>
           <td colspan="7"></td>
-          <td style="text-align:right">204.000</td>
+          <td style="text-align:right"><?php echo $total_MT ?></td>
         </tr>
       </tbody>
+
     </table>
-
-    <hr><!--------------------------------------------------------------------- Separador ---------------------------------------------------------------->
-    <p style="text-align:center; font-size:200%;">Producto 2</p>
-    <br>
-    <div class="form-row">
-      <div class="col-md-1 mb-3">
-        <label for="validationCustom01">Código</label>
-        <input type="text" class="form-control" value="PR020" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationCustom02">Nombre</label>
-        <input type="text" class="form-control" value="Shampoo limón 250ml" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div>
+    <?php
+    $costo_total = $costo_total + $total;
+    } 
+    ?>
+    <hr> <!--------------------------------------------------------------------------------- Separador ------------------------------------------------------->
+    
+      <div class="form-row">
+      <div class="col-md-8 mb-3"></div>
       <div class="col-md-2 mb-3">
-        <label for="validationCustom02">Cantidad</label>
-        <input type="text" class="form-control" value="10" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <label style="text-align:center" for="validationCustom03">Costos Totales</label>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $costo_total ?>" id="validationCustom01" aria-label="Disabled input example" required readonly>
       </div>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Valor Unidad</label>
-        <input style="text-align:right" type="text" class="form-control" value="13.770" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      <div class="col-md-2 mb-3">
-        <label for="validationCustom03">Total</label>
-        <input style="text-align:right" type="text" class="form-control" value="137.700" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      </div> 
-
-    <p style="text-align:center; font-size:200%;">Materiales</p>
-
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th style="text-align:center">Código</th>
-          <th style="text-align:center">Nombre</th>
-          <th style="text-align:center">Inventario<br>Inicial</th>
-          <th style="text-align:center">Inventario<br>Final</th>
-          <th style="text-align:center">Cantidad<br>Pedido</th>
-          <th style="text-align:center">Unidad</th>
-          <th style="text-align:center">Valor<br>Unitario</th>
-          <th style="text-align:center">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <tr>
-          <td style="text-align:right">MT010</td>
-          <td style="text-align:right">D</td>
-          <td style="text-align:right">400</td>
-          <td style="text-align:right">360</td>
-          <td style="text-align:right">40</td>
-          <td style="text-align:right">Kg</td>
-          <td style="text-align:right">100</td>
-          <td style="text-align:right">4000</td>
-        </tr>
-        <td colspan="7"></td>
-        <td style="text-align:right">102.000</td>
-      </tbody>
-    </table>
-    <div class="form-row">
-     <div class="col-md-8 mb-3"></div>
-     <div class="col-md-2 mb-3">
-      <label style="text-align:center" for="validationCustom03">Costos Totales</label>
-      <input style="text-align:right" type="text" class="form-control" value="413.100" id="validationCustom01" aria-label="Disabled input example" required readonly>
-      <div class="invalid-feedback"></div>
     </div>
-  </div>
-</form>
+
 </div> 
 </html>
 

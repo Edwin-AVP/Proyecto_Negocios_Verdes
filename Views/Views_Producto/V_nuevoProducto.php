@@ -1,13 +1,8 @@
   <?php
   session_start();
-
   if(!isset($_SESSION['rol'])){ 
     header('location: ../login.php');
   }
-
- 
-
-
   ?>
   <!doctype html>
     <html lang="en">
@@ -76,78 +71,35 @@
         <input type="number" step="any" value="" class="form-control" name="valor" id="valor" placeholder="Valor Unidad"  required>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese valor producto</div>
       </div> 
-        <div class="col-md-1 mb-3"></div>
+        <div class="col-md-0"></div>
         <div class="col-md-4 mb-3">
           <label for="validationCustom01">Nota</label>
           <label>Recuerde que debe ingresar los materiales necesarios para la creación de un solo ítem.</label>
         </div> 
 
       </div>
-      <hr>   
+      <hr> 
+      <div class="form-row"><!---------------------------------------------Titulos-------------------------------------------------------------------------->
+      <div class="col-md-3 mb-3">
+        <label>Material</label>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Cantidad</label>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Unidad</label>
+      </div>
+    </div>       
+      
       <div id="newRow"></div>                
       <button id="addRow" type="button" class="btn btn-info">+</button>
 
-<?php 
-require_once "../../Controller/Controller_Producto/C_nuevoProducto.php";
-?>
+
 </form>
 
-    <script type="text/javascript">
-
-        // funcion que se ejecuta cada vez que se selecciona una opción
-
-        function ShowSelected() {
-            
-          var cod = document.getElementById("id_material").value;
-          //var idd = cod.dataset.id;
-          document.getElementById("id").value = cod;
-          //elQty.value = cod;
-          //alert(cod);
-        }
-    </script>
-<script type="text/javascript">
-// agregar registro
 <?php 
 require_once "../../Controller/Controller_Producto/C_nuevoProducto.php";
 ?>
-$("#addRow").click(function () {
-var html = '';
-html += '<div class="form-row" id="inputFormRow">';
-
-html += '<div class="col-md-3 mb-3" >';
-html += '<select class="form-control selectpicker" name="id_material[]"  id="id_material" onchange="ShowSelected()"  required aria-label="select example">';
-html += '<option class="form-control" value="">Seleccione Material</option>';
-html += '<?php while($mostra=mysqli_fetch_array($filter_result)){ ?>';
-html += '<option class="form-control" value="<?php echo $mostra['ID_MATERIAL']?>" data="<?php echo $mostra['unidadMedidaMaterial']?>"><?php echo $mostra['nombreMaterial'] ?></option>';
-html += ' <?php } ?>';
-html += '</select>';
-html += '<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un Material</div>';
-html += '</div>';
-
-html += '<div class="col-md-3 mb-3">';
-html += '<input type="number" name="cantida[]" id="cantida[]" class="form-control"  placeholder="Cantidad" required >';
-html += '<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>';
-html += '</div>';
-
-html += '<div class="col-md-3 mb-3">';
-html += '<form name="FormABC">';
-html += '<input type="text" name="id[]" id="id" class="form-control"  placeholder="Unidad" aria-label="Disabled input example" readonly >';
-html += '</form>';
-html += '</div>';
-
-html += '<div class="col-md-3 mb-3">';
-html += '<button id="removeRow" type="button" class="btn btn-danger">Borrar</button>';
-html += '</div>';
-
-html += '</div> ';
-
-$('#newRow').append(html);
-});
-// borrar registro
-$(document).on('click', '#removeRow', function () {
-$(this).closest('#inputFormRow').remove();
-});
-</script>
 
   <script>
   // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos

@@ -126,33 +126,6 @@ $mostrar=mysqli_fetch_array($result1)
       <?php 
 	  }
 	    ?>
-      <!--<div class="form-row"> 
-Textos completos
-ID_PRODUCTO	
-nombreProducto	
-codigoProducto	
-valorUnidad
-
-
-Textos completos
-ID_ORDEN_PRODUCTO	
-cantidadProductoSolicitado	
-FK_ID_ORDEN	
-FK_ID_PRODUCTO	
-        <div class="col-md-4 mb-3">
-          <input type="text" class="form-control" value="Producto 3" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        </div>
-        <div class="col-md-2 mb-3">
-          <input type="number" value="10" class="form-control"  placeholder="Cantidad" aria-label="Disabled input example" required readonly  >
-        </div>
-        <div class="col-md-2 mb-3">
-          <input type="text" class="form-control" value="13.770" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        </div>
-        <div class="col-md-2 mb-3">
-          <input type="text" class="form-control" value="137.700" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        </div>
-      </div> -->
-   
     <div class="form-row">
       <div class="col-md-8 mb-3"> </div>
       <div class="col-md-2 mb-3">

@@ -45,10 +45,10 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!-------------------------------------------------------------------------------- END nav ---------------------------------------------------------------->
 <div class="container"><br><br><br><br>   
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-  </form><br>
+<form action="" method="POST"  class="form-inline">
+    <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+    </form><br>
   <a href="../Views_Orden/V_nuevaOrden.php" class="btn btn-success float-right" role="button">Nuevo Orden</a>
   <a href="../Views_Orden/V_historialOrden.php" class="btn btn-success float-right" role="button">Historial</a>
   <br><br><br>
@@ -73,50 +73,24 @@ while($mostrar=mysqli_fetch_array($result)){
     <td><?php echo $mostrar['fecha'] ?></td>
 
     <td>
-        <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
+      
+        <a <?php echo "href='../Views_Orden/V_MRP.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-primary" role="button">MRP</a>
         <a <?php echo "href='../Views_Orden/V_verOrden.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-info" role="button">Ver</a>
-        <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
-        <a href="#" class="btn btn-danger" role="button">Cancelar</a>
+        <a <?php echo "href='../Views_Orden/V_editarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-success" role="button">Editar</a>
+        <a <?php echo "href='../../Controller/Controller_Orden/C_cancelarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?> class="btn btn-danger" role="button">Cancelar</a>
+        <?php if($mostrar['estado'] == 1 ){
+        ?><a <?php echo "href='../../Controller/Controller_Orden/C_pausarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?> class="btn btn-secondary" role="button">Pausar</a>
+          <?php
+            }else{if($mostrar['estado'] == 0 ){
+              ?><a <?php echo "href='../../Controller/Controller_Orden/C_continuarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-primary " role="button">Continuar</a>  <?php
+          }
+          }
+          ?>
     </td>
   </tr>
   <?php 
 }
   ?>
-      
-      <!--<tr>
-        <td>TP025</td>
-        <td>John jose bartolomedo</td>
-        <td>listo</td>
-        <td>
-          <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
-          <a href="../Views_Orden/V_verOrden.php" class="btn btn-info" role="button">Ver</a>
-          <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
-          <a href="#" class="btn btn-danger" role="button">Cancelar</a>
-        </td>
-      </tr>
-      <tr>
-        <td>TP025</td>
-        <td>John jose bartolomedo</td>
-        <td>listo</td>
-        <td>
-          <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
-          <a href="../Views_Orden/V_verOrden.php" class="btn btn-info" role="button">Ver</a>
-          <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
-          <a href="#" class="btn btn-danger" role="button">Cancelar</a>
-        </td>
-      </tr>
-      <tr>
-        <td>TP025</td>
-        <td>John jose bartolomedo</td>
-        <td>listo</td>
-        <td>
-          <a href="../Views_Orden/V_MRP.php" class="btn btn-primary" role="button">MRP</a>
-          <a href="../Views_Orden/V_verOrden.php" class="btn btn-info" role="button">Ver</a>
-          <a href="../Views_Orden/V_editarOrden.php" class="btn btn-success" role="button">Editar</a>
-          <a href="#" class="btn btn-danger" role="button">Cancelar</a>
-        </td>
-      </tr>
-    </tbody>-->
   </table>
 </div>
 <br><br><br>

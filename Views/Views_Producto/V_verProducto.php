@@ -26,16 +26,16 @@ if(!isset($_SESSION['rol'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
-   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-     <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
       <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="fa fa-bars"></span> Menu
-     </button>
-     <div class="collapse navbar-collapse" id="ftco-nav">
-       <ul class="navbar-nav m-auto">
-           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
-           <?php if($_SESSION['rol'] == 1 ){?>
+      <span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+          <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+          <?php if($_SESSION['rol'] == 1 ){?>
         <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
             }
           ?>
@@ -63,17 +63,17 @@ $produc=mysqli_fetch_array($result1)
         <input type="text" value="<?php echo $produc['codigoProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
       </div>
       <div class="col-md-3 mb-3">
-       <label for="validationCustom01">Nombre</label>
-       <input type="text" value="<?php echo $produc['nombreProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-     </div> 
-     <div class="col-md-2 mb-3">
-       <label for="validationCustom01">Valor Unidad</label>
-       <input type="text" value="<?php echo $produc['valorUnidad'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
-     </div> 
-   </div><!----------------------------------------------------------------------------------------------------------------------->
-   <hr>  
-   <div class="form-row">
-  <div class="col-md-4 mb-3">
+      <label for="validationCustom01">Nombre</label>
+      <input type="text" value="<?php echo $produc['nombreProducto'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+      </div> 
+      <div class="col-md-2 mb-3">
+      <label for="validationCustom01">Valor Unidad</label>
+      <input type="text" value="<?php echo $produc['valorUnidad'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
+      </div> 
+  </div><!----------------------------------------------------------------------------------------------------------------------->
+  <hr>  
+  <div class="form-row">
+  <div class="col-md-3 mb-3">
       <label for="validationCustom03">Material</label>
     </div>
     <div class="col-md-3 mb-3">
@@ -83,11 +83,11 @@ $produc=mysqli_fetch_array($result1)
       <label for="validationCustom03">Unidad</label>
     </div>
   </div>
-     <?php 
-   while($mostrar=mysqli_fetch_array($result4)){
-		 ?>
+    <?php 
+    while($mostrar=mysqli_fetch_array($result2)){
+		?>
         <div class="form-row">
-  <div class="col-md-4 mb-3">
+  <div class="col-md-3 mb-3">
       <input type="text" value="<?php echo $mostrar['nombreMaterial'] ?>" class="form-control" id="validationCustom01" aria-label="Disabled input example" required  readonly>
     </div>
     <div class="col-md-3 mb-3">

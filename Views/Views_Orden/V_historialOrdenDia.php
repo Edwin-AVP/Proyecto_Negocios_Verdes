@@ -48,10 +48,10 @@ if(!isset($_SESSION['rol'])){
 <div class="container"><br><br>
   <b style="font-size:200%;">Historial</b>
   <br>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-  </form><br>
+  <form action="" method="POST"  class="form-inline">
+    <input class="form-control mr-sm-2" name="valueToSearh" type="search" placeholder="Search" aria-label="Search">
+          <button type="submit" name="search" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+    </form><br>
   <a href="../Views_Orden/V_orden.php" class="btn btn-success float-right" role="button">Atras</a>
   <br><br><br>
   <table class="table ">
@@ -63,28 +63,22 @@ if(!isset($_SESSION['rol'])){
       </tr>
     </thead>
     <tbody>
+    <?php 
+require_once "../../Controller/Controller_Orden/C_historialOrdenDia.php";
+while($mostrar=mysqli_fetch_array($result)){
+    ?>
       <tr>
-        <td>N.28.03.22</td>
-        <td>Marzo 28/03/2022</td>
+      <td><?php echo $mostrar['codigo'] ?></td>
+      <td><?php echo $mostrar['fecha'] ?></td>
         <td>
-          <a href="../Views_Orden/V_historialOrdenDia_ver.php" class="btn btn-primary" role="button">MRP</a>
-        </td>
-      </tr>
-      <tr>
-        <td>N.28.03.22</td>
-        <td>Marzo 28/03/2022</td>
-        <td>
-          <a href="../Views_Orden/V_historialOrdenDia_ver.php" class="btn btn-primary" role="button">MRP</a>
-        </td>
-      </tr>
-      <tr>
-        <td>N.28.03.22</td>
-        <td>Marzo 28/03/2022</td>
-        <td>
-          <a href="../Views_Orden/V_historialOrdenDia_ver.php" class="btn btn-primary" role="button">MRP</a>
+          <a <?php echo "href='../Views_Orden/V_historialOrdenDia_ver.php?id=".$mostrar['ID_ORDENDELDIA']."'" ?>class="btn btn-primary" role="button">MRP</a>
         </td>
       </tr>
     </tbody>
+
+    <?php 
+}
+  ?>
   </table>
 </div>
 </html>

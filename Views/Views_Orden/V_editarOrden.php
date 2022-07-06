@@ -49,44 +49,56 @@ if(!isset($_SESSION['rol'])){
 </nav>
 <!------------------------------------------------------------------------ END nav --------------------------------------------------------------->
 <div class="container"><br><br><br><br><br>
-  <form class="needs-validation" novalidate action="../Views_Orden/V_orden.php">
+<?php 
+require_once "../../Controller/Controller_Orden/C_editarOrden.php";
+$result_cliente=mysqli_fetch_array($result_cliente);
+$mostrar=mysqli_fetch_array($result);
+?>
+  <form method="POST" class="needs-validation" novalidate action="../../Controller/Controller_Orden/C_guardarEditarOrden.php">
     <bt><button class="btn btn-success float-right" type="submit">Editar Orden</button></bt>
     <br><br><br>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Número de Orden</label>
-        <input type="text" value="TP025" class="form-control" id="validationCustom01" placeholder="Numero de Orden"  required>
-        <div class="valid-feedback">
-          Bien!
-        </div>
+        <input type="text" class="form-control" value="<?php echo $result_cliente['numeroOrden']?>" name="numeroOrden" id="numeroOrden" placeholder="Número de Orden"  required>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Número de orden</div>
       </div>
       <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Cliente</label><!-- Seleccionar Cliente -->
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">Cliente 1</option>
-          <option class="form-control" value="2">Cliente 2</option>
-          <option class="form-control" value="3">Cliente 3</option>
-          <option class="form-control" value="4">Cliente 4</option>
+        <label>Cliente</label><!-- Seleccionar Cliente -->
+        <select class="form-control" name="selec_Cliente" id="selec_Cliente" onchange="ShowSelected()" required aria-label="select example">
+        <option selected class="form-control" value="<?php echo $mostrar['ID_CLIENTE']?>/<?php echo $mostrar['telefono']?>/<?php echo $mostrar['direccion']?>
+        /<?php echo $mostrar['IdentificacionCliente']?>/<?php echo $mostrar['tipoIdentificacion']?>"><?php echo $result_cliente['nombreCliente']?></option>
+    <?php 
+    while($mostrar=mysqli_fetch_array($result)){ 
+      
+		?>
+
+    <option class="form-control" value="<?php echo $mostrar['ID_CLIENTE']?>/<?php echo $mostrar['telefono']?>/<?php echo $mostrar['direccion']?>/<?php echo $mostrar['IdentificacionCliente']?>/<?php echo $mostrar['tipoIdentificacion']?>"><?php echo $mostrar['nombreCliente']?></option>
+    <?php 
+	  }
+	  ?>
         </select>
-        <div class="invalid-feedback">Seleccione un cliente</div>
+        <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un cliente</div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Teléfono</label>
-        <input type="text" class="form-control" value="7516364" placeholder="Teléfono" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $result_cliente['telefono']?>" placeholder="Teléfono"  id="telefono" aria-label="Disabled input example" required readonly>
+        <input type="hidden" class="form-control" value="<?php echo $result_cliente['ID_CLIENTE']?>" name="id_cliente" id="id_cliente" aria-label="Disabled input example" readonly>
+        <input type="hidden" class="form-control" value="<?php echo $result_cliente['ID_ORDEN']?>" name="id_orden" id="id_orden" aria-label="Disabled input example" readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom03">Dirección</label>
-        <input type="text" class="form-control" value="Calle 95 # 5-25" placeholder="Dirección" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $result_cliente['direccion']?>" placeholder="Dirección" id="direccion" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom04">Número Documento</label>
-        <input type="text" class="form-control" value="9007824596" placeholder="Número Documento" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $result_cliente['IdentificacionCliente']?>" placeholder="Número Documento" id="documento" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-1 mb-3">
         <label for="validationCustom04">Tipo</label>
-        <input type="text" class="form-control" value="NIT" placeholder="Tipo" id="validationCustom01" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $result_cliente['tipoIdentificacion']?>" placeholder="Tipo" id="tipo" aria-label="Disabled input example" required readonly>
       </div>
     </div> 
     <hr>   <!-------------------------------------------------------------------- Separador ----------------------------------------------------------------------->
@@ -104,82 +116,121 @@ if(!isset($_SESSION['rol'])){
         <label for="validationCustom04">Total</label>
       </div>
     </div> 
-    <div class="form-row"> <!-- div de Productos -->
-      <div class="col-md-4 mb-3">
-        <!-- Seleccionar producto -->
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">Producto 1</option>
-          <option class="form-control" value="1">Producto 1</option>
-          <option class="form-control" value="2">Producto 2</option>
-          <option class="form-control" value="3">Producto 3</option>
-        </select>
-        <div class="invalid-feedback">Seleccione un producto</div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <input type="number" value="20" class="form-control"  placeholder="Cantidad" required >
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <input type="text" class="form-control" value="13.770" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <input type="text" class="form-control" value="275.400" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button>
-    </div>
+<!--------------------------------------------------------------------------------->
+<?php 
+require_once "../../Controller/Controller_Orden/C_verOrden.php";
+      $sumatotal = 0;
+    while($mostrar=mysqli_fetch_array($result2)){
+		?>
+<div class="form-row" id="inputFormRow">
+<div class="col-md-4 mb-3" >
+<select class="form-control selectpicker" name="id_producto[]"  id="id_producto" onchange="ShowSelecte()"  required aria-label="select example">
 
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <select class="form-control" required aria-label="select example">
-          <option class="form-control" value="1">Producto 2</option>
-          <option class="form-control" value="1">Producto 1</option>
-          <option class="form-control" value="2">Producto 2</option>
-          <option class="form-control" value="3">Producto 3</option>
-        </select>
-        <div class="invalid-feedback">Seleccione un producto</div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <input type="number" value="10" class="form-control"  placeholder="Cantidad" required >
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <input type="text" class="form-control" value="13.770" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <div class="col-md-2 mb-3">
-        <input type="text" class="form-control" value="137.700" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
-        <div class="invalid-feedback"></div>
-      </div>
-      <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button>
-    </div> 
+<option class="form-control" value="<?php echo $mostrar['ID_PRODUCTO']?>"><?php echo $mostrar['nombreProducto'] ?></option>
 
+</select>
+<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un producto</div>
+</div>
 
-    <script>    $(document).ready(function() {
-      $("#add_pro").click(function(){
-        var contador = $("input[type='text']").length;
-        $(this).before('<div><div class="form-row"><div class="col-md-4 mb-3"> <select  class="form-control" required aria-label="select example" id="Producto'+ contador +'" name="Producto[]"><option  value="">Producto</option><option  value="1">Producto 1</option><option  value="2">Producto 2</option><option  value="3">Producto 3</option><div class="invalid-feedback">Seleccione un producto</div></select></div><div class="col-md-2 mb-3"> <input type="number" class="form-control" placeholder="Cantidad" required id="cantidad'+ contador +'" name="cantidad[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" value="" placeholder="Valor Unitario" id="validationCustom01" aria-label="Disabled input example" required readonly id="Valoru'+ contador +'" name="Valor[]"/></div><div class="col-md-2 mb-3"> <input type="text" class="form-control" value="" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly id="Total'+ contador +'" name="Total[]"/></div> <button type="button" class="btn btn-danger bt-eliminar">Eliminar</button></div></div>');
+<div class="col-md-2 mb-3">
+<input type="number" name="cantida[]" value="<?php echo $mostrar['cantidadProductoSolicitado'] ?>" id="cantida" class="form-control"  placeholder="Cantidad" required >
+<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>
+</div>
 
-      });
+<div class="col-md-2 mb-3">
+<input type="text" class="form-control" value="<?php echo $mostrar['valorUnidad'] ?>" placeholder="Valor Unitario"  aria-label="Disabled input example" required readonly>
+</div>
+<?php 
+        $total =0;  
+        $total = ($mostrar['cantidadProductoSolicitado'] * $mostrar['valorUnidad']);
+        $sumatotal = $total + $sumatotal; 
+        ?>
+<div class="col-md-2 mb-3">
+<input type="text" class="form-control" value="<?php echo $total?>" placeholder="Total"  aria-label="Disabled input example" required readonly>
+</div>
 
-      $(document).on('click', '.btn-danger', function(){
-        $(this).parent().remove();
-      });
-    });	</script>
+<div class="col-md-2 mb-3">
+<button id="removeRow" type="button" class="btn btn-danger">Borrar</button>
+</div>
+</div>
+<?php 
+	}
+	?> 
+    <div id="newRow"></div>                
+<button id="addRow" type="button" class="btn btn-info">+</button>
 
-  </form>
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+</form>
+  <script type="text/javascript">
+// agregar registro
 
-  <button class="btn btn-success" type="button" id="add_pro">+</button>
+$("#addRow").click(function () {
+var html = '';
+html += '<div class="form-row" id="inputFormRow">';
+
+html += '<div class="col-md-4 mb-3" >';
+html += '<select class="form-control selectpicker" name="id_producto[]"  id="id_producto" onchange="ShowSelecte()"  required aria-label="select example">';
+html += '<option class="form-control" value="">Seleccione Producto</option>';
+html += '<?php while($mostra=mysqli_fetch_array($filter_result)){ ?>';
+html += '<option class="form-control" value="<?php echo $mostra['ID_PRODUCTO']?>" data="<?php echo $mostra['valorUnidad']?>"><?php echo $mostra['nombreProducto'] ?></option>';
+html += '<?php } ?>';
+html += '</select>';
+html += '<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione un producto</div>';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<input type="number" name="cantida[]" id="cantida" class="form-control"  placeholder="Cantidad" required >';
+html += '<div class="valid-feedback">Bien!</div><div class="invalid-feedback">Digite una cantidad</div>';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<input type="text"  id="valorunitario" class="form-control"  placeholder="Valor Unitario" aria-label="Disabled input example" readonly >';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<input type="text"  id="total" class="form-control"  placeholder="Total" aria-label="Disabled input example" readonly >';
+html += '</div>';
+
+html += '<div class="col-md-2 mb-3">';
+html += '<button id="removeRow" type="button" class="btn btn-danger">Borrar</button>';
+html += '</div>';
+
+html += '</div> ';
+
+$('#newRow').append(html);
+});
+// borrar registro
+$(document).on('click', '#removeRow', function () {
+$(this).closest('#inputFormRow').remove();
+});
+
+</script>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+  
   <div class="form-row">
     <div class="col-md-8 mb-3"> </div>
     <div class="col-md-2 mb-3">
       <label for="validationCustom04">Total</label>
-      <input type="text" class="form-control" value="413.100" placeholder="Total" id="validationCustom01" aria-label="Disabled input example" required readonly>
+      <input type="text" class="form-control" value="<?php echo $sumatotal?>" placeholder="Total"  aria-label="Disabled input example" required readonly>
       <div class="invalid-feedback"></div>
     </div>
   </div> 
-
+  <script type="text/javascript">
+        // funcion que se ejecuta cada vez que se selecciona una opción
+        function ShowSelected() {
+            
+        var selec = document.getElementById("selec_Cliente").value;
+        let arr = selec.split('/');
+          //var idd = cod.dataset.id;
+        document.getElementById("id_cliente").value = arr[0];
+        document.getElementById("telefono").value = arr[1];
+        document.getElementById("direccion").value = arr[2];
+        document.getElementById("documento").value = arr[3];
+        document.getElementById("tipo").value = arr[4];
+          //elQty.value = cod;
+          //alert(cod);
+        }
+    </script>
   <script>
   // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
   (function() {
