@@ -77,7 +77,7 @@ while($mostrar=mysqli_fetch_array($result)){
         <a <?php echo "href='../Views_Orden/V_MRP.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-primary" role="button">MRP</a>
         <a <?php echo "href='../Views_Orden/V_verOrden.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-info" role="button">Ver</a>
         <a <?php echo "href='../Views_Orden/V_editarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?>class="btn btn-success" role="button">Editar</a>
-        <a <?php echo "href='../../Controller/Controller_Orden/C_cancelarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?> class="btn btn-danger" role="button">Cancelar</a>
+        <a <?php echo "href='javascript:preguntar(".$mostrar['ID_ORDEN'].")'" ?>class="btn btn-danger" role="button">Cancelar</a>
         <?php if($mostrar['estado'] == 1 ){
         ?><a <?php echo "href='../../Controller/Controller_Orden/C_pausarOrden.php?id=".$mostrar['ID_ORDEN']."'" ?> class="btn btn-secondary" role="button">Pausar</a>
           <?php
@@ -92,6 +92,13 @@ while($mostrar=mysqli_fetch_array($result)){
 }
   ?>
   </table>
+  <script language="JavaScript">
+function preguntar(contacto){//comfirmacion para cancelar orden
+    if (confirm('¿Estas seguro que desea eliminar este producto?')){
+      window.location.href="../../Controller/Controller_Orden/C_cancelarOrden.php?id="+contacto;
+    }
+}
+</script>
 </div>
 <br><br><br>
 <div class="container">

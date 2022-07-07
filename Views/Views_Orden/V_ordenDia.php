@@ -124,7 +124,7 @@ require_once "../../Controller/Controller_Orden/C_ordendia.php";
       <?php 
     $id_producto=mysqli_fetch_array($res_id_producto);
   
-    $res_material = mysqli_query($conection,"SELECT * From h_material e JOIN productomaterial a ON e.ID_MATERIAL = a.FK_ID_MATERIAL where e.ID_PRODUCTO = a.FK_ID_PRODUCTO AND a.FK_ID_PRODUCTO = $result[9] AND e.HM_ID_ORDEN = $result[0]");
+    $res_material = mysqli_query($conection,"SELECT * From h_material WHERE  ID_PRODUCTO = $result[9]  AND  HM_ID_ORDEN = $result[0]");
     ?>
         <tr>
         <?php 
@@ -137,7 +137,7 @@ require_once "../../Controller/Controller_Orden/C_ordendia.php";
           <td style="text-align:right"><?php echo $res_mostrar['nombreMaterial'] ?></td>
           <?php
           $si = true;
-          $cantidad_pedido = ($res_mostrar['cantidadMaterialProducto'] * $result4[0]);  
+          $cantidad_pedido = ($res_mostrar['cantidad'] * $result4[0]);  
           $longitud = count($arr_cantidad);
           for($i=0; $i<$longitud; $i++)
           {

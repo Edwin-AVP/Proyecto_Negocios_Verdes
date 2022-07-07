@@ -71,6 +71,9 @@ $mostrar_cliente_orden=mysqli_fetch_array($res_orden);
     <?php
     $y = 1; 
     $costo_total =0;
+    $arr_cantidad = array (
+      array("xx","000")
+);
     while($mostrar_producto=mysqli_fetch_array($res_producto)){
     ?>
     <p style="text-align:center; font-size:200%;">Producto <?php echo $y ?> </p>
@@ -124,9 +127,32 @@ $mostrar_cliente_orden=mysqli_fetch_array($res_orden);
     while($res_mostrar=mysqli_fetch_array($res_material)){?>
           <td style="text-align:right"><?php echo $res_mostrar['codigoMaterial'] ?></td>
           <td style="text-align:right"><?php echo $res_mostrar['nombreMaterial'] ?></td>
-          <td style="text-align:right"><?php echo $res_mostrar['cantidadMaterialInventario'] ?></td>
-          <?php  $cantidad_pedido = ($res_mostrar['cantidadMaterialProducto'] * $mostrar_producto['cantidadProductoSolicitado']);  ?>
-          <td style="text-align:right"><?php echo ($res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido ) ?></td>
+          <?php
+          $si = true;
+          $cantidad_pedido = ($res_mostrar['cantidadMaterialProducto'] * $mostrar_producto['cantidadProductoSolicitado']);  
+          $longitud = count($arr_cantidad);
+          for($i=0; $i<$longitud; $i++)
+          {
+            if($arr_cantidad[$i][0] == $res_mostrar['codigoMaterial']){
+              ?>
+              <td style="text-align:right"><?php echo $arr_cantidad[$i][1] ?></td>
+              <?php 
+              $arr_cantidad[$i][1] = ($arr_cantidad[$i][1] - $cantidad_pedido );
+              ?>
+              <td style="text-align:right"><?php echo $arr_cantidad[$i][1] ?></td>
+              <?php 
+              $si = false;
+            }
+          }
+          if($si == true){
+            ?>
+            <td style="text-align:right"><?php echo $res_mostrar['cantidadMaterialInventario']  ?></td>
+            <td style="text-align:right"><?php echo ($res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido ) ?></td>
+            <?php
+            $cantidad_guardar = $res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido;
+            array_push($arr_cantidad, array ( $res_mostrar['codigoMaterial'],$cantidad_guardar));
+          }
+          ?>
           <td style="text-align:right"><?php echo $cantidad_pedido ?></td>
           <td style="text-align:right"><?php echo $res_mostrar['unidadMedidaMaterial'] ?></td>
           <td style="text-align:right"><?php echo $res_mostrar['valorMaterial'] ?></td>

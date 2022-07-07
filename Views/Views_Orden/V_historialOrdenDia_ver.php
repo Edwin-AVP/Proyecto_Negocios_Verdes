@@ -70,13 +70,8 @@ require_once "../../Controller/Controller_Orden/C_historialOrdenDia_ver.php";
     $arr_cantidad = array (
       array("xx","000")
 );
-    while($result=mysqli_fetch_array($result1)){
-      $id_p = $result[0];
-      $result2 = mysqli_query($conection,"SELECT * from h_producto where ID_PRODUCTO = '$result[0]'");
-      $result_P=mysqli_fetch_array($result2);
-      $result3 = mysqli_query($conection,"SELECT SUM(cantidadProductoSolicitado) from orden a JOIN ordenproducto e on a.ID_ORDEN = e.FK_ID_ORDEN and a.estado = 1 
-      where e.FK_ID_PRODUCTO = '$result[0]'");
-      $result=mysqli_fetch_array($result3);
+    while($mostrar_producto=mysqli_fetch_array($res_producto)){
+
     ?>
     <p style="text-align:center; font-size:200%;">Producto <?php echo $y ?> </p>
     <?php  $y = $y+1; ?>
@@ -84,23 +79,23 @@ require_once "../../Controller/Controller_Orden/C_historialOrdenDia_ver.php";
     <div class="form-row">
       <div class="col-md-1 mb-3">
         <label>Código</label>
-        <input type="text" class="form-control" value="<?php echo $result_P['codigoProducto'] ?>"  aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['codigoProducto'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">Nombre</label>
-        <input type="text" class="form-control" value="<?php echo $result_P['nombreProducto'] ?>"  aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['nombreProducto'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustom02">Cantidad</label>
-        <input type="text" class="form-control" value="<?php echo $result[0] ?>" aria-label="Disabled input example" required readonly>
+        <input type="text" class="form-control" value="<?php echo $mostrar_producto['cantidadProductoSolicitado'] ?>" aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
         <label>Valor Unidad</label>
-        <input style="text-align:right" type="text" class="form-control" value="<?php echo $result_P['valorUnidad'] ?>"  aria-label="Disabled input example" required readonly>
+        <input style="text-align:right" type="text" class="form-control" value="<?php echo $mostrar_producto['valorUnidad'] ?>"  aria-label="Disabled input example" required readonly>
       </div>
       <div class="col-md-2 mb-3">
         <label>Total</label>
-        <?php $total = ($result_P['valorUnidad'] * $result[0]) ?>
+        <?php $total = ($mostrar_producto['valorUnidad'] * $mostrar_producto['cantidadProductoSolicitado']) ?>
         <input style="text-align:right" type="text" class="form-control" value="<?php echo $total ?>"  aria-label="Disabled input example" required readonly>
       </div>
     </div> 
@@ -108,7 +103,7 @@ require_once "../../Controller/Controller_Orden/C_historialOrdenDia_ver.php";
     <table class="table table-bordered">
       <thead class="thead-light">
         <tr>
-          <th style="text-align:center">Código</th>
+          <th style="text-align:center">Código</th> 
           <th style="text-align:center">Nombre</th>
           <th style="text-align:center">Inventario<br>Inicial</th>
           <th style="text-align:center">Inventario<br>Final</th>
@@ -121,7 +116,7 @@ require_once "../../Controller/Controller_Orden/C_historialOrdenDia_ver.php";
       <tbody>
       <?php 
     $id_producto=mysqli_fetch_array($res_id_producto);
-    $res_material = mysqli_query($conection,"SELECT * From h_material e JOIN productomaterial a ON e.ID_MATERIAL = a.FK_ID_MATERIAL AND a.FK_ID_PRODUCTO = '$id_producto[0]'");
+    $res_material = mysqli_query($conection,"SELECT * From h_material where ID_PRODUCTO = '$id_producto[0]' and HM_ID_ORDEN = $mostrar_producto[FK_ID_ORDEN]");
     ?>
         <tr>
         <?php 
@@ -131,32 +126,9 @@ require_once "../../Controller/Controller_Orden/C_historialOrdenDia_ver.php";
     while($res_mostrar=mysqli_fetch_array($res_material)){?>
           <td style="text-align:right"><?php echo $res_mostrar['codigoMaterial'] ?></td>
           <td style="text-align:right"><?php echo $res_mostrar['nombreMaterial'] ?></td>
-          <?php
-          $si = true;
-          $cantidad_pedido = ($res_mostrar['cantidadMaterialProducto'] * $result[0]);  
-          $longitud = count($arr_cantidad);
-          for($i=0; $i<$longitud; $i++)
-          {
-            if($arr_cantidad[$i][0] == $res_mostrar['codigoMaterial']){
-              ?>
-              <td style="text-align:right"><?php echo $arr_cantidad[$i][1] ?></td>
-              <?php 
-              $arr_cantidad[$i][1] = ($arr_cantidad[$i][1] - $cantidad_pedido );
-              ?>
-              <td style="text-align:right"><?php echo $arr_cantidad[$i][1] ?></td>
-              <?php 
-              $si = false;
-            }
-          }
-          if($si == true){
-            ?>
-            <td style="text-align:right"><?php echo $res_mostrar['cantidadMaterialInventario']  ?></td>
-            <td style="text-align:right"><?php echo ($res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido ) ?></td>
-            <?php
-            $cantidad_guardar = $res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido;
-            array_push($arr_cantidad, array ( $res_mostrar['codigoMaterial'],$cantidad_guardar));
-          }
-          ?>
+          <td style="text-align:right"><?php echo $res_mostrar['cantidadMaterialInventario'] ?></td>
+          <?php  $cantidad_pedido = ($res_mostrar['cantidad'] * $mostrar_producto['cantidadProductoSolicitado']);  ?>
+          <td style="text-align:right"><?php echo ($res_mostrar['cantidadMaterialInventario'] - $cantidad_pedido ) ?></td>
           <td style="text-align:right"><?php echo $cantidad_pedido ?></td>
           <td style="text-align:right"><?php echo $res_mostrar['unidadMedidaMaterial'] ?></td>
           <td style="text-align:right"><?php echo $res_mostrar['valorMaterial'] ?></td>
@@ -190,7 +162,6 @@ require_once "../../Controller/Controller_Orden/C_historialOrdenDia_ver.php";
         <input style="text-align:right" type="text" class="form-control" value="<?php echo $costo_total ?>" id="validationCustom01" aria-label="Disabled input example" required readonly>
       </div>
     </div> <hr> <hr> <hr> <hr>
-
   </div>
 </html>
 
