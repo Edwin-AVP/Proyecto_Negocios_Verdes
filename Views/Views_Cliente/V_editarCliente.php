@@ -60,7 +60,7 @@ $mostrar=mysqli_fetch_array($result)
         </div>
         <div class="col-md-4 mb-3">
           <label for="validationCustom02">Identificación</label>
-          <input type="number" class="form-control" name="identificación" placeholder="Identificación" value="<?php echo $mostrar['IdentificacionCliente'] ?>" required>
+          <input type="number" class="form-control" name="identificacion" placeholder="Identificación" value="<?php echo $mostrar['IdentificacionCliente'] ?>" required>
           <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Ingrese Identificación</div>
         </div>
         <div class="col-md-3 mb-3">

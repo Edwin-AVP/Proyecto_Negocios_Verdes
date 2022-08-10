@@ -2,13 +2,13 @@
 if(isset($_POST['search']))
 {
 	$valueToSearh = $_POST['valueToSearh']; 
-	$query = "SELECT * FROM cliente WHERE nombreCliente LIKE '%".$valueToSearh."%' OR IdentificacionCliente LIKE '%".$valueToSearh."%'";
+	$query = "SELECT * FROM cliente WHERE nombreCliente LIKE '%".$valueToSearh."%' and estado = 1 OR IdentificacionCliente LIKE '%".$valueToSearh."%' and estado = 1";
 	$result = filterRecord($query);
 } 
 else
 {
 	
-		$query = "SELECT * FROM cliente";
+		$query = "SELECT * FROM cliente where estado = 1";
 		$result = filterRecord($query);
 }
 function filterRecord($query)

@@ -16,12 +16,12 @@
         $sql="UPDATE material SET nombreMaterial = '$nombre', codigoMaterial = '$codigo', unidadMedidaMaterial = '$unidad', valorMaterial = '$valor',
         tipoMaterial = '$tipo' WHERE ID_MATERIAL = '$id'";
         $resul=mysqli_query($conection,$sql);
-        header('location: ../../Views/Views_Material/V_Material.php');
+        header('location: ../../Views/Views_Material/V_material.php');
 
     }else{
         echo '<script language="javascript">';
         echo 'alert("Codigo duplicado!");';
-        echo 'window.location="../../Views/Views_Material/V_Material.php";';
+        echo 'window.location="../../Views/Views_Material/V_material.php";';
         echo '</script>';
     }
 ?>

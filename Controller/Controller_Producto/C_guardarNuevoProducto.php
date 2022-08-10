@@ -22,8 +22,8 @@ $arr = mysqli_fetch_array($result);
 
 if($arr == false){
     if(isset($_POST['id_material'])){
-        $sql="INSERT INTO producto(nombreProducto, codigoProducto, valorUnidad) VALUES
-        ('$nombre', '$codigo','$valor')";
+        $sql="INSERT INTO producto(nombreProducto, codigoProducto, valorUnidad, estado) VALUES
+        ('$nombre', '$codigo','$valor',1)";
         $resul=mysqli_query($conection,$sql);
 
         $sql="SELECT ID_PRODUCTO FROM producto WHERE codigoProducto = '$codigo'";

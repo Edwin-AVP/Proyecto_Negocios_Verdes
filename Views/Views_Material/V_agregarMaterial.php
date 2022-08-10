@@ -70,8 +70,11 @@ if(!isset($_SESSION['rol'])){
         <select class="form-control" name="unidad" required aria-label="select example">
           <option class="form-control" value="">Seleccione unidad</option>
           <option class="form-control" value="Kg">Kg</option>
-          <option class="form-control" value="ml">ml</option>
-          <option class="form-control" value="Lt">Lt</option>
+          <option class="form-control" value="Lt">g</option>
+          <option class="form-control" value="Lt">mg</option>
+          <option class="form-control" value="ml">L</option>
+          <option class="form-control" value="Lt">ml</option>
+          <option class="form-control" value="Lt">c/u</option>
         </select>
         <div class="valid-feedback">Bien!</div><div class="invalid-feedback">Seleccione una unidad</div>
       </div>

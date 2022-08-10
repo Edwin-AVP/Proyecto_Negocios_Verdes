@@ -8,16 +8,25 @@
     $correo = $_POST['correo'];
     $direccion = $_POST['direccion'];
 
-    $sql="SELECT IdentificacionCliente FROM cliente WHERE IdentificacionCliente = '$identificacion'";
+    $sql="SELECT estado FROM cliente WHERE IdentificacionCliente = '$identificacion'";
     $result=mysqli_query($conection,$sql);
     if($mostrar=mysqli_fetch_array($result)){
-        echo '<script language="javascript">';
-        echo 'alert("La identificación ya existe!");';
-        echo 'window.location="../../Views/Views_Cliente/V_nuevoCliente.php";';
-        echo '</script>';
+
+        if($mostrar[0] == 2){
+            $sql="UPDATE cliente SET nombreCliente = '$nombre', IdentificacionCliente = '$identificacion', tipoIdentificacion = '$tipo', telefono = '$telefono',
+            correo = '$correo', direccion = '$direccion', estado = '1' WHERE IdentificacionCliente = '$identificacion'";
+            $result=mysqli_query($conection,$sql);
+            header('location: ../../Views/Views_Cliente/V_cliente.php');
+        }else{
+            echo '<script language="javascript">';
+            echo 'alert("La identificación ya existe!");';
+            echo 'window.location="../../Views/Views_Cliente/V_nuevoCliente.php";';
+            echo '</script>';
+        }
+
     }else{
-        $sql="INSERT INTO cliente(nombreCliente, IdentificacionCliente, tipoIdentificacion, telefono, correo, direccion) VALUES
-        ('$nombre', '$identificacion','$tipo', '$telefono', '$correo', '$direccion')";
+        $sql="INSERT INTO cliente(nombreCliente, IdentificacionCliente, tipoIdentificacion, telefono, correo, direccion, estado) VALUES
+        ('$nombre', '$identificacion','$tipo', '$telefono', '$correo', '$direccion', '1')";
 		$resul=mysqli_query($conection,$sql);
         header('location: ../../Views/Views_Cliente/V_cliente.php');
     }

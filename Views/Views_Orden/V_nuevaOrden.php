@@ -26,15 +26,15 @@ if(!isset($_SESSION['rol'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
-   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-     <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
       <a class="navbar-brand" href="../Views_Usuario/V_usuario.php">Negocios <span>Verdes</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span> Menu
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
-       <ul class="navbar-nav m-auto">
-           <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
-           <?php if($_SESSION['rol'] == 1 ){?>
+      <ul class="navbar-nav m-auto">
+          <!--Si el usuario no es el administrador no mostrara los USUARIOS-->
+          <?php if($_SESSION['rol'] == 1 ){?>
       <li class="nav-item"><a href="../Views_Usuario/V_usuario.php" class="nav-link">USUARIOS</a></li> <?php
             }else{if($_SESSION['rol'] != 1 ){}}
           ?>

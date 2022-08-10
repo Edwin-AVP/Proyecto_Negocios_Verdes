@@ -9,7 +9,7 @@ if(isset($_POST['search']))
 else
 {
 	
-		$query = "SELECT *FROM usuario";
+		$query = "SELECT * FROM usuario";
 		$result = filterRecord($query);
 }
 function filterRecord($query)

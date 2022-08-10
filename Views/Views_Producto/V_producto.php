@@ -88,7 +88,7 @@ while($mostrar=mysqli_fetch_array($result)){
 <script language="JavaScript">
 function preguntar(contacto){//comfirmacion para eliminar producto
     if (confirm('¿Estas seguro que desea eliminar este producto?')){
-      window.location.href="../../Controller/Controller_Producto/C_eliminatProducto.php?id="+contacto;
+      window.location.href="../../Controller/Controller_Producto/C_eliminarProducto.php?id="+contacto;
     }
 }
 </script>

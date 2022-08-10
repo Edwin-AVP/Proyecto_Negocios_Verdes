@@ -75,6 +75,7 @@ while($mostrar=mysqli_fetch_array($result)){
     <td>
      <a <?php echo "href='../Views_Cliente/V_verCliente.php?id=".$mostrar['ID_CLIENTE']."'" ?>class="btn btn-info" role="button">Ver</a>
      <a <?php echo "href='../Views_Cliente/V_editarCliente.php?id=".$mostrar['ID_CLIENTE']."'" ?>class="btn btn-success" role="button">Editar</a>
+     <a <?php echo "href='javascript:preguntar(".$mostrar['ID_CLIENTE'].")'" ?>class="btn btn-danger" role="button">Eliminar</a>
     </td>
   </tr>
   <?php 
@@ -82,6 +83,13 @@ while($mostrar=mysqli_fetch_array($result)){
   ?>
       </tbody>
     </table>
+    <script language="JavaScript">
+function preguntar(contacto){//comfirmacion para eliminar producto
+    if (confirm('¿Estas seguro que desea eliminar este cliente?')){
+      window.location.href="../../Controller/Controller_Cliente/C_eliminarCliente.php?id="+contacto;
+    }
+}
+</script>
   </div>
   </html>
 

@@ -13,7 +13,7 @@
         if($rest[0] < 0){
             echo '<script language="javascript">';
             echo 'alert("No hay suficiente inventario!");';
-            echo 'window.location="../../Views/Views_Material/V_Material.php";';
+            echo 'window.location="../../Views/Views_material/V_Material.php";';
             echo '</script>';
 
         }else{
@@ -33,13 +33,13 @@
             ('$codigo', '$nombre','$motivo', CURDATE(), '$cantidad', '$unidad', '$tipo')";
             $resul=mysqli_query($conection,$sql);
             $rest = 0;
-            header('location: ../../Views/Views_Material/V_Material.php');
+            header('location: ../../Views/Views_Material/V_material.php');
         }
 
     }else{
         echo '<script language="javascript">';
         echo 'alert("No se permiten ingresar numeros negativos!");';
-        echo 'window.location="../../Views/Views_Material/V_Material.php";';
+        echo 'window.location="../../Views/Views_Material/V_material.php";';
         echo '</script>';
     }
 ?>

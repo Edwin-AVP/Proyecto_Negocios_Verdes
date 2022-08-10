@@ -28,12 +28,12 @@
         $sql="INSERT INTO historial_entrada(codigo, nombre, fecha, cantidad, unidad, valorUnitario, tipo)VALUES
         ('$codigo', '$nombre', CURDATE(), '$cantidad', '$unidad','$valor', '$tipo')";
         $resu=mysqli_query($conection,$sql);
-        header('location: ../../Views/Views_Material/V_Material.php');
+        header('location: ../../Views/Views_Material/V_material.php');
 
     }else{
         echo '<script language="javascript">';
         echo 'alert("No se permiten ingresar numeros negativos  !");';
-        echo 'window.location="../../Views/Views_Material/V_Material.php";';
+        echo 'window.location="../../Views/Views_Material/V_material.php";';
         echo '</script>';
     }
 ?>
