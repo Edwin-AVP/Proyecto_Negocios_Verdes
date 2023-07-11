@@ -64,8 +64,8 @@ require_once "../../Controller/Controller_Orden/C_crearOrden.php";
   $dia = date('d'); 
   $mes = date('m'); 
   $ano = date('y'); 
-  $cont=mysqli_fetch_array($contador);
-  $od = "N."."OD". $dia.$mes.$ano.$cont[0]+1;
+  $cont = mysqli_fetch_array($contador);
+  $od = ("N."."OD". $dia.$mes.$ano.($cont[0]+1));
   ?>
   <input type="hidden" class="form-control" name="codigo" value="<?php echo $od ?>"  aria-label="Disabled input example" required readonly>
   <b style="font-size:100%;"><?php  echo $od; ?></b>

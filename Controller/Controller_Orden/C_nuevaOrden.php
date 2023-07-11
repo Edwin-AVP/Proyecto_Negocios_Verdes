@@ -1,6 +1,6 @@
 <?php
 require_once "../../Model/database.php";
-$result = mysqli_query($conection,"SELECT * FROM cliente WHERE estado = 1");
+$result = mysqli_query($conection,"SELECT * FROM cliente WHERE estadoCliente = 1");
 ?>
 <?php
 require_once "../../Model/database.php";

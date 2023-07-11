@@ -64,6 +64,7 @@ if(!isset($_SESSION['rol'])){
     <tbody>
     <?php 
 require_once "../../Controller/Controller_Orden/C_orden.php";
+
 while($mostrar=mysqli_fetch_array($result)){
     ?>
 
@@ -71,6 +72,8 @@ while($mostrar=mysqli_fetch_array($result)){
     <td><?php echo $mostrar['numeroOrden'] ?></td>
     <td><?php echo $mostrar['nombreCliente'] ?></td>
     <td><?php echo $mostrar['fecha'] ?></td>
+
+
 
     <td>
       
@@ -109,10 +112,10 @@ function preguntar(contacto){//comfirmacion para cancelar orden
 </div> 
 </html>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+
+
+
+
 
 </body>
 </html>

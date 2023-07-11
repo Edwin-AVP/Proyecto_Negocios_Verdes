@@ -9,7 +9,7 @@ if(isset($_POST['search']))
 else
 {
 	
-		$query = "SELECT * from orden a JOIN cliente b ON a.FK_ID_CLIENTE = b.ID_CLIENTE WHERE a.estado = 1 or a.estado = 0";
+		$query = "SELECT * from orden a JOIN cliente b ON a.FK_ID_CLIENTE = b.ID_CLIENTE WHERE a.estado <= 1";
 		$result = filterRecord($query);
 }
 function filterRecord($query)
